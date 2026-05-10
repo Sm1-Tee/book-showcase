@@ -59,9 +59,11 @@ const seriesCountText = seriesBooks.length === 1
         </button>
 
         <div class="mt-5 rounded-xl border border-accent/20 bg-[linear-gradient(145deg,rgba(255,255,255,0.1),rgba(23,23,23,0.85)_48%,rgba(176,138,69,0.15))] p-5 shadow-xl shadow-black/30 ring-1 ring-white/10 sm:backdrop-blur-md text-center">
-          <p class="type-ui text-xs font-black uppercase tracking-[0.24em] text-accent">
-            {book.data.series ? `${book.data.series}${book.data.seriesOrder ? ` #${book.data.seriesOrder}` : ''}` : 'Вне серии'}
-          </p>
+          {book.data.series && (
+            <p class="type-ui text-xs font-black uppercase tracking-[0.24em] text-accent">
+              {book.data.series}{book.data.seriesOrder ? ` #${book.data.seriesOrder}` : ''}
+            </p>
+          )}
           <h1 class="mt-3 text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl">
             {book.data.title}
           </h1>
