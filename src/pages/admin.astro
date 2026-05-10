@@ -1611,6 +1611,27 @@
           });
       }
 
+
+      /* ── Publish dispatcher ── */
+
+      el.publishBtn.addEventListener('click', function () {
+        var title = el.title.value.trim();
+        var author = el.author.value.trim();
+        var series = el.series.value.trim();
+        var seriesOrder = el.seriesOrder.value.trim();
+        var bodyText = el.bodyText.value;
+        var slug = slugify(title);
+        if (!slug) return;
+
+        showOverlay(editMode === 'edit' ? 'Сохранение изменений' : 'Публикация книги');
+
+        if (editMode === 'edit') {
+          publishEdit(title, author, series, seriesOrder, bodyText, slug);
+        } else {
+          publishCreate(title, author, series, seriesOrder, bodyText, slug);
+        }
+      });
+
       /* ── Delete ── */
 
       function showDeleteConfirm(book) {
