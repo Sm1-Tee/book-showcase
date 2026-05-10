@@ -1395,12 +1395,13 @@
             return ghFetch('/repos/' + REPO + '/git/commits', {
               method: 'POST',
               body: JSON.stringify({ message: message, tree: tree.sha, parents: [ctx.commitSha] }),
-            });
-          })
-          .then(function (newCommit) {
-            return ghFetch('/repos/' + REPO + '/git/refs/heads/' + BRANCH, {
-              method: 'PATCH',
-              body: JSON.stringify({ sha: newCommit.sha }),
+            }).then(function (newCommit) {
+              return ghFetch('/repos/' + REPO + '/git/refs/heads/' + BRANCH, {
+                method: 'PATCH',
+                body: JSON.stringify({ force: true, sha: newCommit.sha }),
+              }).then(function() {
+                return { commitSha: newCommit.sha, baseTreeSha: tree.sha };
+              });
             });
           });
       }
@@ -1430,16 +1431,11 @@
         });
       }
 
-      function createCommitAndPushBatches(fileEntries, mdContent, mdPath, commitMsgPrefix) {
-        // Group 1: All images (cover + examples)
-        // Group 2: Color EPUB
-        // Group 3: BW EPUB
-        // Group 4: Markdown file
-        
+      function createCommitAndPushBatches(initialCtxPromise, fileEntries, mdContent, mdPath, commitMsgPrefix) {
         var imgEntries = [];
         var colorEpubEntry = null;
         var bwEpubEntry = null;
-        
+
         fileEntries.forEach(function(e) {
           if (e.path.indexOf('.epub') !== -1) {
             if (e.label.toLowerCase().indexOf('чб') !== -1 || e.label.toLowerCase().indexOf('bw') !== -1) bwEpubEntry = e;
@@ -1449,81 +1445,42 @@
           }
         });
 
-        var totalSteps = 4;
-        var chain = Promise.resolve();
-        
-        // Helper to process a batch of files into one commit
-        function processBatch(entries, stepLabel, msg) {
-           if (entries.length === 0) return Promise.resolve();
-           return getHeadContext().then(function(ctx) {
-             var promises = entries.map(function(entry) {
-                return readFileAsBase64(entry.file)
-                  .then(function(b64) { return uploadBlob(b64); })
-                  .then(function(blob) { return { path: entry.path, mode: '100644', type: 'blob', sha: blob.sha }; });
-             });
-             return Promise.all(promises).then(function(treeEntries) {
-                return ghFetch('/repos/' + REPO + '/git/trees', {
-                  method: 'POST',
-                  body: JSON.stringify({ base_tree: ctx.baseTreeSha, tree: treeEntries })
-                }).then(function(tree) {
-                  return ghFetch('/repos/' + REPO + '/git/commits', {
-                    method: 'POST',
-                    body: JSON.stringify({ message: msg, tree: tree.sha, parents: [ctx.commitSha] })
-                  });
-                }).then(function(newCommit) {
-                  return ghFetch('/repos/' + REPO + '/git/refs/heads/' + BRANCH, {
-                    method: 'PATCH',
-                    body: JSON.stringify({ force: true, sha: newCommit.sha }) // Force helps bypass race condition lock
-                  });
-                });
-             });
+        function processBatch(ctx, entries, msg) {
+           if (entries.length === 0) return Promise.resolve(ctx);
+           var promises = entries.map(function(entry) {
+              return readFileAsBase64(entry.file)
+                .then(function(b64) { return uploadBlob(b64); })
+                .then(function(blob) { return { path: entry.path, mode: '100644', type: 'blob', sha: blob.sha }; });
+           });
+           return Promise.all(promises).then(function(treeEntries) {
+              return createCommitAndPush(ctx, treeEntries, msg);
            });
         }
 
-        // Delay helper to avoid hitting update locks
-        function wait(ms) { return new Promise(function(resolve) { setTimeout(resolve, ms); }); }
+        var chain = initialCtxPromise;
 
-        // 1. Process Images
-        chain = chain.then(function() {
+        chain = chain.then(function(ctx) {
           setProgress(25, 'Пакет 1/4: Загрузка картинок...');
-          return processBatch(imgEntries, 'картинки', commitMsgPrefix + ' (Изображения)');
-        }).then(function() { return wait(1000); });
+          return processBatch(ctx, imgEntries, commitMsgPrefix + ' (Изображения)');
+        });
 
-        // 2. Process Color EPUB
-        chain = chain.then(function() {
-          if (!colorEpubEntry) return;
+        chain = chain.then(function(ctx) {
+          if (!colorEpubEntry) return ctx;
           setProgress(50, 'Пакет 2/4: Загрузка цветного EPUB...');
-          return processBatch([colorEpubEntry], 'цветной EPUB', commitMsgPrefix + ' (Цветной EPUB)');
-        }).then(function() { return wait(1000); });
+          return processBatch(ctx, [colorEpubEntry], commitMsgPrefix + ' (Цветной EPUB)');
+        });
 
-        // 3. Process BW EPUB
-        chain = chain.then(function() {
-          if (!bwEpubEntry) return;
+        chain = chain.then(function(ctx) {
+          if (!bwEpubEntry) return ctx;
           setProgress(75, 'Пакет 3/4: Загрузка ч/б EPUB...');
-          return processBatch([bwEpubEntry], 'ч/б EPUB', commitMsgPrefix + ' (Ч/Б EPUB)');
-        }).then(function() { return wait(1000); });
+          return processBatch(ctx, [bwEpubEntry], commitMsgPrefix + ' (Ч/Б EPUB)');
+        });
 
-        // 4. Process Markdown
-        chain = chain.then(function() {
+        chain = chain.then(function(ctx) {
           setProgress(90, 'Пакет 4/4: Финализация файла книги...');
           return uploadBlob(btoa(unescape(encodeURIComponent(mdContent)))).then(function(mdBlob) {
-             return getHeadContext().then(function(ctx) {
-                var treeEntries = [{ path: mdPath, mode: '100644', type: 'blob', sha: mdBlob.sha }];
-                return ghFetch('/repos/' + REPO + '/git/trees', {
-                  method: 'POST',
-                  body: JSON.stringify({ base_tree: ctx.baseTreeSha, tree: treeEntries })
-                }).then(function(tree) {
-                  return ghFetch('/repos/' + REPO + '/git/commits', {
-                    method: 'POST',
-                    body: JSON.stringify({ message: commitMsgPrefix + ' (Финальный файл)', tree: tree.sha, parents: [ctx.commitSha] })
-                  });
-                }).then(function(newCommit) {
-                  return ghFetch('/repos/' + REPO + '/git/refs/heads/' + BRANCH, {
-                    method: 'PATCH',
-                    body: JSON.stringify({ force: true, sha: newCommit.sha })
-                  });
-                });
-             });
+             var treeEntries = [{ path: mdPath, mode: '100644', type: 'blob', sha: mdBlob.sha }];
+             return createCommitAndPush(ctx, treeEntries, commitMsgPrefix + ' (Финальный файл)');
           });
         });
 
@@ -1542,22 +1499,21 @@
         fileEntries.push({ file: bwEpubFile, path: 'public/books/' + slug + '/' + bwEpubFile.name, label: bwEpubFile.name });
 
         setProgress(0, 'Начинаем поэтапную загрузку файлов...');
-        
         var coverExt = ext(coverFile.name);
         var mdPath = 'src/content/books/' + slug + '.md';
         var md = buildMarkdown(title, author, slug, coverExt, exampleItems, series, seriesOrder, bodyText, colorEpubFile.name, bwEpubFile.name);
 
-        createCommitAndPushBatches(fileEntries, md, mdPath, 'Add book: ' + title)
-        .then(function () {
-          setProgress(100, '');
-          showOverlayResult('Книга опубликована!', 'Все файлы загружены. Деплой запущен.', 'https://sm1-tee.github.io/chit-ai/books/' + slug + '/');
-          showView('list');
-          loadBooks();
-        })
-        .catch(function (err) {
-          setProgress(0, '');
-          showOverlayResult('Ошибка публикации', err.message, null);
-        });
+        createCommitAndPushBatches(getHeadContext(), fileEntries, md, mdPath, 'Add book: ' + title)
+          .then(function () {
+            setProgress(100, '');
+            showOverlayResult('Книга опубликована!', 'Все пакеты успешно загружены.', 'https://sm1-tee.github.io/chit-ai/books/' + slug + '/');
+            showView('list');
+            loadBooks();
+          })
+          .catch(function (err) {
+            setProgress(0, '');
+            showOverlayResult('Ошибка публикации', err.message, null);
+          });
       }
 
       /* ── Publish (edit) ── */
@@ -1565,96 +1521,87 @@
       function publishEdit(title, author, series, seriesOrder, bodyText, newSlug) {
         var oldSlug = editingSlug;
         var treeEntries = [];
+        var uploadTasks = [];
 
         setProgress(0, 'Получение текущего состояния…');
 
-        var ctx;
         getHeadContext()
-          .then(function (c) {
-            ctx = c;
+          .then(function (ctx) {
             setProgress(5, 'Анализ файлов…');
-            return getRecursiveTree(ctx.baseTreeSha);
-          })
-          .then(function (tree) {
-            var existingFiles = {};
-            var oldPublicPrefix = 'public/books/' + oldSlug + '/';
-            var oldAssetsPrefix = 'src/assets/books/' + oldSlug + '/';
-            var oldMd = 'src/content/books/' + oldSlug + '.md';
-            tree.tree.forEach(function (entry) {
-              if (entry.type === 'blob' && (entry.path.indexOf(oldPublicPrefix) === 0 || entry.path.indexOf(oldAssetsPrefix) === 0 || entry.path === oldMd)) {
-                existingFiles[entry.path] = entry.sha;
+            return getRecursiveTree(ctx.baseTreeSha).then(function(tree) {
+              var existingFiles = {};
+              var oldPublicPrefix = 'public/books/' + oldSlug + '/';
+              var oldAssetsPrefix = 'src/assets/books/' + oldSlug + '/';
+              var oldMd = 'src/content/books/' + oldSlug + '.md';
+              tree.tree.forEach(function (entry) {
+                if (entry.type === 'blob' && (entry.path.indexOf(oldPublicPrefix) === 0 || entry.path.indexOf(oldAssetsPrefix) === 0 || entry.path === oldMd)) {
+                  existingFiles[entry.path] = entry.sha;
+                }
+              });
+
+              Object.keys(existingFiles).forEach(function (path) {
+                treeEntries.push({ path: path, mode: '100644', type: 'blob', sha: null });
+              });
+
+              var coverExt;
+              if (coverFile) {
+                coverExt = ext(coverFile.name);
+                uploadTasks.push({ file: coverFile, path: 'src/assets/books/' + newSlug + '/cover.' + coverExt, label: coverFile.name });
+              } else if (coverExisting) {
+                coverExt = coverExisting.ext;
+                treeEntries.push({ path: 'src/assets/books/' + newSlug + '/cover.' + coverExt, mode: '100644', type: 'blob', sha: existingFiles[coverExisting.path] });
               }
-            });
 
-            Object.keys(existingFiles).forEach(function (path) {
-              treeEntries.push({ path: path, mode: '100644', type: 'blob', sha: null });
-            });
+              exampleItems.forEach(function (item, i) {
+                if (item.type === 'new') {
+                  uploadTasks.push({ file: item.file, path: 'src/assets/books/' + newSlug + '/example-' + (i + 1) + '.' + ext(item.file.name), label: item.file.name });
+                } else {
+                  treeEntries.push({ path: 'src/assets/books/' + newSlug + '/example-' + (i + 1) + '.' + item.ext, mode: '100644', type: 'blob', sha: existingFiles[item.path] });
+                }
+              });
 
-            var uploadTasks = [];
-            var coverExt;
-
-            if (coverFile) {
-              coverExt = ext(coverFile.name);
-              uploadTasks.push({ file: coverFile, path: 'src/assets/books/' + newSlug + '/cover.' + coverExt, label: coverFile.name });
-            } else if (coverExisting) {
-              coverExt = coverExisting.ext;
-              treeEntries.push({ path: 'src/assets/books/' + newSlug + '/cover.' + coverExt, mode: '100644', type: 'blob', sha: existingFiles[coverExisting.path] });
-            }
-
-            exampleItems.forEach(function (item, i) {
-              if (item.type === 'new') {
-                uploadTasks.push({ file: item.file, path: 'src/assets/books/' + newSlug + '/example-' + (i + 1) + '.' + ext(item.file.name), label: item.file.name });
-              } else {
-                treeEntries.push({ path: 'src/assets/books/' + newSlug + '/example-' + (i + 1) + '.' + item.ext, mode: '100644', type: 'blob', sha: existingFiles[item.path] });
+              var colorName = 'color.epub';
+              if (colorEpubFile) {
+                colorName = colorEpubFile.name;
+                uploadTasks.push({ file: colorEpubFile, path: 'public/books/' + newSlug + '/' + colorName, label: colorName });
+              } else if (colorEpubExisting) {
+                colorName = colorEpubExisting.path.split('/').pop();
+                treeEntries.push({ path: 'public/books/' + newSlug + '/' + colorName, mode: '100644', type: 'blob', sha: existingFiles[colorEpubExisting.path] });
               }
+
+              var bwName = 'bw.epub';
+              if (bwEpubFile) {
+                bwName = bwEpubFile.name;
+                uploadTasks.push({ file: bwEpubFile, path: 'public/books/' + newSlug + '/' + bwName, label: bwName });
+              } else if (bwEpubExisting) {
+                bwName = bwEpubExisting.path.split('/').pop();
+                treeEntries.push({ path: 'public/books/' + newSlug + '/' + bwName, mode: '100644', type: 'blob', sha: existingFiles[bwEpubExisting.path] });
+              }
+
+              // Filter out treeEntries mapping (deduplicate)
+              var deduped = {};
+              treeEntries.forEach(function (e) { deduped[e.path] = e; });
+              treeEntries = Object.keys(deduped).map(function (k) { return deduped[k]; });
+
+              var mdPath = 'src/content/books/' + newSlug + '.md';
+              var coverExtToPass = coverFile ? ext(coverFile.name) : coverExisting ? coverExisting.ext : 'jpg';
+              var md = buildMarkdown(title, author, newSlug, coverExtToPass, exampleItems, series, seriesOrder, bodyText, colorName, bwName);
+
+              var baseChain = Promise.resolve(ctx);
+              
+              if (treeEntries.length > 0) {
+                 baseChain = baseChain.then(function(currentCtx) {
+                    setProgress(10, 'Подготовка структуры файлов...');
+                    return createCommitAndPush(currentCtx, treeEntries, 'Update book structure: ' + title);
+                 });
+              }
+
+              return createCommitAndPushBatches(baseChain, uploadTasks, md, mdPath, 'Update book: ' + title);
             });
-
-            if (colorEpubFile) {
-              uploadTasks.push({ file: colorEpubFile, path: 'public/books/' + newSlug + '/' + colorEpubFile.name, label: colorEpubFile.name });
-            } else if (colorEpubExisting) {
-              var colorExistingName = colorEpubExisting.path.split('/').pop();
-              treeEntries.push({ path: 'public/books/' + newSlug + '/' + colorExistingName, mode: '100644', type: 'blob', sha: existingFiles[colorEpubExisting.path] });
-            }
-
-            if (bwEpubFile) {
-              uploadTasks.push({ file: bwEpubFile, path: 'public/books/' + newSlug + '/' + bwEpubFile.name, label: bwEpubFile.name });
-            } else if (bwEpubExisting) {
-              var bwExistingName = bwEpubExisting.path.split('/').pop();
-              treeEntries.push({ path: 'public/books/' + newSlug + '/' + bwExistingName, mode: '100644', type: 'blob', sha: existingFiles[bwEpubExisting.path] });
-            }
-
-            var totalSteps = uploadTasks.length + 1;
-            var completed = 0;
-
-            // Delete old files that are no longer needed (from treeEntries mapping) by using existing treeEntries
-            // Wait, to do it sequentially, we commit the base files first, then sequentially add blobs.
-            var deduped = {};
-            treeEntries.forEach(function (e) { deduped[e.path] = e; });
-            treeEntries = Object.keys(deduped).map(function (k) { return deduped[k]; });
-            
-            var chain = Promise.resolve();
-            
-            // First commit the old files deletion / restructuring if necessary
-            chain = chain.then(function() {
-              setProgress(10, 'Подготовка структуры файлов...');
-              return createCommitAndPush(ctx, treeEntries, 'Update book structure: ' + title);
-            });
-
-            // Replace logic with batch dispatcher
-            var mdPath = 'src/content/books/' + newSlug + '.md';
-            var colorName = colorEpubFile ? colorEpubFile.name : colorEpubExisting ? colorEpubExisting.path.split('/').pop() : 'color.epub';
-            var bwName = bwEpubFile ? bwEpubFile.name : bwEpubExisting ? bwEpubExisting.path.split('/').pop() : 'bw.epub';
-            
-            chain = chain.then(function() {
-               var coverExtToPass = coverFile ? ext(coverFile.name) : coverExisting ? coverExisting.ext : 'jpg';
-               var md = buildMarkdown(title, author, newSlug, coverExtToPass, exampleItems, series, seriesOrder, bodyText, colorName, bwName);
-               return createCommitAndPushBatches(uploadTasks, md, mdPath, 'Update book: ' + title);
-            });
-            return chain;
           })
           .then(function () {
             setProgress(100, '');
-            showOverlayResult('Изменения сохранены!', 'Деплой запустится автоматически.', 'https://sm1-tee.github.io/chit-ai/books/' + newSlug + '/');
+            showOverlayResult('Изменения сохранены!', 'Все пакеты успешно обновлены.', 'https://sm1-tee.github.io/chit-ai/books/' + newSlug + '/');
             showView('list');
             loadBooks();
           })
@@ -1663,26 +1610,6 @@
             showOverlayResult('Ошибка сохранения', err.message, null);
           });
       }
-
-      /* ── Publish dispatcher ── */
-
-      el.publishBtn.addEventListener('click', function () {
-        var title = el.title.value.trim();
-        var author = el.author.value.trim();
-        var series = el.series.value.trim();
-        var seriesOrder = el.seriesOrder.value.trim();
-        var bodyText = el.bodyText.value;
-        var slug = slugify(title);
-        if (!slug) return;
-
-        showOverlay(editMode === 'edit' ? 'Сохранение изменений' : 'Публикация книги');
-
-        if (editMode === 'edit') {
-          publishEdit(title, author, series, seriesOrder, bodyText, slug);
-        } else {
-          publishCreate(title, author, series, seriesOrder, bodyText, slug);
-        }
-      });
 
       /* ── Delete ── */
 
