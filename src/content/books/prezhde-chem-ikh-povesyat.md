@@ -3,12 +3,12 @@ title: "Прежде чем их повесят"
 author: "Джо Аберкромби"
 coverImage: "../../assets/books/prezhde-chem-ikh-povesyat/cover.png"
 exampleImages:
-    - "../../assets/books/prezhde-chem-ikh-povesyat/example-1.png"
-    - "../../assets/books/prezhde-chem-ikh-povesyat/example-2.png"
-    - "../../assets/books/prezhde-chem-ikh-povesyat/example-3.png"
-    - "../../assets/books/prezhde-chem-ikh-povesyat/example-4.png"
-colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/prezhde-color.epub"
-bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/prezhde-bw.epub"
+  - "../../assets/books/prezhde-chem-ikh-povesyat/example-1.png"
+  - "../../assets/books/prezhde-chem-ikh-povesyat/example-2.png"
+  - "../../assets/books/prezhde-chem-ikh-povesyat/example-3.png"
+  - "../../assets/books/prezhde-chem-ikh-povesyat/example-4.png"
+colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/Prezhde_chem_ih_povesyat/Prezhde_chem_ih_povesyat-color.epub"
+bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/Prezhde_chem_ih_povesyat/Prezhde_chem_ih_povesyat-bw.epub"
 series: "Первый закон"
 seriesOrder: 2
 ---
