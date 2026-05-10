@@ -7,8 +7,8 @@ exampleImages:
     - "../../assets/books/krov-i-zhelezo/example-2.png"
     - "../../assets/books/krov-i-zhelezo/example-3.png"
     - "../../assets/books/krov-i-zhelezo/example-4.png"
-colorEpub: "/books/krov-i-zhelezo/Кровь и железо (Цветные иллюстрации).epub"
-bwEpub: "/books/krov-i-zhelezo/Кровь и железо [ЧБ иллюстрации).epub"
+colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/krov-color.epub"
+bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/krov-bw.epub"
 series: "Первый закон"
 seriesOrder: 1
 ---

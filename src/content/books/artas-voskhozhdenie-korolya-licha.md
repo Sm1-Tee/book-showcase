@@ -7,8 +7,8 @@ exampleImages:
     - "../../assets/books/artas-voskhozhdenie-korolya-licha/example-2.jpeg"
     - "../../assets/books/artas-voskhozhdenie-korolya-licha/example-3.png"
     - "../../assets/books/artas-voskhozhdenie-korolya-licha/example-4.jpeg"
-colorEpub: "/books/artas-voskhozhdenie-korolya-licha/Артас. Восхождение Короля-лича (Цветные иллюстрации).epub"
-bwEpub: "/books/artas-voskhozhdenie-korolya-licha/Артас. Восхождение Короля-лича (ЧБ иллюстрации).epub"
+colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/artas-color.epub"
+bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/artas-bw.epub"
 series: "Warcraft"
 seriesOrder: 3
 ---

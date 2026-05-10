@@ -8,8 +8,8 @@ const booksCollection = defineCollection({
     exampleImages: z.array(image()).max(4),
     title: z.string(),
     author: z.string(),
-    colorEpub: z.string(), // путь к файлу
-    bwEpub: z.string(), // путь к файлу
+    colorEpub: z.string().url("Укажите корректную ссылку на GitHub Releases"), // внешняя ссылка
+    bwEpub: z.string().url("Укажите корректную ссылку на GitHub Releases"), // внешняя ссылка
     series: z.string().optional(),
     seriesOrder: z.number().optional(),
   }),

@@ -7,8 +7,8 @@ exampleImages:
     - "../../assets/books/khobbit-ili-tuda-i-obratno/example-2.png"
     - "../../assets/books/khobbit-ili-tuda-i-obratno/example-3.png"
     - "../../assets/books/khobbit-ili-tuda-i-obratno/example-4.png"
-colorEpub: "/books/khobbit-ili-tuda-i-obratno/Хоббит, или Туда и Обратно (Цветные иллюстрации).epub"
-bwEpub: "/books/khobbit-ili-tuda-i-obratno/Хоббит, или Туда и Обратно (ЧБ иллюстрации).epub"
+colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/khobbit-color.epub"
+bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/khobbit-bw.epub"
 series: "Властелин колец"
 seriesOrder: 1
 ---

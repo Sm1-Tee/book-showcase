@@ -7,8 +7,8 @@ exampleImages:
     - "../../assets/books/posledniy-dovod-koroley/example-2.png"
     - "../../assets/books/posledniy-dovod-koroley/example-3.png"
     - "../../assets/books/posledniy-dovod-koroley/example-4.png"
-colorEpub: "/books/posledniy-dovod-koroley/Последний довод королей (Цветные иллюстрации).epub"
-bwEpub: "/books/posledniy-dovod-koroley/Последний довод королей (ЧБ иллюстрации).epub"
+colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/dovod-color.epub"
+bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/dovod-bw.epub"
 series: "Первый закон"
 seriesOrder: 3
 ---

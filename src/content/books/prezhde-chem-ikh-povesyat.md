@@ -7,8 +7,8 @@ exampleImages:
     - "../../assets/books/prezhde-chem-ikh-povesyat/example-2.png"
     - "../../assets/books/prezhde-chem-ikh-povesyat/example-3.png"
     - "../../assets/books/prezhde-chem-ikh-povesyat/example-4.png"
-colorEpub: "/books/prezhde-chem-ikh-povesyat/Прежде чем их повесят (Цветные иллюстрации).epub"
-bwEpub: "/books/prezhde-chem-ikh-povesyat/Прежде чем их повесят (ЧБ иллюстрации).epub"
+colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/prezhde-color.epub"
+bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/v1.0.0/prezhde-bw.epub"
 series: "Первый закон"
 seriesOrder: 2
 ---
