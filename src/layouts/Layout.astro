@@ -502,14 +502,14 @@ const totalBooks = (await getCollection('books')).length;
 							(contactModal as HTMLDialogElement).close();
 							document.body.style.overflow = '';
 						}
-						if (target === document.getElementById('donate-modal-close') || target === document.getElementById('donate-modal-dismiss')) {
+						if (target.closest('#donate-modal-close') || target.closest('#donate-modal-dismiss')) {
 							const modal = document.getElementById('donate-modal') as HTMLDialogElement | null;
 							if (modal) {
 								modal.close();
 								document.body.style.overflow = '';
 							}
 						}
-						if (target === document.getElementById('contact-modal-close') || target === document.getElementById('contact-modal-dismiss')) {
+						if (target.closest('#contact-modal-close') || target.closest('#contact-modal-dismiss')) {
 							const modal = document.getElementById('contact-modal') as HTMLDialogElement | null;
 							if (modal) {
 								modal.close();
