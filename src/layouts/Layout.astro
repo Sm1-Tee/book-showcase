@@ -275,36 +275,7 @@ const totalBooks = (await getCollection('books')).length;
 				const contactModal = document.getElementById('contact-modal') as HTMLDialogElement | null;
 				const lightbox = document.getElementById('lightbox') as HTMLElement | null;
 
-				const openDonateModal = () => {
-					if (donateModal) {
-						donateModal.showModal();
-						document.body.style.overflow = 'hidden';
-					}
-				};
-
-				const closeDonateModal = () => {
-					if (donateModal) {
-						donateModal.close();
-						document.body.style.overflow = '';
-					}
-				};
-
-				const openContactModal = () => {
-					if (contactModal) {
-						contactModal.showModal();
-						document.body.style.overflow = 'hidden';
-					}
-				};
-
-				const closeContactModal = () => {
-					if (contactModal) {
-						contactModal.close();
-						document.body.style.overflow = '';
-					}
-				};
-
-
-				const createParticle = (): ChitaiParticle => ({
+			const createParticle = (): ChitaiParticle => ({
 				x: Math.random() * state.width,
 				y: Math.random() * state.height,
 				vx: (Math.random() - 0.5) * 0.25,
@@ -425,8 +396,10 @@ const totalBooks = (await getCollection('books')).length;
 
 			const initializeGlobalUi = () => {
 					closeLightbox();
-					closeDonateModal();
-					closeContactModal();
+					const donateModalEl = document.getElementById('donate-modal') as HTMLDialogElement | null;
+					const contactModalEl = document.getElementById('contact-modal') as HTMLDialogElement | null;
+					if (donateModalEl) donateModalEl.close();
+					if (contactModalEl) contactModalEl.close();
 					closeMobileMenu();
 					document.querySelector('.series-panel')?.remove();
 
@@ -486,8 +459,20 @@ const totalBooks = (await getCollection('books')).length;
 						document.body.style.overflow = 'hidden';
 					}
 
-					if (donateTrigger) openDonateModal();
-					if (contactTrigger) openContactModal();
+					if (donateTrigger) {
+						const modal = document.getElementById('donate-modal') as HTMLDialogElement | null;
+						if (modal) {
+							modal.showModal();
+							document.body.style.overflow = 'hidden';
+						}
+					}
+					if (contactTrigger) {
+						const modal = document.getElementById('contact-modal') as HTMLDialogElement | null;
+						if (modal) {
+							modal.showModal();
+							document.body.style.overflow = 'hidden';
+						}
+					}
 
 					if (copyEmailBtn) {
 						navigator.clipboard.writeText('a.d3votee@gmail.com').then(() => {
@@ -503,10 +488,28 @@ const totalBooks = (await getCollection('books')).length;
 						});
 					}
 
-						if (donateModal && target === donateModal) closeDonateModal();
-						if (contactModal && target === contactModal) closeContactModal();
-						if (target === document.getElementById('donate-modal-close') || target === document.getElementById('donate-modal-dismiss')) closeDonateModal();
-						if (target === document.getElementById('contact-modal-close') || target === document.getElementById('contact-modal-dismiss')) closeContactModal();
+						if (donateModal && target === donateModal) {
+							(donateModal as HTMLDialogElement).close();
+							document.body.style.overflow = '';
+						}
+						if (contactModal && target === contactModal) {
+							(contactModal as HTMLDialogElement).close();
+							document.body.style.overflow = '';
+						}
+						if (target === document.getElementById('donate-modal-close') || target === document.getElementById('donate-modal-dismiss')) {
+							const modal = document.getElementById('donate-modal') as HTMLDialogElement | null;
+							if (modal) {
+								modal.close();
+								document.body.style.overflow = '';
+							}
+						}
+						if (target === document.getElementById('contact-modal-close') || target === document.getElementById('contact-modal-dismiss')) {
+							const modal = document.getElementById('contact-modal') as HTMLDialogElement | null;
+							if (modal) {
+								modal.close();
+								document.body.style.overflow = '';
+							}
+						}
 						if (target === lightbox || target === lightboxClose) closeLightbox();
 				});
 
