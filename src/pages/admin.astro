@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Администрирование</title>
+    <style is:inline>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #050505;
+        --text: #fafafa;
+        --accent: #e4d5b7;
+        --muted: #a1a1aa;
+        --border: #27272a;
+        --surface: #0a0a0a;
+        --danger: #ef4444;
+        --radius: 10px;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100dvh;
+      }
+
+      .container {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 32px 20px 64px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 28px;
+        color: var(--accent);
+      }
+
+      .auth-section,
+      .form-section,
+      .book-list-section {
+        display: none;
+      }
+
+      .auth-section.active,
+      .form-section.active,
+      .book-list-section.active {
+        display: block;
+      }
+
+      .user-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 28px;
+        font-size: 0.875rem;
+      }
+
+      .user-bar span {
+        color: var(--muted);
+      }
+
+      .user-bar strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .btn-logout {
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        padding: 6px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.8125rem;
+        font-family: inherit;
+        transition: border-color 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+
+      .btn-logout:hover {
+        border-color: var(--muted);
+        color: var(--text);
+      }
+
+      label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+
+      label .optional {
+        color: var(--muted);
+        font-weight: 400;
+        font-size: 0.8125rem;
+      }
+
+      input[type='text'],
+      input[type='number'],
+      input[type='password'],
+      textarea {
+        width: 100%;
+        padding: 10px 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        font-family: inherit;
+        font-size: 0.9375rem;
+        outline: none;
+        transition: border-color 0.15s;
+      }
+
+      input[type='text']:focus,
+      input[type='number']:focus,
+      input[type='password']:focus,
+      textarea:focus {
+        border-color: var(--accent);
+      }
+
+      textarea {
+        min-height: 180px;
+        resize: vertical;
+      }
+
+      .field {
+        margin-bottom: 20px;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .checkbox-row input[type='checkbox'] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--accent);
+        cursor: pointer;
+      }
+
+      .checkbox-row label {
+        margin-bottom: 0;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .drop-zone {
+        border: 2px dashed var(--border);
+        border-radius: var(--radius);
+        padding: 28px 16px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.15s, background 0.15s;
+        color: var(--muted);
+        font-size: 0.875rem;
+        position: relative;
+      }
+
+      .drop-zone:hover,
+      .drop-zone.dragover {
+        border-color: var(--accent);
+        background: rgba(228, 213, 183, 0.04);
+      }
+
+      .drop-zone input[type='file'] {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .previews {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .preview-item {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+
+      .preview-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .preview-item .remove-btn,
+      .cover-preview .remove-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 22px;
+        height: 22px;
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        border-radius: 50%;
+        color: var(--text);
+        font-size: 14px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .preview-item .remove-btn:hover,
+      .cover-preview .remove-btn:hover {
+        background: var(--danger);
+      }
+
+      .cover-preview {
+        margin-top: 10px;
+        max-width: 180px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        display: none;
+        position: relative;
+      }
+
+      .cover-preview img {
+        width: 100%;
+        display: block;
+      }
+
+      .epub-name {
+        margin-top: 8px;
+        font-size: 0.8125rem;
+        color: var(--accent);
+        word-break: break-all;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 14px 24px;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: opacity 0.15s;
+        margin-top: 8px;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        opacity: 0.9;
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+
+      .error-text {
+        color: var(--danger);
+        font-size: 0.8125rem;
+        margin-top: 8px;
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 20px;
+      }
+
+      .overlay.active {
+        display: flex;
+      }
+
+      .overlay-content {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 32px;
+        max-width: 440px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .overlay-content h2 {
+        font-size: 1.125rem;
+        margin-bottom: 20px;
+        color: var(--text);
+      }
+
+      .progress-bar-track {
+        width: 100%;
+        height: 8px;
+        background: var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 14px;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 4px;
+        width: 0%;
+        transition: width 0.3s;
+      }
+
+      .progress-status {
+        font-size: 0.875rem;
+        color: var(--muted);
+        min-height: 1.4em;
+      }
+
+      .result-link {
+        display: inline-block;
+        margin-top: 16px;
+        color: var(--accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .result-link:hover {
+        opacity: 0.8;
+      }
+
+      .overlay-actions {
+        margin-top: 20px;
+        display: none;
+      }
+
+      .overlay-actions button {
+        padding: 10px 24px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        font-size: 0.875rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: border-color 0.15s;
+      }
+
+      .overlay-actions button:hover {
+        border-color: var(--muted);
+      }
+
+      .editor-tabs {
+        display: flex;
+        margin-bottom: -1px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .editor-tab {
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-bottom: none;
+        color: var(--muted);
+        font-size: 0.8125rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: color 0.15s, background 0.15s;
+      }
+
+      .editor-tab:first-child {
+        border-radius: 8px 0 0 0;
+      }
+
+      .editor-tab:last-child {
+        border-radius: 0 8px 0 0;
+      }
+
+      .editor-tab.active {
+        color: var(--text);
+        background: var(--surface);
+        border-bottom-color: var(--surface);
+      }
+
+      .md-preview {
+        display: none;
+        min-height: 180px;
+        padding: 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 0 0 8px 8px;
+        color: color-mix(in srgb, var(--text) 82%, var(--muted));
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        line-height: 1.8;
+        font-size: 0.9375rem;
+      }
+
+      .md-preview h2,
+      .md-preview h3 {
+        margin: 1.5rem 0 0.75rem;
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .md-preview p {
+        margin-bottom: 1rem;
+      }
+
+      .md-preview ul {
+        padding-left: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .md-preview li {
+        margin-bottom: 0.5rem;
+      }
+
+      .md-preview strong {
+        color: var(--text);
+      }
+
+      /* ── Book list ── */
+
+      .list-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+      }
+
+      .btn-add {
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+
+      .btn-add:hover {
+        opacity: 0.9;
+      }
+
+      .books-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .book-card {
+        display: flex;
+        gap: 16px;
+        padding: 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        align-items: center;
+      }
+
+      .book-card-cover {
+        width: 60px;
+        height: 84px;
+        flex-shrink: 0;
+        border-radius: 6px;
+        overflow: hidden;
+        background: var(--border);
+      }
+
+      .book-card-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .book-card-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .book-card-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--text);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .book-card-author {
+        font-size: 0.8125rem;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      .book-card-actions {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .btn-card {
+        padding: 8px 14px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.8125rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: border-color 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+
+      .btn-card:hover {
+        border-color: var(--muted);
+        color: var(--text);
+      }
+
+      .btn-card.danger:hover {
+        border-color: var(--danger);
+        color: var(--danger);
+      }
+
+      .loading-text {
+        text-align: center;
+        color: var(--muted);
+        padding: 40px 0;
+        font-size: 0.875rem;
+      }
+
+      .empty-state {
+        text-align: center;
+        color: var(--muted);
+        padding: 60px 0;
+        font-size: 0.9375rem;
+        display: none;
+      }
+
+      .btn-back {
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-size: 0.875rem;
+        font-family: inherit;
+        cursor: pointer;
+        padding: 0;
+        margin-bottom: 20px;
+        transition: color 0.15s;
+      }
+
+      .btn-back:hover {
+        color: var(--text);
+      }
+
+      /* ── Delete confirmation ── */
+
+      .delete-book-name {
+        color: var(--accent);
+        font-size: 0.9375rem;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+
+      .delete-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .btn-confirm-delete {
+        padding: 10px 24px;
+        background: var(--danger);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-family: inherit;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+
+      .btn-confirm-delete:hover {
+        opacity: 0.85;
+      }
+
+      .btn-cancel {
+        padding: 10px 24px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text);
+        font-size: 0.875rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: border-color 0.15s;
+      }
+
+      .btn-cancel:hover {
+        border-color: var(--muted);
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px 16px 48px;
+        }
+        h1 {
+          font-size: 1.25rem;
+        }
+        .preview-item {
+          width: 72px;
+          height: 72px;
+        }
+        .book-card {
+          gap: 12px;
+          padding: 12px;
+        }
+        .book-card-actions {
+          flex-direction: column;
+          gap: 6px;
+        }
+        .btn-card {
+          padding: 6px 10px;
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="pageTitle">Книги</h1>
+
+      <div class="auth-section active" id="authSection">
+        <div class="field">
+          <label for="tokenInput">GitHub Personal Access Token</label>
+          <input
+            type="password"
+            id="tokenInput"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="ghp_..."
+          />
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="rememberToken" checked />
+          <label for="rememberToken">Запомнить токен</label>
+        </div>
+        <button class="btn-primary" id="loginBtn" type="button">Войти</button>
+        <div class="error-text" id="authError"></div>
+      </div>
+
+      <div class="book-list-section" id="bookListSection">
+        <div class="user-bar">
+          <span>Вы вошли как <strong id="username"></strong></span>
+          <button class="btn-logout" id="logoutBtn" type="button">Выйти</button>
+        </div>
+        <div class="list-header">
+          <button class="btn-add" id="addBookBtn" type="button">+ Добавить книгу</button>
+        </div>
+        <div class="loading-text" id="booksLoading">Загрузка книг…</div>
+        <div class="books-grid" id="booksGrid"></div>
+        <div class="empty-state" id="emptyState">Книг пока нет</div>
+      </div>
+
+      <div class="form-section" id="formSection">
+        <button class="btn-back" id="backBtn" type="button">&larr; Назад к списку</button>
+
+        <form id="bookForm" novalidate>
+          <div class="field">
+            <label for="title">Название</label>
+            <input type="text" id="title" required />
+          </div>
+
+          <div class="field">
+            <label for="author">Автор</label>
+            <input type="text" id="author" required />
+          </div>
+
+          <div class="field">
+            <label>Обложка</label>
+            <div class="drop-zone" id="coverZone">
+              <span>Перетащите файл или нажмите для выбора</span>
+              <input type="file" accept="image/*" id="coverInput" />
+            </div>
+            <div class="cover-preview" id="coverPreview">
+              <img id="coverImg" alt="" />
+              <button class="remove-btn" id="coverRemoveBtn" type="button">&times;</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Примеры иллюстраций</label>
+            <div class="drop-zone" id="examplesZone">
+              <span>Перетащите изображения или нажмите для выбора (до 4 штук)</span>
+              <input type="file" accept="image/*" multiple id="examplesInput" />
+            </div>
+            <div class="previews" id="examplesPreviews"></div>
+          </div>
+
+          <div class="field">
+            <label>EPUB (цветной)</label>
+            <div class="drop-zone" id="colorEpubZone">
+              <span>Перетащите файл или нажмите для выбора</span>
+              <input type="file" accept=".epub" id="colorEpubInput" />
+            </div>
+            <div class="epub-name" id="colorEpubName"></div>
+          </div>
+
+          <div class="field">
+            <label>EPUB (ч/б)</label>
+            <div class="drop-zone" id="bwEpubZone">
+              <span>Перетащите файл или нажмите для выбора</span>
+              <input type="file" accept=".epub" id="bwEpubInput" />
+            </div>
+            <div class="epub-name" id="bwEpubName"></div>
+          </div>
+
+          <div class="field">
+            <label for="series">Серия <span class="optional">(необязательно)</span></label>
+            <input type="text" id="series" />
+          </div>
+
+          <div class="field">
+            <label for="seriesOrder">Порядок в серии <span class="optional">(необязательно)</span></label>
+            <input type="number" id="seriesOrder" min="1" />
+          </div>
+
+          <div class="field">
+            <label for="bodyText">Описание книги</label>
+            <div class="editor-tabs">
+              <button type="button" class="editor-tab active" id="tabEdit">Редактор</button>
+              <button type="button" class="editor-tab" id="tabPreview">Предпросмотр</button>
+            </div>
+            <textarea id="bodyText" style="border-radius: 0 0 8px 8px;"></textarea>
+            <div class="md-preview" id="mdPreview"></div>
+          </div>
+
+          <button class="btn-primary" id="publishBtn" type="button" disabled>
+            Опубликовать книгу
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+      <div class="overlay-content">
+        <h2 id="overlayTitle">Публикация книги</h2>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-status" id="progressStatus"></div>
+        <div class="overlay-actions" id="overlayActions">
+          <button id="overlayClose" type="button">Закрыть</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="deleteOverlay">
+      <div class="overlay-content">
+        <h2>Удалить книгу?</h2>
+        <p class="delete-book-name" id="deleteBookName"></p>
+        <div class="delete-actions">
+          <button class="btn-confirm-delete" id="confirmDeleteBtn" type="button">Удалить</button>
+          <button class="btn-cancel" id="cancelDeleteBtn" type="button">Отмена</button>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      var REPO = 'Sm1-Tee/chit-ai';
+      var BRANCH = 'master';
+      var API = 'https://api.github.com';
+      var RAW_BASE = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH;
+
+      var token = '';
+      var currentLogin = '';
+      var editMode = 'create';
+      var editingSlug = null;
+      var editingBookData = null;
+      var booksCache = [];
+      var deletingBook = null;
+
+      var coverFile = null;
+      var coverExisting = null;
+      var exampleItems = [];
+      var colorEpubFile = null;
+      var colorEpubExisting = null;
+      var bwEpubFile = null;
+      var bwEpubExisting = null;
+
+      var DEFAULT_BODY = '';
+
+      var el = {
+        pageTitle: document.getElementById('pageTitle'),
+        authSection: document.getElementById('authSection'),
+        bookListSection: document.getElementById('bookListSection'),
+        formSection: document.getElementById('formSection'),
+        tokenInput: document.getElementById('tokenInput'),
+        rememberToken: document.getElementById('rememberToken'),
+        loginBtn: document.getElementById('loginBtn'),
+        authError: document.getElementById('authError'),
+        logoutBtn: document.getElementById('logoutBtn'),
+        username: document.getElementById('username'),
+        addBookBtn: document.getElementById('addBookBtn'),
+        backBtn: document.getElementById('backBtn'),
+        booksLoading: document.getElementById('booksLoading'),
+        booksGrid: document.getElementById('booksGrid'),
+        emptyState: document.getElementById('emptyState'),
+        publishBtn: document.getElementById('publishBtn'),
+        overlay: document.getElementById('overlay'),
+        overlayTitle: document.getElementById('overlayTitle'),
+        progressFill: document.getElementById('progressFill'),
+        progressStatus: document.getElementById('progressStatus'),
+        overlayActions: document.getElementById('overlayActions'),
+        overlayClose: document.getElementById('overlayClose'),
+        deleteOverlay: document.getElementById('deleteOverlay'),
+        deleteBookName: document.getElementById('deleteBookName'),
+        confirmDeleteBtn: document.getElementById('confirmDeleteBtn'),
+        cancelDeleteBtn: document.getElementById('cancelDeleteBtn'),
+        coverInput: document.getElementById('coverInput'),
+        coverZone: document.getElementById('coverZone'),
+        coverPreview: document.getElementById('coverPreview'),
+        coverImg: document.getElementById('coverImg'),
+        examplesInput: document.getElementById('examplesInput'),
+        examplesZone: document.getElementById('examplesZone'),
+        examplesPreviews: document.getElementById('examplesPreviews'),
+        colorEpubInput: document.getElementById('colorEpubInput'),
+        colorEpubZone: document.getElementById('colorEpubZone'),
+        colorEpubName: document.getElementById('colorEpubName'),
+        bwEpubInput: document.getElementById('bwEpubInput'),
+        bwEpubZone: document.getElementById('bwEpubZone'),
+        bwEpubName: document.getElementById('bwEpubName'),
+        title: document.getElementById('title'),
+        author: document.getElementById('author'),
+        series: document.getElementById('series'),
+        seriesOrder: document.getElementById('seriesOrder'),
+        bodyText: document.getElementById('bodyText'),
+        bookForm: document.getElementById('bookForm'),
+      };
+
+      /* ── GitHub API helper ── */
+
+      function ghFetch(path, opts) {
+        opts = opts || {};
+        return fetch(API + path, {
+          method: opts.method || 'GET',
+          headers: {
+            Authorization: 'token ' + token,
+            'Content-Type': 'application/json',
+          },
+          body: opts.body,
+        }).then(function (res) {
+          return res.json().then(function (data) {
+            if (!res.ok) throw new Error(data.message || 'GitHub API ' + res.status);
+            return data;
+          });
+        });
+      }
+
+      /* ── Utils ── */
+
+      function ext(name) {
+        return name.split('.').pop().toLowerCase();
+      }
+
+      function decodeBase64Utf8(base64) {
+        var raw = atob(base64.replace(/\n/g, ''));
+        var bytes = new Uint8Array(raw.length);
+        for (var i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+        return new TextDecoder().decode(bytes);
+      }
+
+      function parseFrontmatter(content) {
+        var match = content.match(/^---\r?\n([\s\S]+?)\r?\n---\r?\n?([\s\S]*)$/);
+        if (!match) return null;
+        var fm = {};
+        var lines = match[1].split('\n');
+        var currentArray = null;
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          if (currentArray && /^\s+-\s+/.test(line)) {
+            var val = line.replace(/^\s+-\s+/, '').trim().replace(/^["']|["']$/g, '');
+            fm[currentArray].push(val);
+            continue;
+          }
+          var kv = line.match(/^(\w+):\s*(.*)$/);
+          if (kv) {
+            var key = kv[1];
+            var rawVal = (kv[2] || '').trim();
+            if (rawVal === '') {
+              currentArray = key;
+              fm[key] = [];
+            } else {
+              currentArray = null;
+              rawVal = rawVal.replace(/^["']|["']$/g, '');
+              fm[key] = /^\d+$/.test(rawVal) ? parseInt(rawVal, 10) : rawVal;
+            }
+          }
+        }
+        return { frontmatter: fm, body: match[2].trim() };
+      }
+
+      var TRANSLIT = {
+        'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo',
+        'ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m',
+        'н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u',
+        'ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch',
+        'ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya',
+      };
+
+      
+      function getRepoPath(fmPath) {
+        if (!fmPath) return '';
+        if (fmPath.indexOf('../../assets/books') === 0) {
+          return 'src/assets/books' + fmPath.substring('../../assets/books'.length);
+        }
+        if (fmPath.indexOf('/books') === 0) {
+          return 'public/books' + fmPath.substring('/books'.length);
+        }
+        // fallback
+        return fmPath.replace(/^\//, '');
+      }
+
+      function getRawUrl(fmPath) {
+        if (!fmPath) return '';
+        return RAW_BASE + '/' + getRepoPath(fmPath);
+      }
+
+      function slugify(text) {
+        return text
+          .toLowerCase()
+          .split('')
+          .map(function (c) { return TRANSLIT[c] !== undefined ? TRANSLIT[c] : c; })
+          .join('')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '');
+      }
+
+      function readFileAsBase64(file) {
+        return new Promise(function (resolve, reject) {
+          var reader = new FileReader();
+          reader.onload = function () { resolve(reader.result.split(',')[1]); };
+          reader.onerror = function () { reject(new Error('Ошибка чтения: ' + file.name)); };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      /* ── Navigation ── */
+
+      function showView(name) {
+        el.authSection.classList.toggle('active', name === 'auth');
+        el.bookListSection.classList.toggle('active', name === 'list');
+        el.formSection.classList.toggle('active', name === 'form');
+
+        if (name === 'auth') el.pageTitle.textContent = 'Администрирование';
+        if (name === 'list') el.pageTitle.textContent = 'Книги';
+      }
+
+      /* ── Auth ── */
+
+      function doLogin() {
+        var t = el.tokenInput.value.trim();
+        if (!t) return;
+        el.authError.textContent = '';
+        el.loginBtn.disabled = true;
+        el.loginBtn.textContent = 'Проверка…';
+        token = t;
+        ghFetch('/user')
+          .then(function (user) {
+            if (el.rememberToken.checked) localStorage.setItem('github_token', t);
+            currentLogin = user.login;
+            el.username.textContent = user.login;
+            showView('list');
+            loadBooks();
+          })
+          .catch(function (err) {
+            el.authError.textContent = 'Не удалось авторизоваться: ' + err.message;
+          })
+          .finally(function () {
+            el.loginBtn.disabled = false;
+            el.loginBtn.textContent = 'Войти';
+          });
+      }
+
+      el.loginBtn.addEventListener('click', doLogin);
+      el.tokenInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') doLogin();
+      });
+
+      el.logoutBtn.addEventListener('click', function () {
+        token = '';
+        currentLogin = '';
+        localStorage.removeItem('github_token');
+        el.tokenInput.value = '';
+        showView('auth');
+      });
+
+      /* ── Book list ── */
+
+      function loadBooks() {
+        el.booksLoading.style.display = '';
+        el.booksGrid.innerHTML = '';
+        el.emptyState.style.display = 'none';
+
+        ghFetch('/repos/' + REPO + '/contents/src/content/books')
+          .then(function (files) {
+            var mdFiles = files.filter(function (f) { return f.name.endsWith('.md'); });
+            if (mdFiles.length === 0) {
+              el.booksLoading.style.display = 'none';
+              el.emptyState.style.display = '';
+              booksCache = [];
+              return;
+            }
+            return Promise.all(mdFiles.map(function (f) {
+              return ghFetch('/repos/' + REPO + '/contents/src/content/books/' + f.name)
+                .then(function (data) {
+                  var content = decodeBase64Utf8(data.content);
+                  var parsed = parseFrontmatter(content);
+                  if (!parsed) return null;
+                  var fm = parsed.frontmatter;
+                  return {
+                    slug: f.name.replace('.md', ''),
+                    title: fm.title || '',
+                    author: fm.author || '',
+                    coverImage: fm.coverImage || '',
+                    exampleImages: fm.exampleImages || [],
+                    colorEpub: fm.colorEpub || '',
+                    bwEpub: fm.bwEpub || '',
+                    series: fm.series || '',
+                    seriesOrder: fm.seriesOrder || '',
+                    body: parsed.body,
+                  };
+                })
+                .catch(function () { return null; });
+            }));
+          })
+          .then(function (loaded) {
+            if (!loaded) return;
+            booksCache = loaded.filter(Boolean);
+            el.booksLoading.style.display = 'none';
+            if (booksCache.length === 0) {
+              el.emptyState.style.display = '';
+              return;
+            }
+            renderBookList();
+          })
+          .catch(function (err) {
+            el.booksLoading.style.display = 'none';
+            if (err.message && err.message.indexOf('Not Found') !== -1) {
+              el.emptyState.style.display = '';
+              booksCache = [];
+            } else {
+              var errDiv = document.createElement('div');
+              errDiv.className = 'error-text';
+              errDiv.textContent = 'Ошибка загрузки: ' + err.message;
+              el.booksGrid.appendChild(errDiv);
+            }
+          });
+      }
+
+      function renderBookList() {
+        el.booksGrid.innerHTML = '';
+        booksCache.forEach(function (book) {
+          var card = document.createElement('div');
+          card.className = 'book-card';
+
+          var coverDiv = document.createElement('div');
+          coverDiv.className = 'book-card-cover';
+          var img = document.createElement('img');
+          img.src = getRawUrl(book.coverImage);
+          img.alt = book.title;
+          img.onerror = function () { this.style.display = 'none'; };
+          coverDiv.appendChild(img);
+
+          var infoDiv = document.createElement('div');
+          infoDiv.className = 'book-card-info';
+          var titleEl = document.createElement('div');
+          titleEl.className = 'book-card-title';
+          titleEl.textContent = book.title;
+          var authorEl = document.createElement('div');
+          authorEl.className = 'book-card-author';
+          authorEl.textContent = book.author;
+          infoDiv.appendChild(titleEl);
+          infoDiv.appendChild(authorEl);
+
+          var actionsDiv = document.createElement('div');
+          actionsDiv.className = 'book-card-actions';
+
+          var editBtn = document.createElement('button');
+          editBtn.className = 'btn-card';
+          editBtn.type = 'button';
+          editBtn.textContent = 'Изменить';
+          editBtn.addEventListener('click', function () { startEdit(book); });
+
+          var deleteBtn = document.createElement('button');
+          deleteBtn.className = 'btn-card danger';
+          deleteBtn.type = 'button';
+          deleteBtn.textContent = 'Удалить';
+          deleteBtn.addEventListener('click', function () { showDeleteConfirm(book); });
+
+          actionsDiv.appendChild(editBtn);
+          actionsDiv.appendChild(deleteBtn);
+
+          card.appendChild(coverDiv);
+          card.appendChild(infoDiv);
+          card.appendChild(actionsDiv);
+          el.booksGrid.appendChild(card);
+        });
+      }
+
+      /* ── Navigation buttons ── */
+
+      el.addBookBtn.addEventListener('click', function () { startCreate(); });
+      el.backBtn.addEventListener('click', function () { showView('list'); });
+
+      /* ── Form: create vs edit ── */
+
+      function resetFormState() {
+        el.bookForm.reset();
+        coverFile = null;
+        coverExisting = null;
+        exampleItems = [];
+        colorEpubFile = null;
+        colorEpubExisting = null;
+        bwEpubFile = null;
+        bwEpubExisting = null;
+        el.coverPreview.style.display = 'none';
+        el.coverZone.style.display = '';
+        el.coverInput.value = '';
+        el.examplesPreviews.innerHTML = '';
+        el.colorEpubName.textContent = '';
+        el.bwEpubName.textContent = '';
+        el.publishBtn.disabled = true;
+        tabEdit.classList.add('active');
+        tabPreview.classList.remove('active');
+        el.bodyText.style.display = '';
+        mdPreview.style.display = 'none';
+      }
+
+      function startCreate() {
+        editMode = 'create';
+        editingSlug = null;
+        editingBookData = null;
+        resetFormState();
+        el.bodyText.value = DEFAULT_BODY;
+        el.publishBtn.textContent = 'Опубликовать книгу';
+        el.pageTitle.textContent = 'Добавить книгу';
+        showView('form');
+      }
+
+      function startEdit(book) {
+        editMode = 'edit';
+        editingSlug = book.slug;
+        editingBookData = book;
+        resetFormState();
+
+        el.title.value = book.title;
+        el.author.value = book.author;
+        el.series.value = book.series || '';
+        el.seriesOrder.value = book.seriesOrder || '';
+        el.bodyText.value = book.body;
+
+        coverExisting = { path: getRepoPath(book.coverImage), ext: ext(book.coverImage) };
+        el.coverImg.src = getRawUrl(book.coverImage);
+        el.coverPreview.style.display = 'block';
+        el.coverZone.style.display = 'none';
+
+        exampleItems = book.exampleImages.map(function (imgPath) {
+          return { type: 'existing', url: getRawUrl(imgPath), path: getRepoPath(imgPath), ext: ext(imgPath) };
+        });
+        renderExamplePreviews();
+
+        colorEpubExisting = { path: getRepoPath(book.colorEpub) };
+        bwEpubExisting = { path: getRepoPath(book.bwEpub) };
+        el.colorEpubName.textContent = 'Текущий файл: ' + book.colorEpub.split('/').pop();
+        el.bwEpubName.textContent = 'Текущий файл: ' + book.bwEpub.split('/').pop();
+
+        el.publishBtn.textContent = 'Сохранить изменения';
+        el.publishBtn.disabled = false;
+        el.pageTitle.textContent = 'Редактировать книгу';
+        showView('form');
+      }
+
+      /* ── Drop zones ── */
+
+      function setupDropZone(zone, input) {
+        ['dragenter', 'dragover'].forEach(function (evt) {
+          zone.addEventListener(evt, function (e) {
+            e.preventDefault();
+            zone.classList.add('dragover');
+          });
+        });
+        ['dragleave', 'drop'].forEach(function (evt) {
+          zone.addEventListener(evt, function () { zone.classList.remove('dragover'); });
+        });
+        zone.addEventListener('drop', function (e) {
+          e.preventDefault();
+          input.files = e.dataTransfer.files;
+          input.dispatchEvent(new Event('change'));
+        });
+      }
+
+      setupDropZone(el.coverZone, el.coverInput);
+      setupDropZone(el.examplesZone, el.examplesInput);
+      setupDropZone(el.colorEpubZone, el.colorEpubInput);
+      setupDropZone(el.bwEpubZone, el.bwEpubInput);
+
+      /* ── Cover ── */
+
+      el.coverInput.addEventListener('change', function () {
+        var f = el.coverInput.files[0];
+        if (!f) return;
+        coverFile = f;
+        coverExisting = null;
+        el.coverImg.src = URL.createObjectURL(f);
+        el.coverPreview.style.display = 'block';
+        el.coverZone.style.display = 'none';
+        validateForm();
+      });
+
+      document.getElementById('coverRemoveBtn').addEventListener('click', function () {
+        coverFile = null;
+        coverExisting = null;
+        el.coverImg.src = '';
+        el.coverPreview.style.display = 'none';
+        el.coverZone.style.display = '';
+        el.coverInput.value = '';
+        validateForm();
+      });
+
+      /* ── Example illustrations ── */
+
+      el.examplesInput.addEventListener('change', function () {
+        var incoming = Array.from(el.examplesInput.files);
+        for (var i = 0; i < incoming.length; i++) {
+          if (exampleItems.length >= 4) break;
+          exampleItems.push({ type: 'new', file: incoming[i] });
+        }
+        renderExamplePreviews();
+        validateForm();
+      });
+
+      function renderExamplePreviews() {
+        el.examplesPreviews.innerHTML = '';
+        exampleItems.forEach(function (item, i) {
+          var div = document.createElement('div');
+          div.className = 'preview-item';
+          var img = document.createElement('img');
+          img.src = item.type === 'existing' ? item.url : URL.createObjectURL(item.file);
+          img.alt = '';
+          var btn = document.createElement('button');
+          btn.className = 'remove-btn';
+          btn.type = 'button';
+          btn.textContent = '×';
+          btn.addEventListener('click', function () {
+            exampleItems.splice(i, 1);
+            renderExamplePreviews();
+            validateForm();
+          });
+          div.appendChild(img);
+          div.appendChild(btn);
+          el.examplesPreviews.appendChild(div);
+        });
+      }
+
+      /* ── EPUBs ── */
+
+      el.colorEpubInput.addEventListener('change', function () {
+        var f = el.colorEpubInput.files[0];
+        if (!f) return;
+        colorEpubFile = f;
+        colorEpubExisting = null;
+        el.colorEpubName.textContent = f.name;
+        validateForm();
+      });
+
+      el.bwEpubInput.addEventListener('change', function () {
+        var f = el.bwEpubInput.files[0];
+        if (!f) return;
+        bwEpubFile = f;
+        bwEpubExisting = null;
+        el.bwEpubName.textContent = f.name;
+        validateForm();
+      });
+
+      /* ── Validation ── */
+
+      function validateForm() {
+        var ok =
+          el.title.value.trim() &&
+          el.author.value.trim() &&
+          (coverFile || coverExisting) &&
+          exampleItems.length > 0 &&
+          (colorEpubFile || colorEpubExisting) &&
+          (bwEpubFile || bwEpubExisting);
+        el.publishBtn.disabled = !ok;
+      }
+
+      el.title.addEventListener('input', validateForm);
+      el.author.addEventListener('input', validateForm);
+
+      /* ── Progress overlay ── */
+
+      function setProgress(pct, text) {
+        el.progressFill.style.width = pct + '%';
+        el.progressStatus.textContent = text;
+      }
+
+      function showOverlay(title) {
+        el.overlayTitle.textContent = title || 'Публикация книги';
+        el.progressFill.style.width = '0%';
+        el.progressStatus.textContent = '';
+        el.overlayActions.style.display = 'none';
+        el.overlay.classList.add('active');
+      }
+
+      function showOverlayResult(title, message, link) {
+        el.overlayTitle.textContent = title;
+        el.progressStatus.textContent = message;
+        if (link) {
+          var br = document.createElement('br');
+          var a = document.createElement('a');
+          a.href = link;
+          a.className = 'result-link';
+          a.target = '_blank';
+          a.textContent = 'Открыть страницу книги';
+          el.progressStatus.appendChild(br);
+          el.progressStatus.appendChild(a);
+        }
+        el.overlayActions.style.display = 'block';
+      }
+
+      el.overlayClose.addEventListener('click', function () {
+        el.overlay.classList.remove('active');
+      });
+
+      /* ── Git helpers ── */
+
+      function getHeadContext() {
+        return ghFetch('/repos/' + REPO + '/git/ref/heads/' + BRANCH)
+          .then(function (ref) {
+            var commitSha = ref.object.sha;
+            return ghFetch('/repos/' + REPO + '/git/commits/' + commitSha).then(function (commit) {
+              return { commitSha: commitSha, baseTreeSha: commit.tree.sha };
+            });
+          });
+      }
+
+      function getRecursiveTree(treeSha) {
+        return ghFetch('/repos/' + REPO + '/git/trees/' + treeSha + '?recursive=1');
+      }
+
+      function createCommitAndPush(ctx, treeEntries, message) {
+        return ghFetch('/repos/' + REPO + '/git/trees', {
+          method: 'POST',
+          body: JSON.stringify({ base_tree: ctx.baseTreeSha, tree: treeEntries }),
+        })
+          .then(function (tree) {
+            return ghFetch('/repos/' + REPO + '/git/commits', {
+              method: 'POST',
+              body: JSON.stringify({ message: message, tree: tree.sha, parents: [ctx.commitSha] }),
+            });
+          })
+          .then(function (newCommit) {
+            return ghFetch('/repos/' + REPO + '/git/refs/heads/' + BRANCH, {
+              method: 'PATCH',
+              body: JSON.stringify({ sha: newCommit.sha }),
+            });
+          });
+      }
+
+      function buildMarkdown(title, author, slug, coverExt, exItems, series, seriesOrder, bodyText, colorEpubName, bwEpubName) {
+        var fm = '---\n';
+        fm += 'title: "' + title + '"\n';
+        fm += 'author: "' + author + '"\n';
+        fm += 'coverImage: "../../assets/books/' + slug + '/cover.' + coverExt + '"\n';
+        fm += 'exampleImages:\n';
+        exItems.forEach(function (item, i) {
+          var e = item.type === 'new' ? ext(item.file.name) : item.ext;
+          fm += '  - "../../assets/books/' + slug + '/example-' + (i + 1) + '.' + e + '"\n';
+        });
+        fm += 'colorEpub: "/books/' + slug + '/' + colorEpubName + '"\n';
+        fm += 'bwEpub: "/books/' + slug + '/' + bwEpubName + '"\n';
+        if (series) fm += 'series: "' + series + '"\n';
+        if (seriesOrder) fm += 'seriesOrder: ' + seriesOrder + '\n';
+        fm += '---\n\n';
+        return fm + bodyText;
+      }
+
+      function uploadBlob(content, encoding) {
+        return ghFetch('/repos/' + REPO + '/git/blobs', {
+          method: 'POST',
+          body: JSON.stringify({ content: content, encoding: encoding || 'base64' }),
+        });
+      }
+
+      /* ── Publish (create) ── */
+
+      function publishCreate(title, author, series, seriesOrder, bodyText, slug) {
+        var fileEntries = [];
+        fileEntries.push({ file: coverFile, path: 'src/assets/books/' + slug + '/cover.' + ext(coverFile.name), label: coverFile.name });
+        exampleItems.forEach(function (item, i) {
+          fileEntries.push({ file: item.file, path: 'src/assets/books/' + slug + '/example-' + (i + 1) + '.' + ext(item.file.name), label: item.file.name });
+        });
+        fileEntries.push({ file: colorEpubFile, path: 'public/books/' + slug + '/' + colorEpubFile.name, label: colorEpubFile.name });
+        fileEntries.push({ file: bwEpubFile, path: 'public/books/' + slug + '/' + bwEpubFile.name, label: bwEpubFile.name });
+
+        var totalSteps = fileEntries.length + 1;
+        var completed = 0;
+        var treeEntries = [];
+
+        setProgress(0, 'Получение текущего состояния…');
+
+        getHeadContext()
+          .then(function (ctx) {
+            var chain = Promise.resolve();
+            fileEntries.forEach(function (entry) {
+              chain = chain.then(function () {
+                setProgress(Math.round((completed / totalSteps) * 88), 'Загрузка: ' + entry.label + ' (' + (completed + 1) + ' из ' + totalSteps + ')');
+                return readFileAsBase64(entry.file).then(function (b64) {
+                  return uploadBlob(b64).then(function (blob) {
+                    treeEntries.push({ path: entry.path, mode: '100644', type: 'blob', sha: blob.sha });
+                    completed++;
+                  });
+                });
+              });
+            });
+            return chain.then(function () { return ctx; });
+          })
+          .then(function (ctx) {
+            setProgress(Math.round((completed / totalSteps) * 88), 'Создание файла книги…');
+            var coverExt = ext(coverFile.name);
+            var md = buildMarkdown(title, author, slug, coverExt, exampleItems, series, seriesOrder, bodyText, colorEpubFile.name, bwEpubFile.name);
+            return uploadBlob(btoa(unescape(encodeURIComponent(md)))).then(function (mdBlob) {
+              treeEntries.push({ path: 'src/content/books/' + slug + '.md', mode: '100644', type: 'blob', sha: mdBlob.sha });
+              completed++;
+              return ctx;
+            });
+          })
+          .then(function (ctx) {
+            setProgress(92, 'Создание коммита…');
+            return createCommitAndPush(ctx, treeEntries, 'Add book: ' + title);
+          })
+          .then(function () {
+            setProgress(100, '');
+            showOverlayResult('Книга опубликована!', 'Деплой запустится автоматически.', 'https://sm1-tee.github.io/chit-ai/books/' + slug + '/');
+            showView('list');
+            loadBooks();
+          })
+          .catch(function (err) {
+            setProgress(0, '');
+            showOverlayResult('Ошибка публикации', err.message, null);
+          });
+      }
+
+      /* ── Publish (edit) ── */
+
+      function publishEdit(title, author, series, seriesOrder, bodyText, newSlug) {
+        var oldSlug = editingSlug;
+        var treeEntries = [];
+
+        setProgress(0, 'Получение текущего состояния…');
+
+        var ctx;
+        getHeadContext()
+          .then(function (c) {
+            ctx = c;
+            setProgress(5, 'Анализ файлов…');
+            return getRecursiveTree(ctx.baseTreeSha);
+          })
+          .then(function (tree) {
+            var existingFiles = {};
+            var oldPublicPrefix = 'public/books/' + oldSlug + '/';
+            var oldAssetsPrefix = 'src/assets/books/' + oldSlug + '/';
+            var oldMd = 'src/content/books/' + oldSlug + '.md';
+            tree.tree.forEach(function (entry) {
+              if (entry.type === 'blob' && (entry.path.indexOf(oldPublicPrefix) === 0 || entry.path.indexOf(oldAssetsPrefix) === 0 || entry.path === oldMd)) {
+                existingFiles[entry.path] = entry.sha;
+              }
+            });
+
+            Object.keys(existingFiles).forEach(function (path) {
+              treeEntries.push({ path: path, mode: '100644', type: 'blob', sha: null });
+            });
+
+            var uploadTasks = [];
+            var coverExt;
+
+            if (coverFile) {
+              coverExt = ext(coverFile.name);
+              uploadTasks.push({ file: coverFile, path: 'src/assets/books/' + newSlug + '/cover.' + coverExt, label: coverFile.name });
+            } else if (coverExisting) {
+              coverExt = coverExisting.ext;
+              treeEntries.push({ path: 'src/assets/books/' + newSlug + '/cover.' + coverExt, mode: '100644', type: 'blob', sha: existingFiles[coverExisting.path] });
+            }
+
+            exampleItems.forEach(function (item, i) {
+              if (item.type === 'new') {
+                uploadTasks.push({ file: item.file, path: 'src/assets/books/' + newSlug + '/example-' + (i + 1) + '.' + ext(item.file.name), label: item.file.name });
+              } else {
+                treeEntries.push({ path: 'src/assets/books/' + newSlug + '/example-' + (i + 1) + '.' + item.ext, mode: '100644', type: 'blob', sha: existingFiles[item.path] });
+              }
+            });
+
+            if (colorEpubFile) {
+              uploadTasks.push({ file: colorEpubFile, path: 'public/books/' + newSlug + '/' + colorEpubFile.name, label: colorEpubFile.name });
+            } else if (colorEpubExisting) {
+              var colorExistingName = colorEpubExisting.path.split('/').pop();
+              treeEntries.push({ path: 'public/books/' + newSlug + '/' + colorExistingName, mode: '100644', type: 'blob', sha: existingFiles[colorEpubExisting.path] });
+            }
+
+            if (bwEpubFile) {
+              uploadTasks.push({ file: bwEpubFile, path: 'public/books/' + newSlug + '/' + bwEpubFile.name, label: bwEpubFile.name });
+            } else if (bwEpubExisting) {
+              var bwExistingName = bwEpubExisting.path.split('/').pop();
+              treeEntries.push({ path: 'public/books/' + newSlug + '/' + bwExistingName, mode: '100644', type: 'blob', sha: existingFiles[bwEpubExisting.path] });
+            }
+
+            var totalSteps = uploadTasks.length + 1;
+            var completed = 0;
+
+            var chain = Promise.resolve();
+            uploadTasks.forEach(function (task) {
+              chain = chain.then(function () {
+                setProgress(10 + Math.round((completed / totalSteps) * 72), 'Загрузка: ' + task.label);
+                return readFileAsBase64(task.file).then(function (b64) {
+                  return uploadBlob(b64).then(function (blob) {
+                    treeEntries.push({ path: task.path, mode: '100644', type: 'blob', sha: blob.sha });
+                    completed++;
+                  });
+                });
+              });
+            });
+
+            return chain.then(function () { return coverExt; });
+          })
+          .then(function (coverExt) {
+            setProgress(84, 'Создание файла книги…');
+            var colorName = colorEpubFile ? colorEpubFile.name : colorEpubExisting ? colorEpubExisting.path.split('/').pop() : 'color.epub';
+            var bwName = bwEpubFile ? bwEpubFile.name : bwEpubExisting ? bwEpubExisting.path.split('/').pop() : 'bw.epub';
+            var md = buildMarkdown(title, author, newSlug, coverExt, exampleItems, series, seriesOrder, bodyText, colorName, bwName);
+            return uploadBlob(btoa(unescape(encodeURIComponent(md)))).then(function (mdBlob) {
+              treeEntries.push({ path: 'src/content/books/' + newSlug + '.md', mode: '100644', type: 'blob', sha: mdBlob.sha });
+            });
+          })
+          .then(function () {
+            setProgress(90, 'Создание коммита…');
+            var deduped = {};
+            treeEntries.forEach(function (e) { deduped[e.path] = e; });
+            treeEntries = Object.keys(deduped).map(function (k) { return deduped[k]; });
+            return createCommitAndPush(ctx, treeEntries, 'Update book: ' + title);
+          })
+          .then(function () {
+            setProgress(100, '');
+            showOverlayResult('Изменения сохранены!', 'Деплой запустится автоматически.', 'https://sm1-tee.github.io/chit-ai/books/' + newSlug + '/');
+            showView('list');
+            loadBooks();
+          })
+          .catch(function (err) {
+            setProgress(0, '');
+            showOverlayResult('Ошибка сохранения', err.message, null);
+          });
+      }
+
+      /* ── Publish dispatcher ── */
+
+      el.publishBtn.addEventListener('click', function () {
+        var title = el.title.value.trim();
+        var author = el.author.value.trim();
+        var series = el.series.value.trim();
+        var seriesOrder = el.seriesOrder.value.trim();
+        var bodyText = el.bodyText.value;
+        var slug = slugify(title);
+        if (!slug) return;
+
+        showOverlay(editMode === 'edit' ? 'Сохранение изменений' : 'Публикация книги');
+
+        if (editMode === 'edit') {
+          publishEdit(title, author, series, seriesOrder, bodyText, slug);
+        } else {
+          publishCreate(title, author, series, seriesOrder, bodyText, slug);
+        }
+      });
+
+      /* ── Delete ── */
+
+      function showDeleteConfirm(book) {
+        deletingBook = book;
+        el.deleteBookName.textContent = '«' + book.title + '»';
+        el.deleteOverlay.classList.add('active');
+      }
+
+      el.cancelDeleteBtn.addEventListener('click', function () {
+        el.deleteOverlay.classList.remove('active');
+        deletingBook = null;
+      });
+
+      el.confirmDeleteBtn.addEventListener('click', function () {
+        if (!deletingBook) return;
+        var book = deletingBook;
+        deletingBook = null;
+        el.deleteOverlay.classList.remove('active');
+
+        showOverlay('Удаление книги');
+        setProgress(0, 'Получение структуры репозитория…');
+
+        var ctx;
+        getHeadContext()
+          .then(function (c) {
+            ctx = c;
+            setProgress(15, 'Получение дерева файлов…');
+            return getRecursiveTree(ctx.baseTreeSha);
+          })
+          .then(function (tree) {
+            setProgress(35, 'Удаление файлов…');
+            var publicPrefix = 'public/books/' + book.slug + '/';
+            var assetsPrefix = 'src/assets/books/' + book.slug + '/';
+            var mdPath = 'src/content/books/' + book.slug + '.md';
+            var deleteEntries = [];
+
+            tree.tree.forEach(function (entry) {
+              if (entry.type === 'blob' && (entry.path.indexOf(publicPrefix) === 0 || entry.path.indexOf(assetsPrefix) === 0 || entry.path === mdPath)) {
+                deleteEntries.push({ path: entry.path, mode: '100644', type: 'blob', sha: null });
+              }
+            });
+
+            if (deleteEntries.length === 0) throw new Error('Файлы книги не найдены');
+
+            setProgress(55, 'Создание коммита…');
+            return createCommitAndPush(ctx, deleteEntries, 'Delete book: ' + book.title);
+          })
+          .then(function () {
+            setProgress(100, '');
+            showOverlayResult('Книга удалена', 'Деплой запустится автоматически.', null);
+            loadBooks();
+          })
+          .catch(function (err) {
+            setProgress(0, '');
+            showOverlayResult('Ошибка удаления', err.message, null);
+          });
+      });
+
+      /* ── Markdown preview ── */
+
+      var tabEdit = document.getElementById('tabEdit');
+      var tabPreview = document.getElementById('tabPreview');
+      var mdPreview = document.getElementById('mdPreview');
+
+      function renderMarkdown(src) {
+        var html = src
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+
+        html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+        html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+        html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+        var lines = html.split('\n');
+        var result = [];
+        var inList = false;
+
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          var listMatch = line.match(/^- (.+)/);
+          if (listMatch) {
+            if (!inList) { result.push('<ul>'); inList = true; }
+            result.push('<li>' + listMatch[1] + '</li>');
+          } else {
+            if (inList) { result.push('</ul>'); inList = false; }
+            if (line.match(/^<h[23]>/)) {
+              result.push(line);
+            } else if (line.trim() === '') {
+              result.push('');
+            } else {
+              result.push('<p>' + line + '</p>');
+            }
+          }
+        }
+        if (inList) result.push('</ul>');
+
+        return result.join('\n').replace(/(<\/p>\n<p>)/g, ' ').replace(/\n{2,}/g, '\n');
+      }
+
+      tabEdit.addEventListener('click', function () {
+        tabEdit.classList.add('active');
+        tabPreview.classList.remove('active');
+        el.bodyText.style.display = '';
+        mdPreview.style.display = 'none';
+      });
+
+      tabPreview.addEventListener('click', function () {
+        tabPreview.classList.add('active');
+        tabEdit.classList.remove('active');
+        el.bodyText.style.display = 'none';
+        mdPreview.style.display = 'block';
+        mdPreview.innerHTML = renderMarkdown(el.bodyText.value);
+      });
+
+      /* ── Auto-login ── */
+
+      (function () {
+        var saved = localStorage.getItem('github_token');
+        if (saved) {
+          el.tokenInput.value = saved;
+          doLogin();
+        }
+      })();
+    </script>
+  </body>
+</html>

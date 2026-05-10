@@ -1,0 +1,1 @@
+{"name":"book-showcase","type":"module","version":"1.0.0","scripts":{"dev":"astro dev","build":"astro build"},"dependencies":{"@tailwindcss/vite":"^4.2.4","astro":"^6.2.2","tailwindcss":"^4.2.4"}}
