@@ -690,6 +690,10 @@
           <span>Вы вошли как <strong id="username"></strong></span>
           <button class="btn-logout" id="logoutBtn" type="button">Выйти</button>
         </div>
+        <div class="stats-panel" id="statsPanel" style="display: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; text-align: center;">
+          <div style="font-size: 0.8125rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Всего скачиваний (GitHub Releases)</div>
+          <div id="totalDownloads" style="font-size: 2rem; font-weight: 700; color: var(--accent);">0</div>
+        </div>
         <div class="list-header">
           <button class="btn-add" id="addBookBtn" type="button">+ Добавить книгу</button>
         </div>
@@ -947,6 +951,27 @@
         return RAW_BASE + '/' + getRepoPath(fmPath);
       }
 
+      function fetchDownloadStats() {
+        return ghFetch('/repos/' + REPO + '/releases')
+          .then(function(releases) {
+            var total = 0;
+            releases.forEach(function(rel) {
+              if (rel.assets) {
+                rel.assets.forEach(function(asset) {
+                  total += asset.download_count;
+                });
+              }
+            });
+            var panel = document.getElementById('statsPanel');
+            var totalEl = document.getElementById('totalDownloads');
+            if (panel && totalEl) {
+              totalEl.textContent = total.toLocaleString('ru-RU');
+              panel.style.display = 'block';
+            }
+          })
+          .catch(function(e) { console.error('Ошибка загрузки статистики:', e); });
+      }
+
       function slugify(text) {
         return text
           .toLowerCase()
@@ -1022,6 +1047,8 @@
         el.booksLoading.style.display = '';
         el.booksGrid.innerHTML = '';
         el.emptyState.style.display = 'none';
+
+        fetchDownloadStats();
 
         ghFetch('/repos/' + REPO + '/contents/src/content/books')
           .then(function (files) {
