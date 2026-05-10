@@ -1393,37 +1393,22 @@
         });
       }
 
-      function createCommitAndPushBatches(initialCtxPromise, fileEntries, mdContent, mdPath, commitMsgPrefix) {
-        var imgEntries = fileEntries;
-
-        function processBatch(ctx, entries, msg) {
-           if (entries.length === 0) return Promise.resolve(ctx);
-           var promises = entries.map(function(entry) {
-              return readFileAsBase64(entry.file)
-                .then(function(b64) { return uploadBlob(b64); })
-                .then(function(blob) { return { path: entry.path, mode: '100644', type: 'blob', sha: blob.sha }; });
-           });
-           return Promise.all(promises).then(function(treeEntries) {
-              return createCommitAndPush(ctx, treeEntries, msg);
-           });
-        }
-
-        var chain = initialCtxPromise;
-
-        chain = chain.then(function(ctx) {
-          setProgress(40, 'Шаг 1/2: Загрузка картинок...');
-          return processBatch(ctx, imgEntries, commitMsgPrefix + ' (Изображения)');
+      function processAllFilesAndPush(ctx, fileEntries, mdContent, mdPath, commitMsg) {
+        var promises = fileEntries.map(function(entry) {
+           return readFileAsBase64(entry.file)
+             .then(function(b64) { return uploadBlob(b64); })
+             .then(function(blob) { return { path: entry.path, mode: '100644', type: 'blob', sha: blob.sha }; });
         });
 
-        chain = chain.then(function(ctx) {
-          setProgress(90, 'Шаг 2/2: Финализация данных книги...');
-          return uploadBlob(btoa(unescape(encodeURIComponent(mdContent)))).then(function(mdBlob) {
-             var treeEntries = [{ path: mdPath, mode: '100644', type: 'blob', sha: mdBlob.sha }];
-             return createCommitAndPush(ctx, treeEntries, commitMsgPrefix + ' (Финальный файл)');
-          });
-        });
+        var mdPromise = uploadBlob(btoa(unescape(encodeURIComponent(mdContent))))
+           .then(function(blob) { return { path: mdPath, mode: '100644', type: 'blob', sha: blob.sha }; });
 
-        return chain;
+        promises.push(mdPromise);
+
+        return Promise.all(promises).then(function(treeEntries) {
+           setProgress(70, 'Сохранение структуры проекта...');
+           return createCommitAndPush(ctx, treeEntries, commitMsg);
+        });
       }
 
       /* ── Publish (create) ── */
@@ -1435,12 +1420,15 @@
           fileEntries.push({ file: item.file, path: 'src/assets/books/' + slug + '/example-' + (i + 1) + '.' + ext(item.file.name), label: item.file.name });
         });
 
-        setProgress(0, 'Начинаем поэтапную загрузку файлов...');
+        setProgress(0, 'Подготовка файлов к загрузке...');
         var coverExt = ext(coverFile.name);
         var mdPath = 'src/content/books/' + slug + '.md';
         var md = buildMarkdown(title, author, slug, coverExt, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim());
 
-        createCommitAndPushBatches(getHeadContext(), fileEntries, md, mdPath, 'Add book: ' + title)
+        getHeadContext().then(function(ctx) {
+           setProgress(30, 'Загрузка изображений...');
+           return processAllFilesAndPush(ctx, fileEntries, md, mdPath, 'Add book: ' + title);
+        })
           .then(function () {
             setProgress(100, '');
             showOverlayResult('Книга опубликована!', 'Все пакеты успешно загружены.', 'https://sm1-tee.github.io/chit-ai/books/' + slug + '/');
@@ -1508,16 +1496,23 @@
               var coverExtToPass = coverFile ? ext(coverFile.name) : coverExisting ? coverExisting.ext : 'jpg';
               var md = buildMarkdown(title, author, newSlug, coverExtToPass, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim());
 
-              var baseChain = Promise.resolve(ctx);
-              
-              if (treeEntries.length > 0) {
-                 baseChain = baseChain.then(function(currentCtx) {
-                    setProgress(10, 'Подготовка структуры файлов...');
-                    return createCommitAndPush(currentCtx, treeEntries, 'Update book structure: ' + title);
-                 });
-              }
+              var allPromises = uploadTasks.map(function(entry) {
+                 return readFileAsBase64(entry.file)
+                   .then(function(b64) { return uploadBlob(b64); })
+                   .then(function(blob) { return { path: entry.path, mode: '100644', type: 'blob', sha: blob.sha }; });
+              });
 
-              return createCommitAndPushBatches(baseChain, uploadTasks, md, mdPath, 'Update book: ' + title);
+              var mdPromise = uploadBlob(btoa(unescape(encodeURIComponent(md))))
+                 .then(function(blob) { return { path: mdPath, mode: '100644', type: 'blob', sha: blob.sha }; });
+
+              allPromises.push(mdPromise);
+
+              setProgress(30, 'Загрузка новых файлов...');
+              return Promise.all(allPromises).then(function(newTreeEntries) {
+                 var finalTreeEntries = treeEntries.concat(newTreeEntries);
+                 setProgress(70, 'Сохранение обновленной структуры...');
+                 return createCommitAndPush(ctx, finalTreeEntries, 'Update book: ' + title);
+              });
             });
           })
           .then(function () {
