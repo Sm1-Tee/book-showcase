@@ -1,6 +1,6 @@
 ---
 title: "Черный человек"
-author: "Василий Головаче"
+author: "Василий Головачев"
 coverImage: "../../assets/books/chernyy-chelovek/cover.png"
 exampleImages:
   - "../../assets/books/chernyy-chelovek/example-1.png"
