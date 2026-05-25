@@ -34,13 +34,13 @@
       }
 
       .container {
-        max-width: 640px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 32px 20px 64px;
+        padding: 40px 32px 80px;
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-weight: 600;
         margin-bottom: 28px;
         color: var(--accent);
@@ -493,28 +493,36 @@
       }
 
       .books-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 20px;
       }
 
       .book-card {
         display: flex;
+        flex-direction: column;
         gap: 16px;
-        padding: 14px;
+        padding: 20px;
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        align-items: center;
+        align-items: flex-start;
+      }
+
+      .book-card-top {
+        display: flex;
+        gap: 20px;
+        width: 100%;
       }
 
       .book-card-cover {
-        width: 60px;
-        height: 84px;
+        width: 100px;
+        height: 140px;
         flex-shrink: 0;
-        border-radius: 6px;
+        border-radius: 8px;
         overflow: hidden;
         background: var(--border);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       }
 
       .book-card-cover img {
@@ -526,10 +534,13 @@
       .book-card-info {
         flex: 1;
         min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .book-card-title {
-        font-size: 0.9375rem;
+        font-size: 1.125rem;
         font-weight: 600;
         color: var(--text);
         overflow: hidden;
@@ -537,41 +548,63 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+        line-height: 1.3;
       }
 
       .book-card-author {
-        font-size: 0.8125rem;
+        font-size: 0.9375rem;
         color: var(--muted);
-        margin-top: 2px;
+        margin-top: 6px;
+      }
+
+      .book-card-stats {
+        font-size: 0.875rem;
+        color: var(--muted);
+        margin-top: 12px;
+        display: flex;
+        gap: 16px;
+        background: rgba(255,255,255,0.03);
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.05);
       }
 
       .book-card-actions {
         display: flex;
-        gap: 8px;
+        gap: 12px;
         flex-shrink: 0;
+        width: 100%;
+        margin-top: auto;
       }
 
       .btn-card {
-        padding: 8px 14px;
+        padding: 10px 16px;
         border-radius: 6px;
         border: 1px solid var(--border);
-        background: transparent;
+        background: rgba(255,255,255,0.02);
         color: var(--muted);
-        font-size: 0.8125rem;
+        font-size: 0.875rem;
         font-family: inherit;
         cursor: pointer;
-        transition: border-color 0.15s, color 0.15s;
+        transition: all 0.2s;
         white-space: nowrap;
+        flex: 1;
       }
 
       .btn-card:hover {
-        border-color: var(--muted);
-        color: var(--text);
+        border-color: var(--text);
+        color: var(--bg);
+        background: var(--text);
+      }
+
+      .btn-card.danger {
+        flex: 0;
       }
 
       .btn-card.danger:hover {
         border-color: var(--danger);
-        color: var(--danger);
+        color: white;
+        background: var(--danger);
       }
 
       .loading-text {
@@ -1172,6 +1205,9 @@
           var card = document.createElement('div');
           card.className = 'book-card';
 
+          var topDiv = document.createElement('div');
+          topDiv.className = 'book-card-top';
+
           var coverDiv = document.createElement('div');
           coverDiv.className = 'book-card-cover';
           var img = document.createElement('img');
@@ -1190,11 +1226,7 @@
           authorEl.textContent = book.author;
 
           var statsEl = document.createElement('div');
-          statsEl.style.fontSize = '0.8125rem';
-          statsEl.style.color = 'var(--muted)';
-          statsEl.style.marginTop = '6px';
-          statsEl.style.display = 'flex';
-          statsEl.style.gap = '12px';
+          statsEl.className = 'book-card-stats';
 
           var colorName = book.colorEpub ? book.colorEpub.split('/').pop() : '';
           var bwName = book.bwEpub ? book.bwEpub.split('/').pop() : '';
@@ -1214,26 +1246,29 @@
           infoDiv.appendChild(authorEl);
           infoDiv.appendChild(statsEl);
 
+          topDiv.appendChild(coverDiv);
+          topDiv.appendChild(infoDiv);
+
           var actionsDiv = document.createElement('div');
           actionsDiv.className = 'book-card-actions';
 
           var editBtn = document.createElement('button');
           editBtn.className = 'btn-card';
           editBtn.type = 'button';
-          editBtn.textContent = 'Изменить';
+          editBtn.textContent = 'Изменить книгу';
           editBtn.addEventListener('click', function () { startEdit(book); });
 
           var deleteBtn = document.createElement('button');
           deleteBtn.className = 'btn-card danger';
           deleteBtn.type = 'button';
-          deleteBtn.textContent = 'Удалить';
+          deleteBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 2px;"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>';
+          deleteBtn.title = 'Удалить';
           deleteBtn.addEventListener('click', function () { showDeleteConfirm(book); });
 
           actionsDiv.appendChild(editBtn);
           actionsDiv.appendChild(deleteBtn);
 
-          card.appendChild(coverDiv);
-          card.appendChild(infoDiv);
+          card.appendChild(topDiv);
           card.appendChild(actionsDiv);
           el.booksGrid.appendChild(card);
         });
