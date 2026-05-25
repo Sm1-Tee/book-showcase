@@ -971,6 +971,17 @@
               panel.style.display = 'block';
             }
             if (booksCache && booksCache.length > 0) {
+              booksCache.sort(function(a, b) {
+                var aColorName = a.colorEpub ? a.colorEpub.split('/').pop() : '';
+                var aBwName = a.bwEpub ? a.bwEpub.split('/').pop() : '';
+                var aCount = (statsCache[aColorName] || 0) + (statsCache[aBwName] || 0);
+
+                var bColorName = b.colorEpub ? b.colorEpub.split('/').pop() : '';
+                var bBwName = b.bwEpub ? b.bwEpub.split('/').pop() : '';
+                var bCount = (statsCache[bColorName] || 0) + (statsCache[bBwName] || 0);
+
+                return bCount - aCount;
+              });
               renderBookList();
             }
           })
@@ -1091,6 +1102,20 @@
           .then(function (loaded) {
             if (!loaded) return;
             booksCache = loaded.filter(Boolean);
+
+            // Сортировка по количеству скачиваний (Цвет + Ч/Б)
+            booksCache.sort(function(a, b) {
+              var aColorName = a.colorEpub ? a.colorEpub.split('/').pop() : '';
+              var aBwName = a.bwEpub ? a.bwEpub.split('/').pop() : '';
+              var aCount = (statsCache[aColorName] || 0) + (statsCache[aBwName] || 0);
+
+              var bColorName = b.colorEpub ? b.colorEpub.split('/').pop() : '';
+              var bBwName = b.bwEpub ? b.bwEpub.split('/').pop() : '';
+              var bCount = (statsCache[bColorName] || 0) + (statsCache[bBwName] || 0);
+
+              return bCount - aCount;
+            });
+
             el.booksLoading.style.display = 'none';
             if (booksCache.length === 0) {
               el.emptyState.style.display = '';
