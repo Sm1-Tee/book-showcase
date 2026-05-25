@@ -453,8 +453,26 @@
 
       .list-header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 20px;
+      }
+
+      .sort-select {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.875rem;
+        outline: none;
+        cursor: pointer;
+        transition: border-color 0.15s;
+      }
+
+      .sort-select:hover, .sort-select:focus {
+        border-color: var(--accent);
       }
 
       .btn-add {
@@ -695,6 +713,11 @@
           <div id="totalDownloads" style="font-size: 2rem; font-weight: 700; color: var(--accent);">0</div>
         </div>
         <div class="list-header">
+          <select class="sort-select" id="sortSelect">
+            <option value="newest">Сначала новые (по дате)</option>
+            <option value="downloads">По скачиваниям (по убыванию)</option>
+            <option value="alpha">По алфавиту (А-Я)</option>
+          </select>
           <button class="btn-add" id="addBookBtn" type="button">+ Добавить книгу</button>
         </div>
         <div class="loading-text" id="booksLoading">Загрузка книг…</div>
@@ -832,6 +855,7 @@
         logoutBtn: document.getElementById('logoutBtn'),
         username: document.getElementById('username'),
         addBookBtn: document.getElementById('addBookBtn'),
+        sortSelect: document.getElementById('sortSelect'),
         backBtn: document.getElementById('backBtn'),
         booksLoading: document.getElementById('booksLoading'),
         booksGrid: document.getElementById('booksGrid'),
@@ -971,18 +995,7 @@
               panel.style.display = 'block';
             }
             if (booksCache && booksCache.length > 0) {
-              booksCache.sort(function(a, b) {
-                var aColorName = a.colorEpub ? a.colorEpub.split('/').pop() : '';
-                var aBwName = a.bwEpub ? a.bwEpub.split('/').pop() : '';
-                var aCount = (statsCache[aColorName] || 0) + (statsCache[aBwName] || 0);
-
-                var bColorName = b.colorEpub ? b.colorEpub.split('/').pop() : '';
-                var bBwName = b.bwEpub ? b.bwEpub.split('/').pop() : '';
-                var bCount = (statsCache[bColorName] || 0) + (statsCache[bBwName] || 0);
-
-                return bCount - aCount;
-              });
-              renderBookList();
+              sortBooksAndRender();
             }
           })
           .catch(function(e) { console.error('Ошибка загрузки статистики:', e); });
@@ -1102,26 +1115,12 @@
           .then(function (loaded) {
             if (!loaded) return;
             booksCache = loaded.filter(Boolean);
-
-            // Сортировка по количеству скачиваний (Цвет + Ч/Б)
-            booksCache.sort(function(a, b) {
-              var aColorName = a.colorEpub ? a.colorEpub.split('/').pop() : '';
-              var aBwName = a.bwEpub ? a.bwEpub.split('/').pop() : '';
-              var aCount = (statsCache[aColorName] || 0) + (statsCache[aBwName] || 0);
-
-              var bColorName = b.colorEpub ? b.colorEpub.split('/').pop() : '';
-              var bBwName = b.bwEpub ? b.bwEpub.split('/').pop() : '';
-              var bCount = (statsCache[bColorName] || 0) + (statsCache[bBwName] || 0);
-
-              return bCount - aCount;
-            });
-
             el.booksLoading.style.display = 'none';
             if (booksCache.length === 0) {
               el.emptyState.style.display = '';
               return;
             }
-            renderBookList();
+            sortBooksAndRender();
           })
           .catch(function (err) {
             el.booksLoading.style.display = 'none';
@@ -1136,6 +1135,36 @@
             }
           });
       }
+
+      function sortBooksAndRender() {
+        var mode = el.sortSelect.value;
+        booksCache.sort(function(a, b) {
+          if (mode === 'downloads') {
+            var aColorName = a.colorEpub ? a.colorEpub.split('/').pop() : '';
+            var aBwName = a.bwEpub ? a.bwEpub.split('/').pop() : '';
+            var aCount = (statsCache[aColorName] || 0) + (statsCache[aBwName] || 0);
+
+            var bColorName = b.colorEpub ? b.colorEpub.split('/').pop() : '';
+            var bBwName = b.bwEpub ? b.bwEpub.split('/').pop() : '';
+            var bCount = (statsCache[bColorName] || 0) + (statsCache[bBwName] || 0);
+
+            if (bCount !== aCount) return bCount - aCount;
+            // Если скачивания равны, сортируем по дате
+            var aDate = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+            var bDate = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+            return bDate - aDate;
+          } else if (mode === 'alpha') {
+            return a.title.localeCompare(b.title, 'ru', { sensitivity: 'base' });
+          } else { // 'newest'
+            var aDate = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+            var bDate = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+            return bDate - aDate;
+          }
+        });
+        renderBookList();
+      }
+
+      el.sortSelect.addEventListener('change', sortBooksAndRender);
 
       function renderBookList() {
         el.booksGrid.innerHTML = '';
