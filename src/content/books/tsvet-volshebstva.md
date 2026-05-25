@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-23
 title: "Цвет волшебства"
 author: "Терри Пратчетт"
 coverImage: "../../assets/books/tsvet-volshebstva/cover.png"

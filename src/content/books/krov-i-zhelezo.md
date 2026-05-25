@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-11
 title: "Кровь и железо"
 author: "Джо Аберкромби"
 coverImage: "../../assets/books/krov-i-zhelezo/cover.png"

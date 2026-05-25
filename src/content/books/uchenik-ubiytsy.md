@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-24
 title: "Ученик убийцы"
 author: "Робин Хобб"
 coverImage: "../../assets/books/uchenik-ubiytsy/cover.png"

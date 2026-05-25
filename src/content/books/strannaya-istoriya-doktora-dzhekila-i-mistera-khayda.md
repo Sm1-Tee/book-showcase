@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-22
 title: "Странная история доктора Джекила и мистера Хайда"
 author: "Роберт Льюис Стивенсон"
 coverImage: "../../assets/books/strannaya-istoriya-doktora-dzhekila-i-mistera-khayda/cover.png"

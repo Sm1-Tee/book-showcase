@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-19
 title: "Прежде чем их повесят"
 author: "Джо Аберкромби"
 coverImage: "../../assets/books/prezhde-chem-ikh-povesyat/cover.png"

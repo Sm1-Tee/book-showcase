@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-20
 title: "Рыцарь Семи Королевств"
 author: "Джордж Мартин"
 coverImage: "../../assets/books/rytsar-semi-korolevstv/cover.png"

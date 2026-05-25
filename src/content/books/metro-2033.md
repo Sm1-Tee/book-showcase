@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-13
 title: "Метро 2033"
 author: "Дмитрий Глуховский"
 coverImage: "../../assets/books/metro-2033/cover.png"

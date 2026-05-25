@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-21
 title: "Страхи мудреца. Том 1"
 author: "Патрик Ротфусс"
 coverImage: "../../assets/books/strakhi-mudretsa-tom-1/cover.png"

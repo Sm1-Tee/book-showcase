@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-08
 title: "Франкенштейн, или Современный Прометей"
 author: "Мэри Уолстонкрафт Шелли"
 coverImage: "../../assets/books/frankenshteyn-ili-sovremennyy-prometey/cover.png"

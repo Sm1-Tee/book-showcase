@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-18
 title: "Последний довод королей"
 author: "Джо Аберкромби"
 coverImage: "../../assets/books/posledniy-dovod-koroley/cover.png"

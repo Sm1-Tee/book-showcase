@@ -8,6 +8,7 @@ const booksCollection = defineCollection({
     exampleImages: z.array(image()).max(4),
     title: z.string(),
     author: z.string(),
+    pubDate: z.date().or(z.string().transform(str => new Date(str))),
     colorEpub: z.string().url("Укажите корректную ссылку на GitHub Releases"), // внешняя ссылка
     bwEpub: z.string().url("Укажите корректную ссылку на GitHub Releases"), // внешняя ссылка
     series: z.string().optional(),

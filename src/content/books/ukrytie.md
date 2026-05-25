@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-25
 title: "Укрытие"
 author: "Хью Хауи"
 coverImage: "../../assets/books/ukrytie/cover.png"

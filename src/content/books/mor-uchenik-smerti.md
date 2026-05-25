@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-14
 title: "Мор, ученик Смерти"
 author: "Терри Пратчетт"
 coverImage: "../../assets/books/mor-uchenik-smerti/cover.png"

@@ -26,6 +26,11 @@ const sortedBooks = [...allBooks]
   })
   .map((book, index) => ({ book, isPriorityImage: index < 12 })); // Предзагружаем первые 12 обложек (те, что видны на первом экране)
 
+const latestBooks = [...allBooks]
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6)
+  .map((book, index) => ({ book, isPriorityImage: true })); // Все новинки видны сразу
+
 const seriesCounts = new Map<string, number>();
 allBooks.forEach(book => {
   const s = book.data.series;
@@ -60,8 +65,36 @@ allBooks.forEach(book => {
     </noscript>
   </section>
 
+  {latestBooks.length > 0 && (
+    <section class="mb-12" aria-label="Новинки">
+      <div class="flex items-center justify-between mb-6 px-2">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Последние поступления</h2>
+      </div>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-6">
+        {latestBooks.map(({ book, isPriorityImage }) => (
+          <div class="book-card-wrapper h-full" data-title={book.data.title.toLowerCase()} data-author={book.data.author.toLowerCase()} data-series={book.data.series?.toLowerCase() || ''}>
+            <BookCard
+              title={book.data.title}
+              author={book.data.author}
+              coverImage={book.data.coverImage}
+              slug={book.id}
+              series={book.data.series}
+              seriesOrder={book.data.seriesOrder}
+              seriesCount={book.data.series ? seriesCounts.get(book.data.series) : undefined}
+              imageLoading={isPriorityImage ? 'eager' : 'lazy'}
+              imageFetchPriority={isPriorityImage ? 'high' : 'auto'}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
   {allBooks.length > 0 ? (
-    <section id="catalog" aria-label="Каталог книг">
+    <section id="catalog" aria-label="Полный каталог книг">
+      <div class="flex items-center justify-between mb-6 px-2">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Все книги</h2>
+      </div>
       <div id="catalog-empty-state" class="hidden rounded-[2rem] border border-white/10 bg-paper-alt/98 sm:bg-white/[0.04] px-6 py-14 text-center shadow-2xl shadow-black/20 sm:backdrop-blur-md mb-6">
         <div class="mx-auto mb-5 grid h-16 w-16 place-items-center rounded-3xl border border-accent/25 bg-accent/10 text-2xl text-accent">⌕</div>
         <h2 class="mb-2 text-2xl font-black tracking-tight text-white">Ничего не найдено</h2>

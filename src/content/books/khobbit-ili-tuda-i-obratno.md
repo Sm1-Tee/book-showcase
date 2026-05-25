@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-10
 title: "Хоббит, или Туда и Обратно"
 author: "Джон Роналд Руэл Толкин"
 coverImage: "../../assets/books/khobbit-ili-tuda-i-obratno/cover.png"

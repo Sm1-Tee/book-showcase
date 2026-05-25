@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-05
 title: "Дракула"
 author: "Брэм Стокер"
 coverImage: "../../assets/books/drakula/cover.jpeg"

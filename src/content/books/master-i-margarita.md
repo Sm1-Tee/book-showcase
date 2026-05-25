@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-12
 title: "Мастер и Маргарита"
 author: "Михаил Булгаков"
 coverImage: "../../assets/books/master-i-margarita/cover.png"

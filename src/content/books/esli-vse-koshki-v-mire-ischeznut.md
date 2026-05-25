@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-07
 title: "Если все кошки в мире исчезнут"
 author: "Гэнки Кавамура"
 coverImage: "../../assets/books/esli-vse-koshki-v-mire-ischeznut/cover.png"

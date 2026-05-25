@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-16
 title: "Пикник на обочине"
 author: "Аркадий и Борис Стругацкие"
 coverImage: "../../assets/books/piknik-na-obochine/cover.png"

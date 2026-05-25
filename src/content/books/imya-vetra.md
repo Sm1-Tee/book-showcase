@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-09
 title: "Имя ветра"
 author: "Патрик Ротфусс"
 coverImage: "../../assets/books/imya-vetra/cover.png"

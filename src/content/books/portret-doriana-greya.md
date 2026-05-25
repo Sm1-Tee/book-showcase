@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-17
 title: "Портрет Дориана Грея"
 author: "Оскар Уайльд"
 coverImage: "../../assets/books/portret-doriana-greya/cover.png"

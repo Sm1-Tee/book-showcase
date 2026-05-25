@@ -815,7 +815,8 @@
       var coverFile = null;
       var coverExisting = null;
       var exampleItems = [];
-      
+      var statsCache = {};
+
 
       var DEFAULT_BODY = '';
 
@@ -959,6 +960,7 @@
               if (rel.assets) {
                 rel.assets.forEach(function(asset) {
                   total += asset.download_count;
+                  statsCache[asset.name] = asset.download_count;
                 });
               }
             });
@@ -967,6 +969,9 @@
             if (panel && totalEl) {
               totalEl.textContent = total.toLocaleString('ru-RU');
               panel.style.display = 'block';
+            }
+            if (booksCache && booksCache.length > 0) {
+              renderBookList();
             }
           })
           .catch(function(e) { console.error('Ошибка загрузки статистики:', e); });
@@ -1068,6 +1073,7 @@
                   var fm = parsed.frontmatter;
                   return {
                     slug: f.name.replace('.md', ''),
+                    pubDate: fm.pubDate || '',
                     title: fm.title || '',
                     author: fm.author || '',
                     coverImage: fm.coverImage || '',
@@ -1128,8 +1134,31 @@
           var authorEl = document.createElement('div');
           authorEl.className = 'book-card-author';
           authorEl.textContent = book.author;
+
+          var statsEl = document.createElement('div');
+          statsEl.style.fontSize = '0.8125rem';
+          statsEl.style.color = 'var(--muted)';
+          statsEl.style.marginTop = '6px';
+          statsEl.style.display = 'flex';
+          statsEl.style.gap = '12px';
+
+          var colorName = book.colorEpub ? book.colorEpub.split('/').pop() : '';
+          var bwName = book.bwEpub ? book.bwEpub.split('/').pop() : '';
+
+          var colorCount = colorName && statsCache[colorName] ? statsCache[colorName] : 0;
+          var bwCount = bwName && statsCache[bwName] ? statsCache[bwName] : 0;
+
+          var colorDiv = document.createElement('div');
+          colorDiv.innerHTML = '<span style="color:var(--accent)">Цвет:</span> ' + colorCount;
+          var bwDiv = document.createElement('div');
+          bwDiv.innerHTML = '<span style="color:var(--text)">Ч/Б:</span> ' + bwCount;
+
+          statsEl.appendChild(colorDiv);
+          statsEl.appendChild(bwDiv);
+
           infoDiv.appendChild(titleEl);
           infoDiv.appendChild(authorEl);
+          infoDiv.appendChild(statsEl);
 
           var actionsDiv = document.createElement('div');
           actionsDiv.className = 'book-card-actions';
@@ -1395,8 +1424,14 @@
           });
       }
 
-      function buildMarkdown(title, author, slug, coverExt, exItems, series, seriesOrder, bodyText, colorEpubName, bwEpubName) {
+      function buildMarkdown(title, author, slug, coverExt, exItems, series, seriesOrder, bodyText, colorEpubName, bwEpubName, pubDate) {
         var fm = '---\n';
+        if (pubDate) {
+          fm += 'pubDate: ' + pubDate + '\n';
+        } else {
+          var date = new Date();
+          fm += 'pubDate: ' + date.toISOString().split('T')[0] + '\n';
+        }
         fm += 'title: "' + title + '"\n';
         fm += 'author: "' + author + '"\n';
         fm += 'coverImage: "../../assets/books/' + slug + '/cover.' + coverExt + '"\n';
@@ -1450,7 +1485,7 @@
         setProgress(0, 'Подготовка файлов к загрузке...');
         var coverExt = ext(coverFile.name);
         var mdPath = 'src/content/books/' + slug + '.md';
-        var md = buildMarkdown(title, author, slug, coverExt, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim());
+        var md = buildMarkdown(title, author, slug, coverExt, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim(), null);
 
         getHeadContext().then(function(ctx) {
            setProgress(30, 'Загрузка изображений...');
@@ -1521,7 +1556,8 @@
 
               var mdPath = 'src/content/books/' + newSlug + '.md';
               var coverExtToPass = coverFile ? ext(coverFile.name) : coverExisting ? coverExisting.ext : 'jpg';
-              var md = buildMarkdown(title, author, newSlug, coverExtToPass, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim());
+              var pubDateToPass = editingBookData && editingBookData.pubDate ? editingBookData.pubDate : null;
+              var md = buildMarkdown(title, author, newSlug, coverExtToPass, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim(), pubDateToPass);
 
               var allPromises = uploadTasks.map(function(entry) {
                  return readFileAsBase64(entry.file)

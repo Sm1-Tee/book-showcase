@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-03
 title: "Артас. Восхождение Короля-лича"
 author: "Кристи Голден"
 coverImage: "../../assets/books/artas-voskhozhdenie-korolya-licha/cover.png"

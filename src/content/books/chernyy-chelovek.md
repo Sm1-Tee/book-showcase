@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-04
 title: "Черный человек"
 author: "Василий Головачев"
 coverImage: "../../assets/books/chernyy-chelovek/cover.png"

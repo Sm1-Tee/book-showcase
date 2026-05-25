@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-02
 title: "Американские боги"
 author: "Нил Гейман"
 coverImage: "../../assets/books/amerikanskie-bogi/cover.png"

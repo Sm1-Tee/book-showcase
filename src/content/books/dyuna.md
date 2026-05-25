@@ -1,4 +1,5 @@
 ---
+pubDate: 2024-01-06
 title: "Дюна"
 author: "Фрэнк Герберт"
 coverImage: "../../assets/books/dyuna/cover.png"
