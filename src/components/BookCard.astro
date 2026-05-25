@@ -43,6 +43,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       sizes={imageSizes}
       fetchpriority={imageFetchPriority}
       format="webp"
+      transition:name={`cover-${slug}`}
     />
     {series && seriesCount && seriesCount > 1 && (
       <span
