@@ -9,14 +9,19 @@ interface Props {
 	ogImage?: string;
 }
 
-const { 
-	title, 
+const {
+	title,
 	description = 'Галерея проиллюстрированных электронных книг',
 	ogImage = '/images/donat.png'
 } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
-const fullOgImage = new URL(ogImage, Astro.site || Astro.url);
+const siteUrl = Astro.site || Astro.url;
 const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const withBaseUrl = (path: string) => {
+	if (/^https?:\/\//.test(path) || path.startsWith(baseUrl)) return path;
+	return `${baseUrl}${path.replace(/^\//, '')}`;
+};
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const fullOgImage = new URL(withBaseUrl(ogImage), siteUrl);
 const totalBooks = (await getCollection('books')).length;
 ---
 
@@ -27,7 +32,8 @@ const totalBooks = (await getCollection('books')).length;
 		<meta name="yandex-verification" content="52e6f0c8043ee02d" />
 		<meta name="google-site-verification" content="Dp3ZhypX-dTMp-h2EmtYcKx0tmra2qjQbb4glW3BHpY" />
 		<meta name="description" content={description} />
-		
+		<link rel="canonical" href={canonicalURL} />
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
