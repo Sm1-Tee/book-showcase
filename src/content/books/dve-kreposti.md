@@ -8,8 +8,8 @@ exampleImages:
   - "../../assets/books/dve-kreposti/example-2.png"
   - "../../assets/books/dve-kreposti/example-3.png"
   - "../../assets/books/dve-kreposti/example-4.png"
-colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/bratstvo_kolca/bratstvo_kolca_color.epub"
-bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/bratstvo_kolca/bratstvo_kolca_bw.epub"
+colorEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/dve-kreposti/dve-kreposti-color.epub"
+bwEpub: "https://github.com/Sm1-Tee/chit-ai/releases/download/dve-kreposti/dve-kreposti-bw.epub"
 series: "Властелин колец"
 seriesOrder: 3
 ---
