@@ -1534,6 +1534,9 @@
       }
 
       function createCommitAndPush(ctx, treeEntries, message) {
+        console.log("createCommitAndPush: ", message, treeEntries);
+        // Ensure sha is exactly null, not undefined, for deletions
+        treeEntries.forEach(function(e) { if (e.sha === undefined) e.sha = null; });
         return ghFetch('/repos/' + REPO + '/git/trees', {
           method: 'POST',
           body: JSON.stringify({ base_tree: ctx.baseTreeSha, tree: treeEntries }),
@@ -1656,6 +1659,7 @@
               });
 
               Object.keys(existingFiles).forEach(function (path) {
+                // By default mark all old files for deletion
                 treeEntries.push({ path: path, mode: '100644', type: 'blob', sha: null });
               });
 
@@ -1683,6 +1687,8 @@
               treeEntries.forEach(function (e) { deduped[e.path] = e; });
               treeEntries = Object.keys(deduped).map(function (k) { return deduped[k]; });
 
+              console.log("Existing files to remove in update:", treeEntries);
+
               var mdPath = 'src/content/books/' + newSlug + '.md';
               var coverExtToPass = coverFile ? ext(coverFile.name) : coverExisting ? coverExisting.ext : 'jpg';
               var pubDateToPass = editingBookData && editingBookData.pubDate ? editingBookData.pubDate : null;
@@ -1702,6 +1708,17 @@
               setProgress(30, 'Загрузка новых файлов...');
               return Promise.all(allPromises).then(function(newTreeEntries) {
                  var finalTreeEntries = treeEntries.concat(newTreeEntries);
+                 
+                 // Remove entries that have sha: null but are being overwritten by new files
+                 // in GitHub API if you include sha: null and sha: <new_sha> for the same file, it might fail.
+                 var uniqueEntries = {};
+                 finalTreeEntries.forEach(function(e) {
+                   if (e.sha !== null || typeof uniqueEntries[e.path] === 'undefined') {
+                     uniqueEntries[e.path] = e;
+                   }
+                 });
+                 finalTreeEntries = Object.keys(uniqueEntries).map(function(k) { return uniqueEntries[k]; });
+                 
                  setProgress(70, 'Сохранение обновленной структуры...');
                  return createCommitAndPush(ctx, finalTreeEntries, 'Update book: ' + title);
               });
@@ -1778,10 +1795,12 @@
 
             tree.tree.forEach(function (entry) {
               if (entry.type === 'blob' && (entry.path.indexOf(publicPrefix) === 0 || entry.path.indexOf(assetsPrefix) === 0 || entry.path === mdPath)) {
+                // To delete a file via GitHub Trees API, you set sha to null
                 deleteEntries.push({ path: entry.path, mode: '100644', type: 'blob', sha: null });
               }
             });
 
+            console.log("Found files to delete:", deleteEntries);
             if (deleteEntries.length === 0) throw new Error('Файлы книги не найдены');
 
             setProgress(55, 'Создание коммита…');
