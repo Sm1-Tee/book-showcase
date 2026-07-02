@@ -1627,11 +1627,14 @@
             setProgress(100, '');
             showOverlayResult('Книга опубликована!', 'Все пакеты успешно загружены.', 'https://sm1-tee.github.io/chit-ai/books/' + slug + '/');
             showView('list');
-            loadBooks();
+            setTimeout(function() {
+              try { loadBooks(); } catch(e) { console.error("loadBooks error:", e); }
+            }, 0);
           })
           .catch(function (err) {
+            console.error("Publish error:", err);
             setProgress(0, '');
-            showOverlayResult('Ошибка публикации', err.message, null);
+            showOverlayResult('Ошибка публикации', err && err.message ? err.message : String(err), null);
           });
       }
 
@@ -1728,11 +1731,14 @@
             setProgress(100, '');
             showOverlayResult('Изменения сохранены!', 'Все пакеты успешно обновлены.', 'https://sm1-tee.github.io/chit-ai/books/' + newSlug + '/');
             showView('list');
-            loadBooks();
+            setTimeout(function() {
+              try { loadBooks(); } catch(e) { console.error("loadBooks error:", e); }
+            }, 0);
           })
           .catch(function (err) {
+            console.error("Publish error:", err);
             setProgress(0, '');
-            showOverlayResult('Ошибка сохранения', err.message, null);
+            showOverlayResult('Ошибка сохранения', err && err.message ? err.message : String(err), null);
           });
       }
 
@@ -1809,11 +1815,14 @@
           .then(function () {
             setProgress(100, '');
             showOverlayResult('Книга удалена', 'Деплой запустится автоматически.', null);
-            loadBooks();
+            setTimeout(function() {
+              try { loadBooks(); } catch(e) { console.error("loadBooks error:", e); }
+            }, 0);
           })
           .catch(function (err) {
+            console.error("Delete error:", err);
             setProgress(0, '');
-            showOverlayResult('Ошибка удаления', err.message, null);
+            showOverlayResult('Ошибка удаления', err && err.message ? err.message : String(err), null);
           });
       });
 
