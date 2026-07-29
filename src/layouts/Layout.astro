@@ -20,7 +20,9 @@ const withBaseUrl = (path: string) => {
 	if (/^https?:\/\//.test(path) || path.startsWith(baseUrl)) return path;
 	return `${baseUrl}${path.replace(/^\//, '')}`;
 };
-const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const canonicalHost = 'https://sm1-tee.github.io';
+const canonicalPath = Astro.url.pathname.replace(/^\/chit-ai(?=\/|$)/, '') || '/';
+const canonicalURL = new URL(canonicalPath, canonicalHost);
 const fullOgImage = new URL(withBaseUrl(ogImage), siteUrl);
 const totalBooks = (await getCollection('books')).length;
 ---
