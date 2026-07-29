@@ -38,6 +38,17 @@ jobs:
             echo "No changes in download stats"
           else
             git commit -m "chore: update download stats"
-            git pull --rebase --autostash origin master
-            git push origin HEAD:master
+            pushed=0
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase --autostash origin master && git push origin HEAD:master; then
+                pushed=1
+                break
+              fi
+              echo "Push attempt $attempt failed, retrying..."
+              sleep 7
+            done
+            if [ "$pushed" != "1" ]; then
+              echo 'Could not publish download stats after 5 attempts'
+              exit 1
+            fi
           fi
