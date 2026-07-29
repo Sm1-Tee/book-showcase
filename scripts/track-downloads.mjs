@@ -10,7 +10,7 @@ const TOKEN = process.env.GITHUB_TOKEN || ''
 const DATA_DIR = 'data'
 const STATE_FILE = path.join(DATA_DIR, 'downloads-state.json')
 const LOG_FILE = path.join(DATA_DIR, 'downloads-log.json')
-const MAX_EVENTS = 400
+const MAX_EVENTS = 20000
 
 async function ghJson(url) {
 	const headers = { Accept: 'application/vnd.github+json', 'User-Agent': 'chit-ai-download-tracker' }
