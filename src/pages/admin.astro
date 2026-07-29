@@ -963,7 +963,7 @@
     <aside class="dl-drawer" id="dlDrawer">
       <div class="dl-head">
         <div>
-          <div class="dl-head-title">Очередь скачиваний</div>
+          <div class="dl-head-title">Последние скачивания</div>
           <div class="dl-when" id="dlUpdated"></div>
         </div>
         <div class="dl-actions">
@@ -2041,8 +2041,7 @@
         if (!body) return;
 
         var events = (data && data.events) || [];
-        var totals = (data && data.totalsByRelease) || [];
-        var total = (data && typeof data.total === 'number') ? data.total : 0;
+        var DL_LIMIT = 15;
 
         if (updated) {
           updated.textContent = data && data.updatedAt
@@ -2050,36 +2049,22 @@
             : '';
         }
 
-        var html = '<div class="dl-total">Всего скачиваний за всё время: <strong>' + total.toLocaleString('ru-RU') + '</strong></div>';
+        var html = '';
 
-        html += '<div class="dl-section-title">История скачиваний</div>';
         if (!events.length) {
-          html += '<div class="dl-empty">Новых скачиваний пока не было.<br>Как только книгу скачают, запись появится здесь и останется навсегда.</div>';
+          html += '<div class="dl-empty">Пока ничего не скачали.<br>Как только книгу скачают, она появится здесь самой верхней.</div>';
         } else {
-          for (var i = 0; i < events.length; i++) {
-            var ev = events[i];
+          var shown = events.slice(0, DL_LIMIT);
+          for (var i = 0; i < shown.length; i++) {
+            var ev = shown[i];
             html += '<div class="dl-item">' +
               '<div class="dl-when">' + dlEsc(dlWhen(ev.at)) + '</div>' +
               '<div class="dl-item-title">' + dlEsc(dlPrettyName(ev.release || ev.tag)) + '</div>' +
               '<div class="dl-meta">' + dlEsc(dlVariant(ev.variant)) +
-              ' · <span class="dl-delta">+' + dlEsc(ev.delta) + '</span>' +
-              ' · всего ' + dlEsc(ev.total) + '</div>' +
+              ' · <span class="dl-delta">+' + dlEsc(ev.delta) + '</span></div>' +
               '</div>';
           }
         }
-
-        if (totals.length) {
-          html += '<div class="dl-section-title">Все скачивания по книгам</div>';
-          for (var j = 0; j < totals.length; j++) {
-            var t = totals[j];
-            html += '<div class="dl-row">' +
-              '<span>' + dlEsc(dlPrettyName(t.release || t.tag)) + '</span>' +
-              '<span class="dl-row-count">' + dlEsc(t.total) + '</span>' +
-              '</div>';
-          }
-        }
-
-        html += '<div class="dl-note">История ведётся с момента включения сбора статистики и не обнуляется. Счётчики проверяются каждые 30 минут, поэтому время в записях точно до получаса.</div>';
 
         body.innerHTML = html;
       }
