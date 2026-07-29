@@ -745,52 +745,21 @@
         }
       }
 
-      /* ── Лента скачиваний ── */
-      .dl-fab {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        z-index: 60;
-        display: none;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 18px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        background: var(--surface);
-        color: var(--text, inherit);
-        font: inherit;
-        font-weight: 600;
-        font-size: 0.9375rem;
-        cursor: pointer;
-        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
-      }
-      .dl-fab.visible { display: inline-flex; }
-      .dl-fab:hover { border-color: var(--accent); }
-      .dl-fab .dl-badge {
-        background: var(--accent);
-        color: #fff;
-        border-radius: 999px;
-        padding: 1px 8px;
-        font-size: 0.8125rem;
-      }
+      /* ── Лента скачиваний (закреплённая панель) ── */
+      body { padding-right: 360px; }
       .dl-drawer {
         position: fixed;
         top: 0;
         right: 0;
-        height: 100%;
-        width: 380px;
-        max-width: 92vw;
+        height: 100vh;
+        width: 360px;
         background: var(--surface);
         border-left: 1px solid var(--border);
-        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.22);
-        transform: translateX(105%);
-        transition: transform 0.25s ease;
-        z-index: 61;
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.18);
+        z-index: 40;
         display: flex;
         flex-direction: column;
       }
-      .dl-drawer.open { transform: none; }
       .dl-head {
         padding: 16px;
         border-bottom: 1px solid var(--border);
@@ -819,23 +788,55 @@
         border-bottom: 1px solid var(--border);
         font-size: 0.9375rem;
       }
+      .dl-section-title {
+        margin: 18px 0 4px;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 700;
+      }
       .dl-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
       .dl-item-title { font-weight: 600; font-size: 0.9375rem; }
       .dl-meta { font-size: 0.8125rem; color: var(--muted); margin-top: 2px; }
       .dl-delta { color: var(--accent); font-weight: 700; }
+      .dl-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 7px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+      }
+      .dl-row-count { font-weight: 700; color: var(--accent); white-space: nowrap; }
+      .dl-note {
+        margin-top: 14px;
+        font-size: 0.75rem;
+        line-height: 1.5;
+        color: var(--muted);
+      }
       .dl-empty {
         padding: 16px 0;
         color: var(--muted);
         font-size: 0.875rem;
         line-height: 1.55;
       }
-      @media (max-width: 480px) {
-        .dl-drawer { width: 100%; max-width: 100%; }
+      @media (max-width: 1100px) {
+        body { padding-right: 0; }
+        .dl-drawer {
+          position: static;
+          width: auto;
+          height: auto;
+          border-left: none;
+          border-top: 1px solid var(--border);
+          box-shadow: none;
+        }
+        .dl-body { max-height: 65vh; }
       }
     </style></head> <body> <div class="container"> <h1 id="pageTitle">Книги</h1> <div class="auth-section active" id="authSection"> <div class="field"> <label for="tokenInput">GitHub Personal Access Token</label> <input type="password" id="tokenInput" autocomplete="off" spellcheck="false" placeholder="ghp_..."> </div> <div class="checkbox-row"> <input type="checkbox" id="rememberToken" checked> <label for="rememberToken">Запомнить токен</label> </div> <button class="btn-primary" id="loginBtn" type="button">Войти</button> <div class="error-text" id="authError"></div> </div> <div class="book-list-section" id="bookListSection"> <div class="user-bar"> <span>Вы вошли как <strong id="username"></strong></span> <button class="btn-logout" id="logoutBtn" type="button">Выйти</button> </div> <div class="stats-panel" id="statsPanel" style="display: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; text-align: center;"> <div style="font-size: 0.8125rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Всего скачиваний (GitHub Releases)</div> <div id="totalDownloads" style="font-size: 2rem; font-weight: 700; color: var(--accent);">0</div> </div> <div class="list-header"> <select class="sort-select" id="sortSelect"> <option value="newest">Сначала новые (по дате)</option> <option value="downloads">По скачиваниям (по убыванию)</option> <option value="alpha">По алфавиту (А-Я)</option> </select> <button class="btn-add" id="addBookBtn" type="button">+ Добавить книгу</button> </div> <div class="loading-text" id="booksLoading">Загрузка книг…</div> <div class="books-grid" id="booksGrid"></div> <div class="empty-state" id="emptyState">Книг пока нет</div> </div> <div class="form-section" id="formSection"> <button class="btn-back" id="backBtn" type="button">&larr; Назад к списку</button> <form id="bookForm" novalidate> <div class="field"> <label for="title">Название</label> <input type="text" id="title" required> </div> <div class="field"> <label for="author">Автор</label> <input type="text" id="author" required> </div> <div class="field"> <label>Обложка</label> <div class="drop-zone" id="coverZone"> <span>Перетащите файл или нажмите для выбора</span> <input type="file" accept="image/*" id="coverInput"> </div> <div class="cover-preview" id="coverPreview"> <img id="coverImg" alt=""> <button class="remove-btn" id="coverRemoveBtn" type="button">&times;</button> </div> </div> <div class="field"> <label>Примеры иллюстраций</label> <div class="drop-zone" id="examplesZone"> <span>Перетащите изображения или нажмите для выбора (до 4 штук)</span> <input type="file" accept="image/*" multiple id="examplesInput"> </div> <div class="previews" id="examplesPreviews"></div> </div> <div class="field"> <label for="colorEpubUrl">Ссылка на цветной EPUB (GitHub Releases)</label> <input type="text" id="colorEpubUrl" placeholder="https://github.com/Sm1-Tee/chit-ai/releases/download/..." required> </div> <div class="field"> <label for="bwEpubUrl">Ссылка на ч/б EPUB (GitHub Releases)</label> <input type="text" id="bwEpubUrl" placeholder="https://github.com/Sm1-Tee/chit-ai/releases/download/..." required> </div> <div class="field"> <label for="series">Серия <span class="optional">(необязательно)</span></label> <input type="text" id="series"> </div> <div class="field"> <label for="seriesOrder">Порядок в серии <span class="optional">(необязательно)</span></label> <input type="number" id="seriesOrder" min="1"> </div> <div class="field"> <label for="bodyText">Описание книги</label> <div class="editor-tabs"> <button type="button" class="editor-tab active" id="tabEdit">Редактор</button> <button type="button" class="editor-tab" id="tabPreview">Предпросмотр</button> </div> <textarea id="bodyText" style="border-radius: 0 0 8px 8px;"></textarea> <div class="md-preview" id="mdPreview"></div> </div> <button class="btn-primary" id="publishBtn" type="button" disabled>
 Опубликовать книгу
-</button> </form> </div> </div> <button class="dl-fab" id="dlFab" type="button">
-Скачивания <span class="dl-badge" id="dlBadge">0</span> </button> <aside class="dl-drawer" id="dlDrawer"> <div class="dl-head"> <div> <div class="dl-head-title">Очередь скачиваний</div> <div class="dl-when" id="dlUpdated"></div> </div> <div class="dl-actions"> <button class="dl-icon-btn" id="dlRefresh" type="button" title="Обновить">↻</button> <button class="dl-icon-btn" id="dlClose" type="button" title="Закрыть">&times;</button> </div> </div> <div class="dl-body" id="dlBody"> <div class="dl-empty">Загрузка…</div> </div> </aside> <div class="overlay" id="overlay"> <div class="overlay-content"> <h2 id="overlayTitle">Публикация книги</h2> <div class="progress-bar-track"> <div class="progress-bar-fill" id="progressFill"></div> </div> <div class="progress-status" id="progressStatus"></div> <div class="overlay-actions" id="overlayActions"> <button id="overlayClose" type="button">Закрыть</button> </div> </div> </div> <div class="overlay" id="deleteOverlay"> <div class="overlay-content"> <h2>Удалить книгу?</h2> <p class="delete-book-name" id="deleteBookName"></p> <div class="delete-actions"> <button class="btn-confirm-delete" id="confirmDeleteBtn" type="button">Удалить</button> <button class="btn-cancel" id="cancelDeleteBtn" type="button">Отмена</button> </div> </div> </div> <script>
+</button> </form> </div> </div> <aside class="dl-drawer" id="dlDrawer"> <div class="dl-head"> <div> <div class="dl-head-title">Очередь скачиваний</div> <div class="dl-when" id="dlUpdated"></div> </div> <div class="dl-actions"> <button class="dl-icon-btn" id="dlRefresh" type="button" title="Обновить">↻</button> </div> </div> <div class="dl-body" id="dlBody"> <div class="dl-empty">Загрузка…</div> </div> </aside> <div class="overlay" id="overlay"> <div class="overlay-content"> <h2 id="overlayTitle">Публикация книги</h2> <div class="progress-bar-track"> <div class="progress-bar-fill" id="progressFill"></div> </div> <div class="progress-status" id="progressStatus"></div> <div class="overlay-actions" id="overlayActions"> <button id="overlayClose" type="button">Закрыть</button> </div> </div> </div> <div class="overlay" id="deleteOverlay"> <div class="overlay-content"> <h2>Удалить книгу?</h2> <p class="delete-book-name" id="deleteBookName"></p> <div class="delete-actions"> <button class="btn-confirm-delete" id="confirmDeleteBtn" type="button">Удалить</button> <button class="btn-cancel" id="cancelDeleteBtn" type="button">Отмена</button> </div> </div> </div> <script>
       var REPO = 'Sm1-Tee/chit-ai';
       var BRANCH = 'master';
       var API = 'https://api.github.com';
@@ -1039,9 +1040,6 @@
       function showView(name) {
         el.authSection.classList.toggle('active', name === 'auth');
         el.bookListSection.classList.toggle('active', name === 'list');
-        var dlFabEl = document.getElementById('dlFab');
-        if (dlFabEl) dlFabEl.classList.toggle('visible', name === 'list');
-        if (name !== 'list') dlSetDrawer(false);
         el.formSection.classList.toggle('active', name === 'form');
 
         if (name === 'auth') el.pageTitle.textContent = 'Администрирование';
@@ -1877,10 +1875,10 @@
       function dlRender(data) {
         var body = document.getElementById('dlBody');
         var updated = document.getElementById('dlUpdated');
-        var badge = document.getElementById('dlBadge');
         if (!body) return;
 
         var events = (data && data.events) || [];
+        var totals = (data && data.totalsByRelease) || [];
         var total = (data && typeof data.total === 'number') ? data.total : 0;
 
         if (updated) {
@@ -1888,12 +1886,12 @@
             ? 'проверено ' + dlWhen(data.updatedAt)
             : '';
         }
-        if (badge) badge.textContent = String(events.length);
 
         var html = '<div class="dl-total">Всего скачиваний за всё время: <strong>' + total.toLocaleString('ru-RU') + '</strong></div>';
 
+        html += '<div class="dl-section-title">История скачиваний</div>';
         if (!events.length) {
-          html += '<div class="dl-empty">Новых скачиваний пока не было.<br>Счётчики проверяются каждые 30 минут — как только книгу скачают, здесь появится запись с датой и временем.</div>';
+          html += '<div class="dl-empty">Новых скачиваний пока не было.<br>Как только книгу скачают, запись появится здесь и останется навсегда.</div>';
         } else {
           for (var i = 0; i < events.length; i++) {
             var ev = events[i];
@@ -1906,6 +1904,19 @@
               '</div>';
           }
         }
+
+        if (totals.length) {
+          html += '<div class="dl-section-title">Все скачивания по книгам</div>';
+          for (var j = 0; j < totals.length; j++) {
+            var t = totals[j];
+            html += '<div class="dl-row">' +
+              '<span>' + dlEsc(dlPrettyName(t.release || t.tag)) + '</span>' +
+              '<span class="dl-row-count">' + dlEsc(t.total) + '</span>' +
+              '</div>';
+          }
+        }
+
+        html += '<div class="dl-note">История ведётся с момента включения сбора статистики и не обнуляется. Счётчики проверяются каждые 30 минут, поэтому время в записях точно до получаса.</div>';
 
         body.innerHTML = html;
       }
@@ -1935,27 +1946,16 @@
           });
       }
 
-      function dlSetDrawer(open) {
-        var drawer = document.getElementById('dlDrawer');
-        if (!drawer) return;
-        drawer.classList.toggle('open', open);
-        if (open) loadDownloadFeed();
+      function dlSetDrawer() {
+        /* панель закреплена и всегда видна */
       }
 
       (function initDownloadFeed() {
-        var fab = document.getElementById('dlFab');
-        var closeBtn = document.getElementById('dlClose');
         var refreshBtn = document.getElementById('dlRefresh');
-        if (fab) {
-          fab.addEventListener('click', function () {
-            var drawer = document.getElementById('dlDrawer');
-            dlSetDrawer(!(drawer && drawer.classList.contains('open')));
-          });
-        }
-        if (closeBtn) closeBtn.addEventListener('click', function () { dlSetDrawer(false); });
         if (refreshBtn) refreshBtn.addEventListener('click', function () { loadDownloadFeed(); });
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') dlSetDrawer(false);
+        setInterval(loadDownloadFeed, 300000);
+        document.addEventListener('visibilitychange', function () {
+          if (!document.hidden) loadDownloadFeed();
         });
         loadDownloadFeed();
       })();
