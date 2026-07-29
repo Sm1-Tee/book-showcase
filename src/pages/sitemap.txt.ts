@@ -1,14 +1,14 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-const basePath = import.meta.env.BASE_URL;
-const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
+// Список адресов только в каноническом виде (корень домена).
+const canonicalHost = 'https://sm1-tee.github.io';
 
-export const GET: APIRoute = async ({ site }) => {
+export const GET: APIRoute = async () => {
   const books = await getCollection('books');
   const urls = [
-    new URL(normalizedBasePath, site).href,
-    ...books.map((book) => new URL(`${normalizedBasePath}books/${book.id}/`, site).href),
+    `${canonicalHost}/`,
+    ...books.map((book) => `${canonicalHost}/books/${book.id}/`),
   ];
 
   return new Response(`${urls.join('\n')}\n`, {

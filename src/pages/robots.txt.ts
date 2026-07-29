@@ -1,21 +1,22 @@
 import type { APIRoute } from 'astro';
 
+// Все адреса для поисковиков ведут на канонический сайт в корне домена.
+const canonicalHost = 'https://sm1-tee.github.io';
+
 const basePath = import.meta.env.BASE_URL;
 const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
 
-const getRobotsTxt = (sitemapURL: URL, textSitemapURL: URL) => `
-User-agent: *
+const getRobotsTxt = () => `User-agent: *
 Allow: ${normalizedBasePath}
 Disallow: ${normalizedBasePath}admin/
 
-Sitemap: ${sitemapURL.href}
-Sitemap: ${textSitemapURL.href}
+Sitemap: ${canonicalHost}/sitemap.xml
+Sitemap: ${canonicalHost}/sitemap.txt
+Sitemap: ${canonicalHost}/sitemap-index.xml
 `;
 
-export const GET: APIRoute = ({ site }) => {
-  const sitemapURL = new URL(`${normalizedBasePath}sitemap.xml`, site);
-  const textSitemapURL = new URL(`${normalizedBasePath}sitemap.txt`, site);
-  return new Response(getRobotsTxt(sitemapURL, textSitemapURL), {
+export const GET: APIRoute = () => {
+  return new Response(getRobotsTxt(), {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
   });
 };
