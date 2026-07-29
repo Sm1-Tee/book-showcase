@@ -10,8 +10,6 @@ on:
 # Устанавливаем права для токена GITHUB_TOKEN
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 # Разрешаем только один одновременный деплой
 concurrency:
@@ -55,20 +53,3 @@ jobs:
             git commit -m 'chore: publish built site to docs'
             git push
           fi
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_PATH }}/dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
