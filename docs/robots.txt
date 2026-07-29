@@ -1,7 +1,7 @@
-
 User-agent: *
 Allow: /chit-ai/
 Disallow: /chit-ai/admin/
 
-Sitemap: https://sm1-tee.github.io/chit-ai/sitemap.xml
-Sitemap: https://sm1-tee.github.io/chit-ai/sitemap.txt
+Sitemap: https://sm1-tee.github.io/sitemap.xml
+Sitemap: https://sm1-tee.github.io/sitemap.txt
+Sitemap: https://sm1-tee.github.io/sitemap-index.xml
