@@ -751,6 +751,94 @@
           width: 100%;
         }
       }
+
+      /* ── Лента скачиваний ── */
+      .dl-fab {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 60;
+        display: none;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 18px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--text, inherit);
+        font: inherit;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        cursor: pointer;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+      }
+      .dl-fab.visible { display: inline-flex; }
+      .dl-fab:hover { border-color: var(--accent); }
+      .dl-fab .dl-badge {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 999px;
+        padding: 1px 8px;
+        font-size: 0.8125rem;
+      }
+      .dl-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 380px;
+        max-width: 92vw;
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.22);
+        transform: translateX(105%);
+        transition: transform 0.25s ease;
+        z-index: 61;
+        display: flex;
+        flex-direction: column;
+      }
+      .dl-drawer.open { transform: none; }
+      .dl-head {
+        padding: 16px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .dl-head-title { font-weight: 700; font-size: 1rem; }
+      .dl-when { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+      .dl-actions { display: flex; align-items: center; gap: 4px; }
+      .dl-icon-btn {
+        background: none;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 1.25rem;
+        line-height: 1;
+        padding: 4px 6px;
+        border-radius: 6px;
+      }
+      .dl-icon-btn:hover { color: var(--accent); }
+      .dl-body { flex: 1; overflow-y: auto; padding: 8px 16px 24px; }
+      .dl-total {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9375rem;
+      }
+      .dl-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+      .dl-item-title { font-weight: 600; font-size: 0.9375rem; }
+      .dl-meta { font-size: 0.8125rem; color: var(--muted); margin-top: 2px; }
+      .dl-delta { color: var(--accent); font-weight: 700; }
+      .dl-empty {
+        padding: 16px 0;
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.55;
+      }
+      @media (max-width: 480px) {
+        .dl-drawer { width: 100%; max-width: 100%; }
+      }
     </style>
   </head>
   <body>
@@ -869,6 +957,26 @@
         </form>
       </div>
     </div>
+
+    <button class="dl-fab" id="dlFab" type="button">
+      Скачивания <span class="dl-badge" id="dlBadge">0</span>
+    </button>
+
+    <aside class="dl-drawer" id="dlDrawer">
+      <div class="dl-head">
+        <div>
+          <div class="dl-head-title">Очередь скачиваний</div>
+          <div class="dl-when" id="dlUpdated"></div>
+        </div>
+        <div class="dl-actions">
+          <button class="dl-icon-btn" id="dlRefresh" type="button" title="Обновить">↻</button>
+          <button class="dl-icon-btn" id="dlClose" type="button" title="Закрыть">&times;</button>
+        </div>
+      </div>
+      <div class="dl-body" id="dlBody">
+        <div class="dl-empty">Загрузка…</div>
+      </div>
+    </aside>
 
     <div class="overlay" id="overlay">
       <div class="overlay-content">
@@ -1098,6 +1206,9 @@
       function showView(name) {
         el.authSection.classList.toggle('active', name === 'auth');
         el.bookListSection.classList.toggle('active', name === 'list');
+        var dlFabEl = document.getElementById('dlFab');
+        if (dlFabEl) dlFabEl.classList.toggle('visible', name === 'list');
+        if (name !== 'list') dlSetDrawer(false);
         el.formSection.classList.toggle('active', name === 'form');
 
         if (name === 'auth') el.pageTitle.textContent = 'Администрирование';
@@ -1891,6 +2002,129 @@
           el.tokenInput.value = saved;
           doLogin();
         }
+      })();
+
+      /* ── Лента скачиваний ── */
+
+      var DL_LOG_URL = RAW_BASE + '/data/downloads-log.json';
+      var dlLoaded = false;
+
+      function dlEsc(text) {
+        return String(text == null ? '' : text)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function dlPrettyName(name) {
+        var out = String(name || '').replace(/[_]+/g, ' ').trim();
+        if (!out) return 'Без названия';
+        return out.charAt(0).toUpperCase() + out.slice(1);
+      }
+
+      function dlVariant(v) {
+        if (v === 'color') return 'цветной';
+        if (v === 'bw') return 'чёрно-белый';
+        return 'файл';
+      }
+
+      function dlWhen(iso) {
+        if (!iso) return '';
+        var d = new Date(iso);
+        if (isNaN(d.getTime())) return '';
+        return d.toLocaleString('ru-RU', {
+          day: 'numeric',
+          month: 'long',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      }
+
+      function dlRender(data) {
+        var body = document.getElementById('dlBody');
+        var updated = document.getElementById('dlUpdated');
+        var badge = document.getElementById('dlBadge');
+        if (!body) return;
+
+        var events = (data && data.events) || [];
+        var total = (data && typeof data.total === 'number') ? data.total : 0;
+
+        if (updated) {
+          updated.textContent = data && data.updatedAt
+            ? 'проверено ' + dlWhen(data.updatedAt)
+            : '';
+        }
+        if (badge) badge.textContent = String(events.length);
+
+        var html = '<div class="dl-total">Всего скачиваний за всё время: <strong>' + total.toLocaleString('ru-RU') + '</strong></div>';
+
+        if (!events.length) {
+          html += '<div class="dl-empty">Новых скачиваний пока не было.<br>Счётчики проверяются каждые 30 минут — как только книгу скачают, здесь появится запись с датой и временем.</div>';
+        } else {
+          for (var i = 0; i < events.length; i++) {
+            var ev = events[i];
+            html += '<div class="dl-item">' +
+              '<div class="dl-when">' + dlEsc(dlWhen(ev.at)) + '</div>' +
+              '<div class="dl-item-title">' + dlEsc(dlPrettyName(ev.release || ev.tag)) + '</div>' +
+              '<div class="dl-meta">' + dlEsc(dlVariant(ev.variant)) +
+              ' · <span class="dl-delta">+' + dlEsc(ev.delta) + '</span>' +
+              ' · всего ' + dlEsc(ev.total) + '</div>' +
+              '</div>';
+          }
+        }
+
+        body.innerHTML = html;
+      }
+
+      function loadDownloadFeed() {
+        var body = document.getElementById('dlBody');
+        if (body && !dlLoaded) body.innerHTML = '<div class="dl-empty">Загрузка…</div>';
+        return fetch(DL_LOG_URL + '?t=' + Date.now(), { cache: 'no-store' })
+          .then(function (res) {
+            if (res.status === 404) return { events: [], total: 0, pending: true };
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function (data) {
+            dlLoaded = true;
+            if (data && data.pending) {
+              var b = document.getElementById('dlBody');
+              if (b) b.innerHTML = '<div class="dl-empty">Сбор статистики только что включён. Первые данные появятся в течение получаса.</div>';
+              return;
+            }
+            dlRender(data);
+          })
+          .catch(function (e) {
+            console.error('Ошибка загрузки ленты скачиваний:', e);
+            var b = document.getElementById('dlBody');
+            if (b) b.innerHTML = '<div class="dl-empty">Не удалось загрузить данные. Попробуйте кнопку обновления.</div>';
+          });
+      }
+
+      function dlSetDrawer(open) {
+        var drawer = document.getElementById('dlDrawer');
+        if (!drawer) return;
+        drawer.classList.toggle('open', open);
+        if (open) loadDownloadFeed();
+      }
+
+      (function initDownloadFeed() {
+        var fab = document.getElementById('dlFab');
+        var closeBtn = document.getElementById('dlClose');
+        var refreshBtn = document.getElementById('dlRefresh');
+        if (fab) {
+          fab.addEventListener('click', function () {
+            var drawer = document.getElementById('dlDrawer');
+            dlSetDrawer(!(drawer && drawer.classList.contains('open')));
+          });
+        }
+        if (closeBtn) closeBtn.addEventListener('click', function () { dlSetDrawer(false); });
+        if (refreshBtn) refreshBtn.addEventListener('click', function () { loadDownloadFeed(); });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') dlSetDrawer(false);
+        });
+        loadDownloadFeed();
       })();
     </script>
   </body>

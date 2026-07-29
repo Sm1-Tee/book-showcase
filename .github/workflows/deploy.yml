@@ -4,6 +4,9 @@ on:
   # Запускать деплой при каждом пуше в текущую основную ветку
   push:
     branches: [master]
+    paths-ignore:
+      - 'docs/**'
+      - 'data/**'
   # Позволяет запускать этот workflow вручную из вкладки Actions
   workflow_dispatch:
 
