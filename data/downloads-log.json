@@ -1,7 +1,17 @@
 {
-	"events": [],
-	"updatedAt": "2026-07-30T05:36:45.981Z",
-	"total": 144,
+	"events": [
+		{
+			"at": "2026-07-30T08:19:15.447Z",
+			"release": "Черный отряд",
+			"tag": "черный_отряд",
+			"asset": "Chernyi_otriad_BW.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 2
+		}
+	],
+	"updatedAt": "2026-07-30T08:19:15.447Z",
+	"total": 145,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -137,6 +147,12 @@
 			"total": 2
 		},
 		{
+			"tag": "черный_отряд",
+			"release": "Черный отряд",
+			"publishedAt": "2026-07-23T13:21:12Z",
+			"total": 2
+		},
+		{
 			"tag": "Posledniy_dovod_koroley",
 			"release": "Последний довод королей",
 			"publishedAt": "2026-05-10T13:36:38Z",
@@ -164,12 +180,6 @@
 			"tag": "Остров_проклятых",
 			"release": "Остров проклятых",
 			"publishedAt": "2026-07-27T18:05:59Z",
-			"total": 1
-		},
-		{
-			"tag": "черный_отряд",
-			"release": "Черный отряд",
-			"publishedAt": "2026-07-23T13:21:12Z",
 			"total": 1
 		},
 		{
