@@ -1,6 +1,60 @@
 {
 	"events": [
 		{
+			"at": "2026-07-30T17:56:21.346Z",
+			"release": "Остров проклятых",
+			"tag": "Остров_проклятых",
+			"asset": "Ostrov-proklyatyh-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 2
+		},
+		{
+			"at": "2026-07-30T17:56:21.346Z",
+			"release": "Вечера на хуторе близ Диканьки",
+			"tag": "Вечера_на_хуторе_близ_Диканьки",
+			"asset": "Vechera.na.khutore.bliz.Dikanki-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 5
+		},
+		{
+			"at": "2026-07-30T17:56:21.346Z",
+			"release": "Страхи мудреца. Том 2",
+			"tag": "Strakhi_mudretsa_Tom_2",
+			"asset": "Strakhi_mudretsa_Tom_2-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 9
+		},
+		{
+			"at": "2026-07-30T17:56:21.346Z",
+			"release": "imya-vetra",
+			"tag": "imya-vetra",
+			"asset": "imya-vetra-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 11
+		},
+		{
+			"at": "2026-07-30T17:56:21.346Z",
+			"release": "Страхи мудреца. Том 1",
+			"tag": "Strakhi_mudretsa_Tom_1",
+			"asset": "Strakhi_mudretsa_Tom_1-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 5
+		},
+		{
+			"at": "2026-07-30T17:56:21.346Z",
+			"release": "Настоящие сказки братьев Гримм.",
+			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
+			"asset": "Nastoyashchie_skazki_bratyev_Grimm-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 4
+		},
+		{
 			"at": "2026-07-30T16:24:12.837Z",
 			"release": "Настоящие сказки братьев Гримм.",
 			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
@@ -19,15 +73,15 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-07-30T16:24:12.837Z",
-	"total": 146,
+	"updatedAt": "2026-07-30T17:56:21.346Z",
+	"total": 152,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
 			"tag": "imya-vetra",
 			"release": "imya-vetra",
 			"publishedAt": "2026-05-10T12:58:58Z",
-			"total": 13
+			"total": 14
 		},
 		{
 			"tag": "bratstvo_kolca",
@@ -39,7 +93,7 @@
 			"tag": "Strakhi_mudretsa_Tom_2",
 			"release": "Страхи мудреца. Том 2",
 			"publishedAt": "2026-05-20T15:34:19Z",
-			"total": 11
+			"total": 12
 		},
 		{
 			"tag": "Миргород",
@@ -60,33 +114,33 @@
 			"total": 8
 		},
 		{
+			"tag": "Strakhi_mudretsa_Tom_1",
+			"release": "Страхи мудреца. Том 1",
+			"publishedAt": "2026-05-10T13:40:37Z",
+			"total": 7
+		},
+		{
+			"tag": "Вечера_на_хуторе_близ_Диканьки",
+			"release": "Вечера на хуторе близ Диканьки",
+			"publishedAt": "2026-07-05T18:38:06Z",
+			"total": 6
+		},
+		{
 			"tag": "1984",
 			"release": "1984",
 			"publishedAt": "2026-05-10T14:50:17Z",
 			"total": 6
 		},
 		{
-			"tag": "Strakhi_mudretsa_Tom_1",
-			"release": "Страхи мудреца. Том 1",
-			"publishedAt": "2026-05-10T13:40:37Z",
+			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
+			"release": "Настоящие сказки братьев Гримм.",
+			"publishedAt": "2026-05-10T14:54:17Z",
 			"total": 6
-		},
-		{
-			"tag": "Вечера_на_хуторе_близ_Диканьки",
-			"release": "Вечера на хуторе близ Диканьки",
-			"publishedAt": "2026-07-05T18:38:06Z",
-			"total": 5
 		},
 		{
 			"tag": "Prezhde_chem_ih_povesyat",
 			"release": "Прежде чем их повесят",
 			"publishedAt": "2026-05-10T13:35:14Z",
-			"total": 5
-		},
-		{
-			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
-			"release": "Настоящие сказки братьев Гримм.",
-			"publishedAt": "2026-05-10T14:54:17Z",
 			"total": 5
 		},
 		{
@@ -150,6 +204,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Остров_проклятых",
+			"release": "Остров проклятых",
+			"publishedAt": "2026-07-27T18:05:59Z",
+			"total": 2
+		},
+		{
 			"tag": "Побег_из_Шоушенка",
 			"release": "Побег из Шоушенка",
 			"publishedAt": "2026-07-25T16:49:08Z",
@@ -184,12 +244,6 @@
 			"release": "Артас. Восхождение Короля-лича",
 			"publishedAt": "2026-05-10T13:37:59Z",
 			"total": 2
-		},
-		{
-			"tag": "Остров_проклятых",
-			"release": "Остров проклятых",
-			"publishedAt": "2026-07-27T18:05:59Z",
-			"total": 1
 		},
 		{
 			"tag": "Rytsar_Semi_Korolevstv",
