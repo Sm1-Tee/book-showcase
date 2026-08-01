@@ -1,6 +1,24 @@
 {
 	"events": [
 		{
+			"at": "2026-08-01T15:35:22.379Z",
+			"release": "Черный отряд",
+			"tag": "черный_отряд",
+			"asset": "Chernyi_otriad_COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-01T15:35:22.379Z",
+			"release": "Братство кольца",
+			"tag": "bratstvo_kolca",
+			"asset": "bratstvo_kolca_bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 4
+		},
+		{
 			"at": "2026-07-30T17:56:21.346Z",
 			"release": "Остров проклятых",
 			"tag": "Остров_проклятых",
@@ -73,8 +91,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-01T14:05:35.529Z",
-	"total": 152,
+	"updatedAt": "2026-08-01T15:35:22.379Z",
+	"total": 154,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -87,7 +105,7 @@
 			"tag": "bratstvo_kolca",
 			"release": "Братство кольца",
 			"publishedAt": "2026-06-06T19:17:42Z",
-			"total": 12
+			"total": 13
 		},
 		{
 			"tag": "Strakhi_mudretsa_Tom_2",
@@ -186,6 +204,12 @@
 			"total": 4
 		},
 		{
+			"tag": "черный_отряд",
+			"release": "Черный отряд",
+			"publishedAt": "2026-07-23T13:21:12Z",
+			"total": 3
+		},
+		{
 			"tag": "Uchenik_ubiytsy",
 			"release": "Ученик убийцы ",
 			"publishedAt": "2026-05-10T14:57:15Z",
@@ -213,12 +237,6 @@
 			"tag": "Побег_из_Шоушенка",
 			"release": "Побег из Шоушенка",
 			"publishedAt": "2026-07-25T16:49:08Z",
-			"total": 2
-		},
-		{
-			"tag": "черный_отряд",
-			"release": "Черный отряд",
-			"publishedAt": "2026-07-23T13:21:12Z",
 			"total": 2
 		},
 		{
