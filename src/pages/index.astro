@@ -67,8 +67,8 @@ allBooks.forEach(book => {
 
   {latestBooks.length > 0 && (
     <section id="latest-catalog" class="mb-12" aria-label="Новинки">
-      <div class="flex items-center justify-between mb-6 px-2">
-        <h2 class="text-2xl font-bold tracking-tight text-white">Последние поступления</h2>
+      <div class="flex items-center justify-center mb-6 px-2">
+        <h2 class="text-3xl font-black tracking-tight text-white">Последние поступления</h2>
       </div>
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-6">
         {latestBooks.map(({ book, isPriorityImage }) => (
@@ -92,8 +92,8 @@ allBooks.forEach(book => {
 
   {allBooks.length > 0 ? (
     <section id="catalog" aria-label="Полный каталог книг">
-      <div class="flex items-center justify-between mb-6 px-2">
-        <h2 class="text-2xl font-bold tracking-tight text-white">Все книги</h2>
+      <div class="flex items-center justify-center mb-6 px-2">
+        <h2 class="text-3xl font-black tracking-tight text-white">Все книги</h2>
       </div>
       <div id="catalog-empty-state" class="hidden rounded-[2rem] border border-white/10 bg-paper-alt/98 sm:bg-white/[0.04] px-6 py-14 text-center shadow-2xl shadow-black/20 sm:backdrop-blur-md mb-6">
         <div class="mx-auto mb-5 grid h-16 w-16 place-items-center rounded-3xl border border-accent/25 bg-accent/10 text-2xl text-accent">⌕</div>
