@@ -1,6 +1,33 @@
 {
 	"events": [
 		{
+			"at": "2026-08-02T17:58:27.942Z",
+			"release": "Остров проклятых",
+			"tag": "Остров_проклятых",
+			"asset": "Ostrov-proklyatyh-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
+			"at": "2026-08-02T17:58:27.942Z",
+			"release": "Побег из Шоушенка",
+			"tag": "Побег_из_Шоушенка",
+			"asset": "Pobeg_iz_Shoushenka_COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
+			"at": "2026-08-02T17:58:27.942Z",
+			"release": "Трудно быть богом",
+			"tag": "Трудно_быть_богом",
+			"asset": "Trudno_byt._bogom-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 5
+		},
+		{
 			"at": "2026-08-01T16:55:45.216Z",
 			"release": "Побег из Шоушенка",
 			"tag": "Побег_из_Шоушенка",
@@ -100,8 +127,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-02T16:54:56.571Z",
-	"total": 155,
+	"updatedAt": "2026-08-02T17:58:27.942Z",
+	"total": 158,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -165,6 +192,12 @@
 			"total": 6
 		},
 		{
+			"tag": "Трудно_быть_богом",
+			"release": "Трудно быть богом",
+			"publishedAt": "2026-07-14T14:20:43Z",
+			"total": 5
+		},
+		{
 			"tag": "Prezhde_chem_ih_povesyat",
 			"release": "Прежде чем их повесят",
 			"publishedAt": "2026-05-10T13:35:14Z",
@@ -183,9 +216,9 @@
 			"total": 5
 		},
 		{
-			"tag": "Трудно_быть_богом",
-			"release": "Трудно быть богом",
-			"publishedAt": "2026-07-14T14:20:43Z",
+			"tag": "Побег_из_Шоушенка",
+			"release": "Побег из Шоушенка",
+			"publishedAt": "2026-07-25T16:49:08Z",
 			"total": 4
 		},
 		{
@@ -213,9 +246,9 @@
 			"total": 4
 		},
 		{
-			"tag": "Побег_из_Шоушенка",
-			"release": "Побег из Шоушенка",
-			"publishedAt": "2026-07-25T16:49:08Z",
+			"tag": "Остров_проклятых",
+			"release": "Остров проклятых",
+			"publishedAt": "2026-07-27T18:05:59Z",
 			"total": 3
 		},
 		{
@@ -241,12 +274,6 @@
 			"release": "Черный человек ",
 			"publishedAt": "2026-05-10T14:47:55Z",
 			"total": 3
-		},
-		{
-			"tag": "Остров_проклятых",
-			"release": "Остров проклятых",
-			"publishedAt": "2026-07-27T18:05:59Z",
-			"total": 2
 		},
 		{
 			"tag": "Posledniy_dovod_koroley",
