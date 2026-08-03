@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-03T08:48:43.182Z",
+			"release": "Мастер и Маргарита",
+			"tag": "Master_i_Margarita",
+			"asset": "Master_i_Margarita-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 2
+		},
+		{
 			"at": "2026-08-02T17:58:27.942Z",
 			"release": "Остров проклятых",
 			"tag": "Остров_проклятых",
@@ -127,8 +136,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-03T05:01:11.769Z",
-	"total": 158,
+	"updatedAt": "2026-08-03T08:48:43.182Z",
+	"total": 159,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -270,6 +279,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Master_i_Margarita",
+			"release": "Мастер и Маргарита",
+			"publishedAt": "2026-05-10T14:49:21Z",
+			"total": 3
+		},
+		{
 			"tag": "Chernyy_chelovek",
 			"release": "Черный человек ",
 			"publishedAt": "2026-05-10T14:47:55Z",
@@ -279,12 +294,6 @@
 			"tag": "Posledniy_dovod_koroley",
 			"release": "Последний довод королей",
 			"publishedAt": "2026-05-10T13:36:38Z",
-			"total": 2
-		},
-		{
-			"tag": "Master_i_Margarita",
-			"release": "Мастер и Маргарита",
-			"publishedAt": "2026-05-10T14:49:21Z",
 			"total": 2
 		},
 		{
