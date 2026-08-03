@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-03T19:05:22.439Z",
+			"release": "Настоящие сказки братьев Гримм.",
+			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
+			"asset": "Nastoyashchie_skazki_bratyev_Grimm-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 5
+		},
+		{
 			"at": "2026-08-03T17:24:20.899Z",
 			"release": "Миргород",
 			"tag": "Миргород",
@@ -163,8 +172,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-03T17:24:20.899Z",
-	"total": 162,
+	"updatedAt": "2026-08-03T19:05:22.439Z",
+	"total": 163,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -216,15 +225,15 @@
 			"total": 7
 		},
 		{
-			"tag": "1984",
-			"release": "1984",
-			"publishedAt": "2026-05-10T14:50:17Z",
-			"total": 6
-		},
-		{
 			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
 			"release": "Настоящие сказки братьев Гримм.",
 			"publishedAt": "2026-05-10T14:54:17Z",
+			"total": 7
+		},
+		{
+			"tag": "1984",
+			"release": "1984",
+			"publishedAt": "2026-05-10T14:50:17Z",
 			"total": 6
 		},
 		{
