@@ -1,6 +1,33 @@
 {
 	"events": [
 		{
+			"at": "2026-08-03T17:24:20.899Z",
+			"release": "Миргород",
+			"tag": "Миргород",
+			"asset": "MIRGOROD-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 9
+		},
+		{
+			"at": "2026-08-03T17:24:20.899Z",
+			"release": "Вечера на хуторе близ Диканьки",
+			"tag": "Вечера_на_хуторе_близ_Диканьки",
+			"asset": "Vechera.na.khutore.bliz.Dikanki-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 6
+		},
+		{
+			"at": "2026-08-03T17:24:20.899Z",
+			"release": "Мастер и Маргарита",
+			"tag": "Master_i_Margarita",
+			"asset": "Master_i_Margarita-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
 			"at": "2026-08-03T08:48:43.182Z",
 			"release": "Мастер и Маргарита",
 			"tag": "Master_i_Margarita",
@@ -136,8 +163,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-03T15:24:40.671Z",
-	"total": 159,
+	"updatedAt": "2026-08-03T17:24:20.899Z",
+	"total": 162,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -162,7 +189,7 @@
 			"tag": "Миргород",
 			"release": "Миргород",
 			"publishedAt": "2026-07-07T12:28:03Z",
-			"total": 10
+			"total": 11
 		},
 		{
 			"tag": "Ukrytie",
@@ -177,16 +204,16 @@
 			"total": 8
 		},
 		{
+			"tag": "Вечера_на_хуторе_близ_Диканьки",
+			"release": "Вечера на хуторе близ Диканьки",
+			"publishedAt": "2026-07-05T18:38:06Z",
+			"total": 7
+		},
+		{
 			"tag": "Strakhi_mudretsa_Tom_1",
 			"release": "Страхи мудреца. Том 1",
 			"publishedAt": "2026-05-10T13:40:37Z",
 			"total": 7
-		},
-		{
-			"tag": "Вечера_на_хуторе_близ_Диканьки",
-			"release": "Вечера на хуторе близ Диканьки",
-			"publishedAt": "2026-07-05T18:38:06Z",
-			"total": 6
 		},
 		{
 			"tag": "1984",
@@ -243,6 +270,12 @@
 			"total": 4
 		},
 		{
+			"tag": "Master_i_Margarita",
+			"release": "Мастер и Маргарита",
+			"publishedAt": "2026-05-10T14:49:21Z",
+			"total": 4
+		},
+		{
 			"tag": "METRO_2033",
 			"release": "METRO_2033",
 			"publishedAt": "2026-05-10T14:38:34Z",
@@ -276,12 +309,6 @@
 			"tag": "Mor_uchenik_Smerti",
 			"release": "Мор, ученик Смерти",
 			"publishedAt": "2026-05-10T14:45:04Z",
-			"total": 3
-		},
-		{
-			"tag": "Master_i_Margarita",
-			"release": "Мастер и Маргарита",
-			"publishedAt": "2026-05-10T14:49:21Z",
 			"total": 3
 		},
 		{
