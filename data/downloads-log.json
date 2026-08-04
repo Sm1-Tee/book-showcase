@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-04T23:32:30.326Z",
+			"release": "Проект «Аве Мария»",
+			"tag": "Книга",
+			"asset": "Proekt-Ave-Mariya-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
 			"at": "2026-08-03T19:05:22.439Z",
 			"release": "Настоящие сказки братьев Гримм.",
 			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
@@ -172,8 +181,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-04T22:08:26.628Z",
-	"total": 163,
+	"updatedAt": "2026-08-04T23:32:30.326Z",
+	"total": 164,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -345,6 +354,12 @@
 			"total": 2
 		},
 		{
+			"tag": "Книга",
+			"release": "Проект «Аве Мария»",
+			"publishedAt": "2026-08-04T20:51:56Z",
+			"total": 1
+		},
+		{
 			"tag": "Rytsar_Semi_Korolevstv",
 			"release": "Рыцарь Семи Королевств",
 			"publishedAt": "2026-05-10T13:41:44Z",
@@ -367,12 +382,6 @@
 			"release": "Дюна",
 			"publishedAt": "2026-05-10T14:47:01Z",
 			"total": 1
-		},
-		{
-			"tag": "Книга",
-			"release": "Проект «Аве Мария»",
-			"publishedAt": "2026-08-04T20:51:56Z",
-			"total": 0
 		},
 		{
 			"tag": "Tsvet_volshebstva",
