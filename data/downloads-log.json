@@ -172,7 +172,7 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-04T19:26:25.546Z",
+	"updatedAt": "2026-08-04T20:51:56.065Z",
 	"total": 163,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
@@ -367,6 +367,12 @@
 			"release": "Дюна",
 			"publishedAt": "2026-05-10T14:47:01Z",
 			"total": 1
+		},
+		{
+			"tag": "Книга",
+			"release": "Проект «Аве Мария»",
+			"publishedAt": null,
+			"total": 0
 		},
 		{
 			"tag": "Tsvet_volshebstva",
