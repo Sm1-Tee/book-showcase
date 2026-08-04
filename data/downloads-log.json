@@ -172,7 +172,7 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-04T20:51:56.065Z",
+	"updatedAt": "2026-08-04T22:08:26.628Z",
 	"total": 163,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
@@ -371,7 +371,7 @@
 		{
 			"tag": "Книга",
 			"release": "Проект «Аве Мария»",
-			"publishedAt": null,
+			"publishedAt": "2026-08-04T20:51:56Z",
 			"total": 0
 		},
 		{
