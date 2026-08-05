@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-05T10:59:17.976Z",
+			"release": "Дюна",
+			"tag": "Dyuna",
+			"asset": "Dyuna-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 2
+		},
+		{
 			"at": "2026-08-05T08:03:35.472Z",
 			"release": "Проект «Аве Мария»",
 			"tag": "Книга",
@@ -217,8 +226,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-05T08:03:35.472Z",
-	"total": 168,
+	"updatedAt": "2026-08-05T10:59:17.976Z",
+	"total": 169,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -396,6 +405,12 @@
 			"total": 2
 		},
 		{
+			"tag": "Dyuna",
+			"release": "Дюна",
+			"publishedAt": "2026-05-10T14:47:01Z",
+			"total": 2
+		},
+		{
 			"tag": "Artas_Voskhozhdenie_Korolya-licha",
 			"release": "Артас. Восхождение Короля-лича",
 			"publishedAt": "2026-05-10T13:37:59Z",
@@ -411,12 +426,6 @@
 			"tag": "Frankenshteyn_ili_Sovremennyy_Prometey",
 			"release": "Франкенштейн, или Современный Прометей",
 			"publishedAt": "2026-05-10T14:55:16Z",
-			"total": 1
-		},
-		{
-			"tag": "Dyuna",
-			"release": "Дюна",
-			"publishedAt": "2026-05-10T14:47:01Z",
 			"total": 1
 		},
 		{
