@@ -1,6 +1,42 @@
 {
 	"events": [
 		{
+			"at": "2026-08-05T08:03:35.472Z",
+			"release": "Проект «Аве Мария»",
+			"tag": "Книга",
+			"asset": "Proekt-Ave-Mariya-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 2
+		},
+		{
+			"at": "2026-08-05T08:03:35.472Z",
+			"release": "Трудно быть богом",
+			"tag": "Трудно_быть_богом",
+			"asset": "Trudno_byt._bogom-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 6
+		},
+		{
+			"at": "2026-08-05T08:03:35.472Z",
+			"release": "Пикник на обочине",
+			"tag": "Piknik_na_obochine",
+			"asset": "Piknik_na_obochine-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 2
+		},
+		{
+			"at": "2026-08-05T08:03:35.472Z",
+			"release": "METRO_2033",
+			"tag": "METRO_2033",
+			"asset": "METRO_2033-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
 			"at": "2026-08-04T23:32:30.326Z",
 			"release": "Проект «Аве Мария»",
 			"tag": "Книга",
@@ -181,8 +217,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-05T05:29:00.987Z",
-	"total": 164,
+	"updatedAt": "2026-08-05T08:03:35.472Z",
+	"total": 168,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -240,21 +276,27 @@
 			"total": 7
 		},
 		{
+			"tag": "Трудно_быть_богом",
+			"release": "Трудно быть богом",
+			"publishedAt": "2026-07-14T14:20:43Z",
+			"total": 6
+		},
+		{
 			"tag": "1984",
 			"release": "1984",
 			"publishedAt": "2026-05-10T14:50:17Z",
 			"total": 6
 		},
 		{
-			"tag": "Трудно_быть_богом",
-			"release": "Трудно быть богом",
-			"publishedAt": "2026-07-14T14:20:43Z",
-			"total": 5
-		},
-		{
 			"tag": "Prezhde_chem_ih_povesyat",
 			"release": "Прежде чем их повесят",
 			"publishedAt": "2026-05-10T13:35:14Z",
+			"total": 5
+		},
+		{
+			"tag": "METRO_2033",
+			"release": "METRO_2033",
+			"publishedAt": "2026-05-10T14:38:34Z",
 			"total": 5
 		},
 		{
@@ -294,12 +336,6 @@
 			"total": 4
 		},
 		{
-			"tag": "METRO_2033",
-			"release": "METRO_2033",
-			"publishedAt": "2026-05-10T14:38:34Z",
-			"total": 4
-		},
-		{
 			"tag": "Esli_vse_koshki_v_mire_ischeznut",
 			"release": "Esli_vse_koshki_v_mire_ischeznut",
 			"publishedAt": "2026-05-10T14:44:06Z",
@@ -336,9 +372,21 @@
 			"total": 3
 		},
 		{
+			"tag": "Книга",
+			"release": "Проект «Аве Мария»",
+			"publishedAt": "2026-08-04T20:51:56Z",
+			"total": 2
+		},
+		{
 			"tag": "Posledniy_dovod_koroley",
 			"release": "Последний довод королей",
 			"publishedAt": "2026-05-10T13:36:38Z",
+			"total": 2
+		},
+		{
+			"tag": "Piknik_na_obochine",
+			"release": "Пикник на обочине",
+			"publishedAt": "2026-05-10T14:46:02Z",
 			"total": 2
 		},
 		{
@@ -354,21 +402,9 @@
 			"total": 2
 		},
 		{
-			"tag": "Книга",
-			"release": "Проект «Аве Мария»",
-			"publishedAt": "2026-08-04T20:51:56Z",
-			"total": 1
-		},
-		{
 			"tag": "Rytsar_Semi_Korolevstv",
 			"release": "Рыцарь Семи Королевств",
 			"publishedAt": "2026-05-10T13:41:44Z",
-			"total": 1
-		},
-		{
-			"tag": "Piknik_na_obochine",
-			"release": "Пикник на обочине",
-			"publishedAt": "2026-05-10T14:46:02Z",
 			"total": 1
 		},
 		{
