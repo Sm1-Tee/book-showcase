@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-06T04:08:46.400Z",
+			"release": "Проект «Аве Мария»",
+			"tag": "Книга",
+			"asset": "Proekt-Ave-Mariya-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
 			"at": "2026-08-05T10:59:17.976Z",
 			"release": "Дюна",
 			"tag": "Dyuna",
@@ -226,8 +235,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-06T00:52:56.175Z",
-	"total": 169,
+	"updatedAt": "2026-08-06T04:08:46.400Z",
+	"total": 170,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -351,6 +360,12 @@
 			"total": 4
 		},
 		{
+			"tag": "Книга",
+			"release": "Проект «Аве Мария»",
+			"publishedAt": "2026-08-04T20:51:56Z",
+			"total": 3
+		},
+		{
 			"tag": "Остров_проклятых",
 			"release": "Остров проклятых",
 			"publishedAt": "2026-07-27T18:05:59Z",
@@ -379,12 +394,6 @@
 			"release": "Черный человек ",
 			"publishedAt": "2026-05-10T14:47:55Z",
 			"total": 3
-		},
-		{
-			"tag": "Книга",
-			"release": "Проект «Аве Мария»",
-			"publishedAt": "2026-08-04T20:51:56Z",
-			"total": 2
 		},
 		{
 			"tag": "Posledniy_dovod_koroley",
