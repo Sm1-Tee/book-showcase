@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-07T18:16:47.904Z",
+			"release": "Кровь и железо",
+			"tag": "Krov_i_zhelezo",
+			"asset": "Krov_i_zhelezo-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
 			"at": "2026-08-07T17:21:50.121Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -244,8 +253,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-07T17:21:50.121Z",
-	"total": 171,
+	"updatedAt": "2026-08-07T18:16:47.904Z",
+	"total": 172,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -399,6 +408,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Krov_i_zhelezo",
+			"release": "Кровь и железо",
+			"publishedAt": "2026-05-10T13:33:54Z",
+			"total": 3
+		},
+		{
 			"tag": "Chernyy_chelovek",
 			"release": "Черный человек ",
 			"publishedAt": "2026-05-10T14:47:55Z",
@@ -414,12 +429,6 @@
 			"tag": "Piknik_na_obochine",
 			"release": "Пикник на обочине",
 			"publishedAt": "2026-05-10T14:46:02Z",
-			"total": 2
-		},
-		{
-			"tag": "Krov_i_zhelezo",
-			"release": "Кровь и железо",
-			"publishedAt": "2026-05-10T13:33:54Z",
 			"total": 2
 		},
 		{
