@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-07T17:21:50.121Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 6
+		},
+		{
 			"at": "2026-08-06T04:08:46.400Z",
 			"release": "Проект «Аве Мария»",
 			"tag": "Книга",
@@ -235,8 +244,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-07T16:22:43.333Z",
-	"total": 170,
+	"updatedAt": "2026-08-07T17:21:50.121Z",
+	"total": 171,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -267,7 +276,7 @@
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
-			"total": 9
+			"total": 10
 		},
 		{
 			"tag": "dve-kreposti",
