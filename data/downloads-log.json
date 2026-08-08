@@ -253,7 +253,7 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-08T17:56:28.071Z",
+	"updatedAt": "2026-08-08T18:35:28.940Z",
 	"total": 172,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
@@ -454,6 +454,12 @@
 			"release": "Франкенштейн, или Современный Прометей",
 			"publishedAt": "2026-05-10T14:55:16Z",
 			"total": 1
+		},
+		{
+			"tag": "1984_2",
+			"release": "1984",
+			"publishedAt": "2026-08-08T18:06:59Z",
+			"total": 0
 		},
 		{
 			"tag": "Tsvet_volshebstva",
