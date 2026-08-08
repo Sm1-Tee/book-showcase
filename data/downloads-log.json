@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-08T19:26:05.849Z",
+			"release": "1984",
+			"tag": "1984_2",
+			"asset": "1984-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
 			"at": "2026-08-07T18:16:47.904Z",
 			"release": "Кровь и железо",
 			"tag": "Krov_i_zhelezo",
@@ -253,8 +262,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-08T18:35:28.940Z",
-	"total": 172,
+	"updatedAt": "2026-08-08T19:26:05.849Z",
+	"total": 173,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -444,6 +453,12 @@
 			"total": 2
 		},
 		{
+			"tag": "1984_2",
+			"release": "1984",
+			"publishedAt": "2026-08-08T18:06:59Z",
+			"total": 1
+		},
+		{
 			"tag": "Rytsar_Semi_Korolevstv",
 			"release": "Рыцарь Семи Королевств",
 			"publishedAt": "2026-05-10T13:41:44Z",
@@ -454,12 +469,6 @@
 			"release": "Франкенштейн, или Современный Прометей",
 			"publishedAt": "2026-05-10T14:55:16Z",
 			"total": 1
-		},
-		{
-			"tag": "1984_2",
-			"release": "1984",
-			"publishedAt": "2026-08-08T18:06:59Z",
-			"total": 0
 		},
 		{
 			"tag": "Tsvet_volshebstva",
