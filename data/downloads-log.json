@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-09T01:41:43.541Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 7
+		},
+		{
 			"at": "2026-08-08T19:26:05.849Z",
 			"release": "1984",
 			"tag": "1984_2",
@@ -262,8 +271,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-08T23:56:33.284Z",
-	"total": 173,
+	"updatedAt": "2026-08-09T01:41:43.541Z",
+	"total": 174,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -294,7 +303,7 @@
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
-			"total": 10
+			"total": 11
 		},
 		{
 			"tag": "dve-kreposti",
