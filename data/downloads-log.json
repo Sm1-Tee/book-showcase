@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-10T07:24:21.230Z",
+			"release": "1984",
+			"tag": "1984_2",
+			"asset": "1984-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 4
+		},
+		{
 			"at": "2026-08-10T02:14:50.263Z",
 			"release": "1984",
 			"tag": "1984_2",
@@ -298,8 +307,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-10T05:54:20.891Z",
-	"total": 177,
+	"updatedAt": "2026-08-10T07:24:21.230Z",
+	"total": 178,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -393,6 +402,12 @@
 			"total": 5
 		},
 		{
+			"tag": "1984_2",
+			"release": "1984",
+			"publishedAt": "2026-08-08T18:06:59Z",
+			"total": 4
+		},
+		{
 			"tag": "Побег_из_Шоушенка",
 			"release": "Побег из Шоушенка",
 			"publishedAt": "2026-07-25T16:49:08Z",
@@ -421,12 +436,6 @@
 			"release": "Esli_vse_koshki_v_mire_ischeznut",
 			"publishedAt": "2026-05-10T14:44:06Z",
 			"total": 4
-		},
-		{
-			"tag": "1984_2",
-			"release": "1984",
-			"publishedAt": "2026-08-08T18:06:59Z",
-			"total": 3
 		},
 		{
 			"tag": "Книга",
