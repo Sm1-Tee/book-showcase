@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-10T02:14:50.263Z",
+			"release": "1984",
+			"tag": "1984_2",
+			"asset": "1984-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
 			"at": "2026-08-09T17:59:19.087Z",
 			"release": "Трудно быть богом",
 			"tag": "Трудно_быть_богом",
@@ -289,8 +298,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-09T23:58:53.995Z",
-	"total": 176,
+	"updatedAt": "2026-08-10T02:14:50.263Z",
+	"total": 177,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -414,6 +423,12 @@
 			"total": 4
 		},
 		{
+			"tag": "1984_2",
+			"release": "1984",
+			"publishedAt": "2026-08-08T18:06:59Z",
+			"total": 3
+		},
+		{
 			"tag": "Книга",
 			"release": "Проект «Аве Мария»",
 			"publishedAt": "2026-08-04T20:51:56Z",
@@ -454,12 +469,6 @@
 			"release": "Черный человек ",
 			"publishedAt": "2026-05-10T14:47:55Z",
 			"total": 3
-		},
-		{
-			"tag": "1984_2",
-			"release": "1984",
-			"publishedAt": "2026-08-08T18:06:59Z",
-			"total": 2
 		},
 		{
 			"tag": "Posledniy_dovod_koroley",
