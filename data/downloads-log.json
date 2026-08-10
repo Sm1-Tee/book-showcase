@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-10T13:54:06.405Z",
+			"release": "Прежде чем их повесят",
+			"tag": "Prezhde_chem_ih_povesyat",
+			"asset": "Prezhde_chem_ih_povesyat-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
 			"at": "2026-08-10T07:24:21.230Z",
 			"release": "1984",
 			"tag": "1984_2",
@@ -307,8 +316,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-10T12:11:15.090Z",
-	"total": 178,
+	"updatedAt": "2026-08-10T13:54:06.405Z",
+	"total": 179,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -381,7 +390,7 @@
 			"tag": "Prezhde_chem_ih_povesyat",
 			"release": "Прежде чем их повесят",
 			"publishedAt": "2026-05-10T13:35:14Z",
-			"total": 5
+			"total": 6
 		},
 		{
 			"tag": "METRO_2033",
