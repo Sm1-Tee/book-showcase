@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-13T21:14:42.086Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 2,
+			"total": 9
+		},
+		{
 			"at": "2026-08-11T19:13:34.321Z",
 			"release": "Прежде чем их повесят",
 			"tag": "Prezhde_chem_ih_povesyat",
@@ -334,8 +343,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-13T20:03:45.881Z",
-	"total": 182,
+	"updatedAt": "2026-08-13T21:14:42.086Z",
+	"total": 184,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -351,6 +360,12 @@
 			"total": 13
 		},
 		{
+			"tag": "Ukrytie",
+			"release": "Ukrytie",
+			"publishedAt": "2026-05-10T14:56:12Z",
+			"total": 13
+		},
+		{
 			"tag": "Strakhi_mudretsa_Tom_2",
 			"release": "Страхи мудреца. Том 2",
 			"publishedAt": "2026-05-20T15:34:19Z",
@@ -360,12 +375,6 @@
 			"tag": "Миргород",
 			"release": "Миргород",
 			"publishedAt": "2026-07-07T12:28:03Z",
-			"total": 11
-		},
-		{
-			"tag": "Ukrytie",
-			"release": "Ukrytie",
-			"publishedAt": "2026-05-10T14:56:12Z",
 			"total": 11
 		},
 		{
