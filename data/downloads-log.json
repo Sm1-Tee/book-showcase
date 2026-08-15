@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-15T12:29:36.215Z",
+			"release": "1984",
+			"tag": "1984_2",
+			"asset": "1984-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 5
+		},
+		{
 			"at": "2026-08-15T04:56:02.456Z",
 			"release": "Остров проклятых",
 			"tag": "Остров_проклятых",
@@ -451,8 +460,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-15T11:43:31.374Z",
-	"total": 196,
+	"updatedAt": "2026-08-15T12:29:36.215Z",
+	"total": 197,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -534,6 +543,12 @@
 			"total": 6
 		},
 		{
+			"tag": "1984_2",
+			"release": "1984",
+			"publishedAt": "2026-08-08T18:06:59Z",
+			"total": 5
+		},
+		{
 			"tag": "Книга",
 			"release": "Проект «Аве Мария»",
 			"publishedAt": "2026-08-04T20:51:56Z",
@@ -568,12 +583,6 @@
 			"release": "Amerikanskie_bogi",
 			"publishedAt": "2026-05-10T14:42:59Z",
 			"total": 5
-		},
-		{
-			"tag": "1984_2",
-			"release": "1984",
-			"publishedAt": "2026-08-08T18:06:59Z",
-			"total": 4
 		},
 		{
 			"tag": "Остров_проклятых",
