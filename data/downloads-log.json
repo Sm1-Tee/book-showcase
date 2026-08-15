@@ -1,6 +1,69 @@
 {
 	"events": [
 		{
+			"at": "2026-08-15T04:25:18.904Z",
+			"release": "Побег из Шоушенка",
+			"tag": "Побег_из_Шоушенка",
+			"asset": "Pobeg_iz_Shoushenka_BW.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 2
+		},
+		{
+			"at": "2026-08-15T04:25:18.904Z",
+			"release": "Трудно быть богом",
+			"tag": "Трудно_быть_богом",
+			"asset": "Trudno_byt._bogom-BW.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-15T04:25:18.904Z",
+			"release": "Две крепости",
+			"tag": "dve-kreposti",
+			"asset": "dve-kreposti-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 3
+		},
+		{
+			"at": "2026-08-15T04:25:18.904Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 5
+		},
+		{
+			"at": "2026-08-15T04:25:18.904Z",
+			"release": "Портрет Дориана Грея",
+			"tag": "Portret_Doriana_Greya",
+			"asset": "Portret_Doriana_Greya-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-15T04:25:18.904Z",
+			"release": "Пикник на обочине",
+			"tag": "Piknik_na_obochine",
+			"asset": "Piknik_na_obochine-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-15T04:25:18.904Z",
+			"release": "Мастер и Маргарита",
+			"tag": "Master_i_Margarita",
+			"asset": "Master_i_Margarita-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 2
+		},
+		{
 			"at": "2026-08-13T21:14:42.086Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -343,8 +406,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-15T03:34:50.145Z",
-	"total": 184,
+	"updatedAt": "2026-08-15T04:25:18.904Z",
+	"total": 191,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -354,15 +417,15 @@
 			"total": 14
 		},
 		{
-			"tag": "bratstvo_kolca",
-			"release": "Братство кольца",
-			"publishedAt": "2026-06-06T19:17:42Z",
-			"total": 13
-		},
-		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
+			"total": 14
+		},
+		{
+			"tag": "bratstvo_kolca",
+			"release": "Братство кольца",
+			"publishedAt": "2026-06-06T19:17:42Z",
 			"total": 13
 		},
 		{
@@ -381,13 +444,13 @@
 			"tag": "dve-kreposti",
 			"release": "Две крепости",
 			"publishedAt": "2026-06-18T00:17:50Z",
-			"total": 8
+			"total": 9
 		},
 		{
 			"tag": "Трудно_быть_богом",
 			"release": "Трудно быть богом",
 			"publishedAt": "2026-07-14T14:20:43Z",
-			"total": 7
+			"total": 8
 		},
 		{
 			"tag": "Вечера_на_хуторе_близ_Диканьки",
@@ -426,6 +489,18 @@
 			"total": 5
 		},
 		{
+			"tag": "Побег_из_Шоушенка",
+			"release": "Побег из Шоушенка",
+			"publishedAt": "2026-07-25T16:49:08Z",
+			"total": 5
+		},
+		{
+			"tag": "Master_i_Margarita",
+			"release": "Мастер и Маргарита",
+			"publishedAt": "2026-05-10T14:49:21Z",
+			"total": 5
+		},
+		{
 			"tag": "METRO_2033",
 			"release": "METRO_2033",
 			"publishedAt": "2026-05-10T14:38:34Z",
@@ -450,12 +525,6 @@
 			"total": 4
 		},
 		{
-			"tag": "Побег_из_Шоушенка",
-			"release": "Побег из Шоушенка",
-			"publishedAt": "2026-07-25T16:49:08Z",
-			"total": 4
-		},
-		{
 			"tag": "Дракула",
 			"release": "ДРАКУЛА",
 			"publishedAt": "2026-07-02T16:22:13Z",
@@ -465,12 +534,6 @@
 			"tag": "Korolevskiy_ubiytsa",
 			"release": "Королевский убийца",
 			"publishedAt": "2026-06-03T22:54:17Z",
-			"total": 4
-		},
-		{
-			"tag": "Master_i_Margarita",
-			"release": "Мастер и Маргарита",
-			"publishedAt": "2026-05-10T14:49:21Z",
 			"total": 4
 		},
 		{
@@ -498,6 +561,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Piknik_na_obochine",
+			"release": "Пикник на обочине",
+			"publishedAt": "2026-05-10T14:46:02Z",
+			"total": 3
+		},
+		{
 			"tag": "Mor_uchenik_Smerti",
 			"release": "Мор, ученик Смерти",
 			"publishedAt": "2026-05-10T14:45:04Z",
@@ -522,12 +591,6 @@
 			"total": 2
 		},
 		{
-			"tag": "Piknik_na_obochine",
-			"release": "Пикник на обочине",
-			"publishedAt": "2026-05-10T14:46:02Z",
-			"total": 2
-		},
-		{
 			"tag": "Dyuna",
 			"release": "Дюна",
 			"publishedAt": "2026-05-10T14:47:01Z",
@@ -546,6 +609,12 @@
 			"total": 1
 		},
 		{
+			"tag": "Portret_Doriana_Greya",
+			"release": "Портрет Дориана Грея",
+			"publishedAt": "2026-05-10T14:39:46Z",
+			"total": 1
+		},
+		{
 			"tag": "Frankenshteyn_ili_Sovremennyy_Prometey",
 			"release": "Франкенштейн, или Современный Прометей",
 			"publishedAt": "2026-05-10T14:55:16Z",
@@ -561,12 +630,6 @@
 			"tag": "Strannaya_istoriya_doktora_Dzhekila_i_mistera_Khayda",
 			"release": "Странная история доктора Джекила и мистера Хайда ",
 			"publishedAt": "2026-05-10T14:52:34Z",
-			"total": 0
-		},
-		{
-			"tag": "Portret_Doriana_Greya",
-			"release": "Портрет Дориана Грея",
-			"publishedAt": "2026-05-10T14:39:46Z",
 			"total": 0
 		}
 	]
