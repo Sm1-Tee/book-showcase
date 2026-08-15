@@ -1,6 +1,51 @@
 {
 	"events": [
 		{
+			"at": "2026-08-15T04:56:02.456Z",
+			"release": "Остров проклятых",
+			"tag": "Остров_проклятых",
+			"asset": "Ostrov-proklyatyh-BW.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-15T04:56:02.456Z",
+			"release": "Королевский убийца",
+			"tag": "Korolevskiy_ubiytsa",
+			"asset": "Korolevskiy_ubiytsa-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 3
+		},
+		{
+			"at": "2026-08-15T04:56:02.456Z",
+			"release": "Ученик убийцы ",
+			"tag": "Uchenik_ubiytsy",
+			"asset": "Uchenik_ubiytsy-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 3
+		},
+		{
+			"at": "2026-08-15T04:56:02.456Z",
+			"release": "Хоббит, или Туда и обратно",
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"asset": "Khobbit_ili_Tuda_i_obratno-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 2
+		},
+		{
+			"at": "2026-08-15T04:56:02.456Z",
+			"release": "Дюна",
+			"tag": "Dyuna",
+			"asset": "Dyuna-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
 			"at": "2026-08-15T04:25:18.904Z",
 			"release": "Побег из Шоушенка",
 			"tag": "Побег_из_Шоушенка",
@@ -406,8 +451,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-15T04:25:18.904Z",
-	"total": 191,
+	"updatedAt": "2026-08-15T04:56:02.456Z",
+	"total": 196,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -483,6 +528,12 @@
 			"total": 6
 		},
 		{
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"release": "Хоббит, или Туда и обратно",
+			"publishedAt": "2026-05-10T13:31:42Z",
+			"total": 6
+		},
+		{
 			"tag": "Книга",
 			"release": "Проект «Аве Мария»",
 			"publishedAt": "2026-08-04T20:51:56Z",
@@ -492,6 +543,12 @@
 			"tag": "Побег_из_Шоушенка",
 			"release": "Побег из Шоушенка",
 			"publishedAt": "2026-07-25T16:49:08Z",
+			"total": 5
+		},
+		{
+			"tag": "Korolevskiy_ubiytsa",
+			"release": "Королевский убийца",
+			"publishedAt": "2026-06-03T22:54:17Z",
 			"total": 5
 		},
 		{
@@ -507,12 +564,6 @@
 			"total": 5
 		},
 		{
-			"tag": "Khobbit_ili_Tuda_i_obratno",
-			"release": "Хоббит, или Туда и обратно",
-			"publishedAt": "2026-05-10T13:31:42Z",
-			"total": 5
-		},
-		{
 			"tag": "Amerikanskie_bogi",
 			"release": "Amerikanskie_bogi",
 			"publishedAt": "2026-05-10T14:42:59Z",
@@ -525,15 +576,21 @@
 			"total": 4
 		},
 		{
+			"tag": "Остров_проклятых",
+			"release": "Остров проклятых",
+			"publishedAt": "2026-07-27T18:05:59Z",
+			"total": 4
+		},
+		{
 			"tag": "Дракула",
 			"release": "ДРАКУЛА",
 			"publishedAt": "2026-07-02T16:22:13Z",
 			"total": 4
 		},
 		{
-			"tag": "Korolevskiy_ubiytsa",
-			"release": "Королевский убийца",
-			"publishedAt": "2026-06-03T22:54:17Z",
+			"tag": "Uchenik_ubiytsy",
+			"release": "Ученик убийцы ",
+			"publishedAt": "2026-05-10T14:57:15Z",
 			"total": 4
 		},
 		{
@@ -543,21 +600,9 @@
 			"total": 4
 		},
 		{
-			"tag": "Остров_проклятых",
-			"release": "Остров проклятых",
-			"publishedAt": "2026-07-27T18:05:59Z",
-			"total": 3
-		},
-		{
 			"tag": "черный_отряд",
 			"release": "Черный отряд",
 			"publishedAt": "2026-07-23T13:21:12Z",
-			"total": 3
-		},
-		{
-			"tag": "Uchenik_ubiytsy",
-			"release": "Ученик убийцы ",
-			"publishedAt": "2026-05-10T14:57:15Z",
 			"total": 3
 		},
 		{
@@ -579,6 +624,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Dyuna",
+			"release": "Дюна",
+			"publishedAt": "2026-05-10T14:47:01Z",
+			"total": 3
+		},
+		{
 			"tag": "Chernyy_chelovek",
 			"release": "Черный человек ",
 			"publishedAt": "2026-05-10T14:47:55Z",
@@ -588,12 +639,6 @@
 			"tag": "Posledniy_dovod_koroley",
 			"release": "Последний довод королей",
 			"publishedAt": "2026-05-10T13:36:38Z",
-			"total": 2
-		},
-		{
-			"tag": "Dyuna",
-			"release": "Дюна",
-			"publishedAt": "2026-05-10T14:47:01Z",
 			"total": 2
 		},
 		{
