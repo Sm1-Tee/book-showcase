@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-16T16:49:16.997Z",
+			"release": "Остров проклятых",
+			"tag": "Остров_проклятых",
+			"asset": "Ostrov-proklyatyh-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 4
+		},
+		{
 			"at": "2026-08-15T12:29:36.215Z",
 			"release": "1984",
 			"tag": "1984_2",
@@ -460,8 +469,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-16T16:19:25.515Z",
-	"total": 197,
+	"updatedAt": "2026-08-16T16:49:16.997Z",
+	"total": 198,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -555,6 +564,12 @@
 			"total": 5
 		},
 		{
+			"tag": "Остров_проклятых",
+			"release": "Остров проклятых",
+			"publishedAt": "2026-07-27T18:05:59Z",
+			"total": 5
+		},
+		{
 			"tag": "Побег_из_Шоушенка",
 			"release": "Побег из Шоушенка",
 			"publishedAt": "2026-07-25T16:49:08Z",
@@ -583,12 +598,6 @@
 			"release": "Amerikanskie_bogi",
 			"publishedAt": "2026-05-10T14:42:59Z",
 			"total": 5
-		},
-		{
-			"tag": "Остров_проклятых",
-			"release": "Остров проклятых",
-			"publishedAt": "2026-07-27T18:05:59Z",
-			"total": 4
 		},
 		{
 			"tag": "Дракула",
