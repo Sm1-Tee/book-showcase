@@ -1,6 +1,573 @@
 {
 	"events": [
 		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "imya-vetra",
+			"tag": "imya-vetra",
+			"asset": "imya-vetra-color.epub",
+			"variant": "color",
+			"delta": 11,
+			"total": 11
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Миргород",
+			"tag": "Миргород",
+			"asset": "MIRGOROD-COLOR.epub",
+			"variant": "color",
+			"delta": 9,
+			"total": 9
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Братство кольца",
+			"tag": "bratstvo_kolca",
+			"asset": "bratstvo_kolca_color.epub",
+			"variant": "color",
+			"delta": 9,
+			"total": 9
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Страхи мудреца. Том 2",
+			"tag": "Strakhi_mudretsa_Tom_2",
+			"asset": "Strakhi_mudretsa_Tom_2-color.epub",
+			"variant": "color",
+			"delta": 9,
+			"total": 9
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 9,
+			"total": 9
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Трудно быть богом",
+			"tag": "Трудно_быть_богом",
+			"asset": "Trudno_byt._bogom-COLOR.epub",
+			"variant": "color",
+			"delta": 7,
+			"total": 7
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Вечера на хуторе близ Диканьки",
+			"tag": "Вечера_на_хуторе_близ_Диканьки",
+			"asset": "Vechera.na.khutore.bliz.Dikanki-COLOR.epub",
+			"variant": "color",
+			"delta": 6,
+			"total": 6
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Две крепости",
+			"tag": "dve-kreposti",
+			"asset": "dve-kreposti-color.epub",
+			"variant": "color",
+			"delta": 6,
+			"total": 6
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-bw.epub",
+			"variant": "bw",
+			"delta": 6,
+			"total": 6
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Прежде чем их повесят",
+			"tag": "Prezhde_chem_ih_povesyat",
+			"asset": "Prezhde_chem_ih_povesyat-color.epub",
+			"variant": "color",
+			"delta": 6,
+			"total": 6
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "1984",
+			"tag": "1984_2",
+			"asset": "1984-COLOR.epub",
+			"variant": "color",
+			"delta": 5,
+			"total": 5
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Проект «Аве Мария»",
+			"tag": "Книга",
+			"asset": "Proekt-Ave-Mariya-COLOR.epub",
+			"variant": "color",
+			"delta": 5,
+			"total": 5
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "1984",
+			"tag": "1984",
+			"asset": "1984-color.epub",
+			"variant": "color",
+			"delta": 5,
+			"total": 5
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Страхи мудреца. Том 1",
+			"tag": "Strakhi_mudretsa_Tom_1",
+			"asset": "Strakhi_mudretsa_Tom_1-color.epub",
+			"variant": "color",
+			"delta": 5,
+			"total": 5
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Настоящие сказки братьев Гримм.",
+			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
+			"asset": "Nastoyashchie_skazki_bratyev_Grimm-color.epub",
+			"variant": "color",
+			"delta": 5,
+			"total": 5
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Остров проклятых",
+			"tag": "Остров_проклятых",
+			"asset": "Ostrov-proklyatyh-COLOR.epub",
+			"variant": "color",
+			"delta": 4,
+			"total": 4
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "ДРАКУЛА",
+			"tag": "Дракула",
+			"asset": "Drakula-color.epub",
+			"variant": "color",
+			"delta": 4,
+			"total": 4
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Братство кольца",
+			"tag": "bratstvo_kolca",
+			"asset": "bratstvo_kolca_bw.epub",
+			"variant": "bw",
+			"delta": 4,
+			"total": 4
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Хоббит, или Туда и обратно",
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"asset": "Khobbit_ili_Tuda_i_obratno-color.epub",
+			"variant": "color",
+			"delta": 4,
+			"total": 4
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Побег из Шоушенка",
+			"tag": "Побег_из_Шоушенка",
+			"asset": "Pobeg_iz_Shoushenka_COLOR.epub",
+			"variant": "color",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Две крепости",
+			"tag": "dve-kreposti",
+			"asset": "dve-kreposti-bw.epub",
+			"variant": "bw",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Королевский убийца",
+			"tag": "Korolevskiy_ubiytsa",
+			"asset": "Korolevskiy_ubiytsa-bw.epub",
+			"variant": "bw",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Страхи мудреца. Том 2",
+			"tag": "Strakhi_mudretsa_Tom_2",
+			"asset": "Strakhi_mudretsa_Tom_2-bw.epub",
+			"variant": "bw",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "imya-vetra",
+			"tag": "imya-vetra",
+			"asset": "imya-vetra-bw.epub",
+			"variant": "bw",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Ученик убийцы ",
+			"tag": "Uchenik_ubiytsy",
+			"asset": "Uchenik_ubiytsy-bw.epub",
+			"variant": "bw",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Мастер и Маргарита",
+			"tag": "Master_i_Margarita",
+			"asset": "Master_i_Margarita-color.epub",
+			"variant": "color",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "METRO_2033",
+			"tag": "METRO_2033",
+			"asset": "METRO_2033-color.epub",
+			"variant": "color",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Кровь и железо",
+			"tag": "Krov_i_zhelezo",
+			"asset": "Krov_i_zhelezo-color.epub",
+			"variant": "color",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Esli_vse_koshki_v_mire_ischeznut",
+			"tag": "Esli_vse_koshki_v_mire_ischeznut",
+			"asset": "Esli_vse_koshki_v_mire_ischeznut-color.epub",
+			"variant": "color",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Amerikanskie_bogi",
+			"tag": "Amerikanskie_bogi",
+			"asset": "Amerikanskie_bogi-bw.epub",
+			"variant": "bw",
+			"delta": 3,
+			"total": 3
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Побег из Шоушенка",
+			"tag": "Побег_из_Шоушенка",
+			"asset": "Pobeg_iz_Shoushenka_BW.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Черный отряд",
+			"tag": "черный_отряд",
+			"asset": "Chernyi_otriad_BW.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Миргород",
+			"tag": "Миргород",
+			"asset": "MIRGOROD-BW.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Королевский убийца",
+			"tag": "Korolevskiy_ubiytsa",
+			"asset": "Korolevskiy_ubiytsa-color.epub",
+			"variant": "color",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Страхи мудреца. Том 1",
+			"tag": "Strakhi_mudretsa_Tom_1",
+			"asset": "Strakhi_mudretsa_Tom_1-bw.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Пикник на обочине",
+			"tag": "Piknik_na_obochine",
+			"asset": "Piknik_na_obochine-color.epub",
+			"variant": "color",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Настоящие сказки братьев Гримм.",
+			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
+			"asset": "Nastoyashchie_skazki_bratyev_Grimm-bw.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Мор, ученик Смерти",
+			"tag": "Mor_uchenik_Smerti",
+			"asset": "Mor_uchenik_Smerti-color.epub",
+			"variant": "color",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Мастер и Маргарита",
+			"tag": "Master_i_Margarita",
+			"asset": "Master_i_Margarita-bw.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "METRO_2033",
+			"tag": "METRO_2033",
+			"asset": "METRO_2033-bw.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Хоббит, или Туда и обратно",
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"asset": "Khobbit_ili_Tuda_i_obratno-bw.epub",
+			"variant": "bw",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Дюна",
+			"tag": "Dyuna",
+			"asset": "Dyuna-color.epub",
+			"variant": "color",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Черный человек ",
+			"tag": "Chernyy_chelovek",
+			"asset": "Chernyy_chelovek-color.epub",
+			"variant": "color",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Amerikanskie_bogi",
+			"tag": "Amerikanskie_bogi",
+			"asset": "Amerikanskie_bogi-color.epub",
+			"variant": "color",
+			"delta": 2,
+			"total": 2
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Остров проклятых",
+			"tag": "Остров_проклятых",
+			"asset": "Ostrov-proklyatyh-BW.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Черный отряд",
+			"tag": "черный_отряд",
+			"asset": "Chernyi_otriad_COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Трудно быть богом",
+			"tag": "Трудно_быть_богом",
+			"asset": "Trudno_byt._bogom-BW.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Вечера на хуторе близ Диканьки",
+			"tag": "Вечера_на_хуторе_близ_Диканьки",
+			"asset": "Vechera.na.khutore.bliz.Dikanki-BW.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "1984",
+			"tag": "1984",
+			"asset": "1984-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Ученик убийцы ",
+			"tag": "Uchenik_ubiytsy",
+			"asset": "Uchenik_ubiytsy-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Рыцарь Семи Королевств",
+			"tag": "Rytsar_Semi_Korolevstv",
+			"asset": "Rytsar_Semi_Korolevstv-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Прежде чем их повесят",
+			"tag": "Prezhde_chem_ih_povesyat",
+			"asset": "Prezhde_chem_ih_povesyat-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Последний довод королей",
+			"tag": "Posledniy_dovod_koroley",
+			"asset": "Posledniy_dovod_koroley-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Последний довод королей",
+			"tag": "Posledniy_dovod_koroley",
+			"asset": "Posledniy_dovod_koroley-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Портрет Дориана Грея",
+			"tag": "Portret_Doriana_Greya",
+			"asset": "Portret_Doriana_Greya-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Пикник на обочине",
+			"tag": "Piknik_na_obochine",
+			"asset": "Piknik_na_obochine-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Мор, ученик Смерти",
+			"tag": "Mor_uchenik_Smerti",
+			"asset": "Mor_uchenik_Smerti-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Франкенштейн, или Современный Прометей",
+			"tag": "Frankenshteyn_ili_Sovremennyy_Prometey",
+			"asset": "Frankenshteyn_ili_Sovremennyy_Prometey-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Esli_vse_koshki_v_mire_ischeznut",
+			"tag": "Esli_vse_koshki_v_mire_ischeznut",
+			"asset": "Esli_vse_koshki_v_mire_ischeznut-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Дюна",
+			"tag": "Dyuna",
+			"asset": "Dyuna-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Черный человек ",
+			"tag": "Chernyy_chelovek",
+			"asset": "Chernyy_chelovek-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Артас. Восхождение Короля-лича",
+			"tag": "Artas_Voskhozhdenie_Korolya-licha",
+			"asset": "Artas_Voskhozhdenie_Korolya-licha-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
+			"at": "2026-08-17T16:22:11.199Z",
+			"release": "Артас. Восхождение Короля-лича",
+			"tag": "Artas_Voskhozhdenie_Korolya-licha",
+			"asset": "Artas_Voskhozhdenie_Korolya-licha-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
 			"at": "2026-08-17T11:27:59.463Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -478,8 +1045,231 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-17T15:48:35.972Z",
-	"total": 0,
+	"updatedAt": "2026-08-17T16:22:11.199Z",
+	"total": 199,
 	"startedAt": "2026-07-29T17:47:00.295Z",
-	"totalsByRelease": []
+	"totalsByRelease": [
+		{
+			"tag": "Ukrytie",
+			"release": "Ukrytie",
+			"publishedAt": "2026-05-10T14:56:12Z",
+			"total": 15
+		},
+		{
+			"tag": "imya-vetra",
+			"release": "imya-vetra",
+			"publishedAt": "2026-05-10T12:58:58Z",
+			"total": 14
+		},
+		{
+			"tag": "bratstvo_kolca",
+			"release": "Братство кольца",
+			"publishedAt": "2026-06-06T19:17:42Z",
+			"total": 13
+		},
+		{
+			"tag": "Strakhi_mudretsa_Tom_2",
+			"release": "Страхи мудреца. Том 2",
+			"publishedAt": "2026-05-20T15:34:19Z",
+			"total": 12
+		},
+		{
+			"tag": "Миргород",
+			"release": "Миргород",
+			"publishedAt": "2026-07-07T12:28:03Z",
+			"total": 11
+		},
+		{
+			"tag": "dve-kreposti",
+			"release": "Две крепости",
+			"publishedAt": "2026-06-18T00:17:50Z",
+			"total": 9
+		},
+		{
+			"tag": "Трудно_быть_богом",
+			"release": "Трудно быть богом",
+			"publishedAt": "2026-07-14T14:20:43Z",
+			"total": 8
+		},
+		{
+			"tag": "Вечера_на_хуторе_близ_Диканьки",
+			"release": "Вечера на хуторе близ Диканьки",
+			"publishedAt": "2026-07-05T18:38:06Z",
+			"total": 7
+		},
+		{
+			"tag": "Strakhi_mudretsa_Tom_1",
+			"release": "Страхи мудреца. Том 1",
+			"publishedAt": "2026-05-10T13:40:37Z",
+			"total": 7
+		},
+		{
+			"tag": "Prezhde_chem_ih_povesyat",
+			"release": "Прежде чем их повесят",
+			"publishedAt": "2026-05-10T13:35:14Z",
+			"total": 7
+		},
+		{
+			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
+			"release": "Настоящие сказки братьев Гримм.",
+			"publishedAt": "2026-05-10T14:54:17Z",
+			"total": 7
+		},
+		{
+			"tag": "1984",
+			"release": "1984",
+			"publishedAt": "2026-05-10T14:50:17Z",
+			"total": 6
+		},
+		{
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"release": "Хоббит, или Туда и обратно",
+			"publishedAt": "2026-05-10T13:31:42Z",
+			"total": 6
+		},
+		{
+			"tag": "1984_2",
+			"release": "1984",
+			"publishedAt": "2026-08-08T18:06:59Z",
+			"total": 5
+		},
+		{
+			"tag": "Книга",
+			"release": "Проект «Аве Мария»",
+			"publishedAt": "2026-08-04T20:51:56Z",
+			"total": 5
+		},
+		{
+			"tag": "Остров_проклятых",
+			"release": "Остров проклятых",
+			"publishedAt": "2026-07-27T18:05:59Z",
+			"total": 5
+		},
+		{
+			"tag": "Побег_из_Шоушенка",
+			"release": "Побег из Шоушенка",
+			"publishedAt": "2026-07-25T16:49:08Z",
+			"total": 5
+		},
+		{
+			"tag": "Korolevskiy_ubiytsa",
+			"release": "Королевский убийца",
+			"publishedAt": "2026-06-03T22:54:17Z",
+			"total": 5
+		},
+		{
+			"tag": "Master_i_Margarita",
+			"release": "Мастер и Маргарита",
+			"publishedAt": "2026-05-10T14:49:21Z",
+			"total": 5
+		},
+		{
+			"tag": "METRO_2033",
+			"release": "METRO_2033",
+			"publishedAt": "2026-05-10T14:38:34Z",
+			"total": 5
+		},
+		{
+			"tag": "Amerikanskie_bogi",
+			"release": "Amerikanskie_bogi",
+			"publishedAt": "2026-05-10T14:42:59Z",
+			"total": 5
+		},
+		{
+			"tag": "Дракула",
+			"release": "ДРАКУЛА",
+			"publishedAt": "2026-07-02T16:22:13Z",
+			"total": 4
+		},
+		{
+			"tag": "Uchenik_ubiytsy",
+			"release": "Ученик убийцы ",
+			"publishedAt": "2026-05-10T14:57:15Z",
+			"total": 4
+		},
+		{
+			"tag": "Esli_vse_koshki_v_mire_ischeznut",
+			"release": "Esli_vse_koshki_v_mire_ischeznut",
+			"publishedAt": "2026-05-10T14:44:06Z",
+			"total": 4
+		},
+		{
+			"tag": "черный_отряд",
+			"release": "Черный отряд",
+			"publishedAt": "2026-07-23T13:21:12Z",
+			"total": 3
+		},
+		{
+			"tag": "Piknik_na_obochine",
+			"release": "Пикник на обочине",
+			"publishedAt": "2026-05-10T14:46:02Z",
+			"total": 3
+		},
+		{
+			"tag": "Mor_uchenik_Smerti",
+			"release": "Мор, ученик Смерти",
+			"publishedAt": "2026-05-10T14:45:04Z",
+			"total": 3
+		},
+		{
+			"tag": "Krov_i_zhelezo",
+			"release": "Кровь и железо",
+			"publishedAt": "2026-05-10T13:33:54Z",
+			"total": 3
+		},
+		{
+			"tag": "Dyuna",
+			"release": "Дюна",
+			"publishedAt": "2026-05-10T14:47:01Z",
+			"total": 3
+		},
+		{
+			"tag": "Chernyy_chelovek",
+			"release": "Черный человек ",
+			"publishedAt": "2026-05-10T14:47:55Z",
+			"total": 3
+		},
+		{
+			"tag": "Posledniy_dovod_koroley",
+			"release": "Последний довод королей",
+			"publishedAt": "2026-05-10T13:36:38Z",
+			"total": 2
+		},
+		{
+			"tag": "Artas_Voskhozhdenie_Korolya-licha",
+			"release": "Артас. Восхождение Короля-лича",
+			"publishedAt": "2026-05-10T13:37:59Z",
+			"total": 2
+		},
+		{
+			"tag": "Rytsar_Semi_Korolevstv",
+			"release": "Рыцарь Семи Королевств",
+			"publishedAt": "2026-05-10T13:41:44Z",
+			"total": 1
+		},
+		{
+			"tag": "Portret_Doriana_Greya",
+			"release": "Портрет Дориана Грея",
+			"publishedAt": "2026-05-10T14:39:46Z",
+			"total": 1
+		},
+		{
+			"tag": "Frankenshteyn_ili_Sovremennyy_Prometey",
+			"release": "Франкенштейн, или Современный Прометей",
+			"publishedAt": "2026-05-10T14:55:16Z",
+			"total": 1
+		},
+		{
+			"tag": "Tsvet_volshebstva",
+			"release": "Цвет волшебства",
+			"publishedAt": "2026-05-10T14:51:24Z",
+			"total": 0
+		},
+		{
+			"tag": "Strannaya_istoriya_doktora_Dzhekila_i_mistera_Khayda",
+			"release": "Странная история доктора Джекила и мистера Хайда ",
+			"publishedAt": "2026-05-10T14:52:34Z",
+			"total": 0
+		}
+	]
 }
