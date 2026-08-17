@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-17T11:27:59.463Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 6
+		},
+		{
 			"at": "2026-08-16T16:49:16.997Z",
 			"release": "Остров проклятых",
 			"tag": "Остров_проклятых",
@@ -469,20 +478,20 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-17T10:57:31.606Z",
-	"total": 198,
+	"updatedAt": "2026-08-17T11:27:59.463Z",
+	"total": 199,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
-		{
-			"tag": "imya-vetra",
-			"release": "imya-vetra",
-			"publishedAt": "2026-05-10T12:58:58Z",
-			"total": 14
-		},
 		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
+			"total": 15
+		},
+		{
+			"tag": "imya-vetra",
+			"release": "imya-vetra",
+			"publishedAt": "2026-05-10T12:58:58Z",
 			"total": 14
 		},
 		{
