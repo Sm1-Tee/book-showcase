@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-20T18:34:24.125Z",
+			"release": "Пламя и кровь. Кровь драконов",
+			"tag": "Пламя-и-кровь-Кровь-драконов",
+			"asset": "Plamya-i-krov-Krov-drakonov-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 2
+		},
+		{
 			"at": "2026-08-20T16:00:47.265Z",
 			"release": "imya-vetra",
 			"tag": "imya-vetra",
@@ -1072,8 +1081,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-20T17:55:30.533Z",
-	"total": 202,
+	"updatedAt": "2026-08-20T18:34:24.125Z",
+	"total": 203,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1257,6 +1266,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Пламя-и-кровь-Кровь-драконов",
+			"release": "Пламя и кровь. Кровь драконов",
+			"publishedAt": "2026-08-17T22:02:34Z",
+			"total": 2
+		},
+		{
 			"tag": "Posledniy_dovod_koroley",
 			"release": "Последний довод королей",
 			"publishedAt": "2026-05-10T13:36:38Z",
@@ -1267,12 +1282,6 @@
 			"release": "Артас. Восхождение Короля-лича",
 			"publishedAt": "2026-05-10T13:37:59Z",
 			"total": 2
-		},
-		{
-			"tag": "Пламя-и-кровь-Кровь-драконов",
-			"release": "Пламя и кровь. Кровь драконов",
-			"publishedAt": "2026-08-17T22:02:34Z",
-			"total": 1
 		},
 		{
 			"tag": "Rytsar_Semi_Korolevstv",
