@@ -2,6 +2,8 @@
 pubDate: 2026-07-02
 title: "Дракула"
 author: "Брэм Стокер"
+year: 1897
+genre: "Готика"
 coverImage: "../../assets/books/drakula/cover.jpeg"
 exampleImages:
   - "../../assets/books/drakula/example-1.jpeg"

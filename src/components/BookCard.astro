@@ -24,7 +24,7 @@ const {
 	seriesCount,
 	imageLoading = 'lazy',
 	imageFetchPriority = 'auto',
-	imageSizes = '(min-width: 1280px) 16vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw',
+	imageSizes = '(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw',
 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -35,8 +35,8 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     <Image
       src={coverImage}
       alt={`Обложка: ${title}`}
-      width={400}
-      height={600}
+      width={640}
+      height={960}
       class="hover-zoom-img h-full w-full object-cover"
       loading={imageLoading}
       decoding="async"

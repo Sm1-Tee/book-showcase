@@ -2,6 +2,8 @@
 pubDate: 2026-07-05
 title: "Вечера на хуторе близ Диканьки"
 author: "Николай Васильевич Гоголь"
+year: 1832
+genre: "Классика"
 coverImage: "../../assets/books/vechera-na-khutore-bliz-dikanki/cover.jpeg"
 exampleImages:
   - "../../assets/books/vechera-na-khutore-bliz-dikanki/example-1.jpeg"

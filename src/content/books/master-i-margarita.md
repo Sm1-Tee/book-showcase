@@ -2,6 +2,8 @@
 pubDate: 2024-01-12
 title: "Мастер и Маргарита"
 author: "Михаил Булгаков"
+year: 1967
+genre: "Классика"
 coverImage: "../../assets/books/master-i-margarita/cover.png"
 exampleImages:
   - "../../assets/books/master-i-margarita/example-1.png"

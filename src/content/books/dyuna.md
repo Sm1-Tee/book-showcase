@@ -2,6 +2,8 @@
 pubDate: 2024-01-06
 title: "Дюна"
 author: "Фрэнк Герберт"
+year: 1965
+genre: "Фантастика"
 coverImage: "../../assets/books/dyuna/cover.png"
 exampleImages:
   - "../../assets/books/dyuna/example-1.png"

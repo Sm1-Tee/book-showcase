@@ -2,6 +2,8 @@
 pubDate: 2024-01-25
 title: "Укрытие"
 author: "Хью Хауи"
+year: 2011
+genre: "Фантастика"
 coverImage: "../../assets/books/ukrytie/cover.png"
 exampleImages:
   - "../../assets/books/ukrytie/example-1.jpeg"

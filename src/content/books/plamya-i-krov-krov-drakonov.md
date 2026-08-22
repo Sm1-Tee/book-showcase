@@ -2,6 +2,8 @@
 pubDate: 2026-08-17
 title: "Пламя и кровь. Кровь драконов"
 author: "Джордж Рэймонд Ричард Мартин"
+year: 2018
+genre: "Фэнтези"
 coverImage: "../../assets/books/plamya-i-krov-krov-drakonov/cover.jpeg"
 exampleImages:
   - "../../assets/books/plamya-i-krov-krov-drakonov/example-1.jpeg"

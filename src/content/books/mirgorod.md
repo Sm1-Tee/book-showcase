@@ -2,6 +2,8 @@
 pubDate: 2026-07-07
 title: "Миргород"
 author: "Николай Васильевич Гоголь"
+year: 1835
+genre: "Классика"
 coverImage: "../../assets/books/mirgorod/cover.jpeg"
 exampleImages:
   - "../../assets/books/mirgorod/example-1.jpeg"

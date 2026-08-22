@@ -2,6 +2,8 @@
 pubDate: 2026-07-25
 title: "Побег из Шоушенка"
 author: "Стивен Кинг"
+year: 1982
+genre: "Триллер"
 coverImage: "../../assets/books/pobeg-iz-shoushenka/cover.jpeg"
 exampleImages:
   - "../../assets/books/pobeg-iz-shoushenka/example-1.jpeg"

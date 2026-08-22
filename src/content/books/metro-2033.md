@@ -2,6 +2,8 @@
 pubDate: 2024-01-13
 title: "Метро 2033"
 author: "Дмитрий Глуховский"
+year: 2005
+genre: "Фантастика"
 coverImage: "../../assets/books/metro-2033/cover.png"
 exampleImages:
   - "../../assets/books/metro-2033/example-1.png"

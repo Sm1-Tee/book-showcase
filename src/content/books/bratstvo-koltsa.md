@@ -2,6 +2,8 @@
 pubDate: 2026-06-06
 title: "Братство Кольца"
 author: "Джон Рональд Руэл Толкин"
+year: 1954
+genre: "Фэнтези"
 coverImage: "../../assets/books/bratstvo-koltsa/cover.png"
 exampleImages:
   - "../../assets/books/bratstvo-koltsa/example-1.png"

@@ -2,6 +2,8 @@
 pubDate: 2024-01-04
 title: "Черный человек"
 author: "Василий Головачев"
+year: 1997
+genre: "Фантастика"
 coverImage: "../../assets/books/chernyy-chelovek/cover.png"
 exampleImages:
   - "../../assets/books/chernyy-chelovek/example-1.png"

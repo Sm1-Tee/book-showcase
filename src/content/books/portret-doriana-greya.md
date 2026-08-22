@@ -2,6 +2,8 @@
 pubDate: 2024-01-17
 title: "Портрет Дориана Грея"
 author: "Оскар Уайльд"
+year: 1890
+genre: "Готика"
 coverImage: "../../assets/books/portret-doriana-greya/cover.png"
 exampleImages:
   - "../../assets/books/portret-doriana-greya/example-1.png"

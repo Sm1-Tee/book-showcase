@@ -2,6 +2,8 @@
 pubDate: 2024-01-16
 title: "Пикник на обочине"
 author: "Аркадий и Борис Стругацкие"
+year: 1972
+genre: "Фантастика"
 coverImage: "../../assets/books/piknik-na-obochine/cover.png"
 exampleImages:
   - "../../assets/books/piknik-na-obochine/example-1.png"

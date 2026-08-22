@@ -2,6 +2,8 @@
 pubDate: 2024-01-02
 title: "Американские боги"
 author: "Нил Гейман"
+year: 2001
+genre: "Фэнтези"
 coverImage: "../../assets/books/amerikanskie-bogi/cover.png"
 exampleImages:
   - "../../assets/books/amerikanskie-bogi/example-1.jpeg"

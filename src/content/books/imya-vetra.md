@@ -2,6 +2,8 @@
 pubDate: 2024-01-09
 title: "Имя ветра"
 author: "Патрик Ротфусс"
+year: 2007
+genre: "Фэнтези"
 coverImage: "../../assets/books/imya-vetra/cover.png"
 exampleImages:
   - "../../assets/books/imya-vetra/example-1.jpeg"

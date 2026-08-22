@@ -2,6 +2,8 @@
 pubDate: 2024-01-24
 title: "Ученик убийцы"
 author: "Робин Хобб"
+year: 1995
+genre: "Фэнтези"
 coverImage: "../../assets/books/uchenik-ubiytsy/cover.png"
 exampleImages:
   - "../../assets/books/uchenik-ubiytsy/example-1.jpeg"

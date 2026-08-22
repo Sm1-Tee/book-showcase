@@ -2,6 +2,8 @@
 pubDate: 2024-01-18
 title: "Последний довод королей"
 author: "Джо Аберкромби"
+year: 2008
+genre: "Фэнтези"
 coverImage: "../../assets/books/posledniy-dovod-koroley/cover.png"
 exampleImages:
   - "../../assets/books/posledniy-dovod-koroley/example-1.png"

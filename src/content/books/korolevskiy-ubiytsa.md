@@ -2,6 +2,8 @@
 pubDate: 2026-06-03
 title: "Королевский убийца"
 author: "Робин Хобб"
+year: 1996
+genre: "Фэнтези"
 coverImage: "../../assets/books/korolevskiy-ubiytsa/cover.webp"
 exampleImages:
   - "../../assets/books/korolevskiy-ubiytsa/example-1.png"
