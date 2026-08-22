@@ -623,6 +623,59 @@ const totalBooks = (await getCollection('books')).length;
 
 			}
 
+			// Плавный переход обложки нужен только для той карточки, по которой выполнен переход.
+			// Если view-transition-name стоит сразу на всех обложках ленты, браузер снимает снимки
+			// всех карточек, а такие снимки рисуются поверх интерфейса и не обрезаются лентой —
+			// поэтому на время перехода был виден лишний столбик поверх кнопок листания.
+			const coverMorphWindow = window as typeof window & { chitaiCoverMorphBound?: boolean };
+
+			if (!coverMorphWindow.chitaiCoverMorphBound) {
+				coverMorphWindow.chitaiCoverMorphBound = true;
+
+				let pendingCoverSlug = '';
+
+				const clearCoverNames = (root: Document) => {
+					root.querySelectorAll<HTMLElement>('[data-cover-slug]').forEach((cover) => {
+						cover.style.viewTransitionName = '';
+					});
+				};
+
+				document.addEventListener(
+					'click',
+					(event) => {
+						pendingCoverSlug = '';
+						clearCoverNames(document);
+
+						const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+						const cover = link?.querySelector<HTMLElement>('[data-cover-slug]');
+						const slug = cover?.dataset.coverSlug;
+						if (!cover || !slug) return;
+
+						pendingCoverSlug = slug;
+						cover.style.viewTransitionName = `cover-${slug}`;
+					},
+					true,
+				);
+
+				// Переход не из карточки (назад, меню, логотип) — снимков обложек быть не должно.
+				document.addEventListener('astro:before-preparation', () => {
+					if (!pendingCoverSlug) clearCoverNames(document);
+				});
+
+				document.addEventListener('astro:before-swap', (event) => {
+					const nextDocument = (event as unknown as { newDocument: Document }).newDocument;
+					clearCoverNames(nextDocument);
+
+					if (!pendingCoverSlug) return;
+
+					const nextCover = nextDocument.querySelector<HTMLElement>(
+						`[data-book-cover][data-cover-slug="${pendingCoverSlug}"]`,
+					);
+					if (nextCover) nextCover.style.viewTransitionName = `cover-${pendingCoverSlug}`;
+					pendingCoverSlug = '';
+				});
+			}
+
 			initializeGlobalUi();
 		</script>
 	</body>
