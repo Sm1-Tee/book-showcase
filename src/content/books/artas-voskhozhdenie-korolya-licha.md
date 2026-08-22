@@ -2,6 +2,8 @@
 pubDate: 2024-01-03
 title: "Артас. Восхождение Короля-лича"
 author: "Кристи Голден"
+year: 2009
+genre: "Фэнтези"
 coverImage: "../../assets/books/artas-voskhozhdenie-korolya-licha/cover.png"
 exampleImages:
   - "../../assets/books/artas-voskhozhdenie-korolya-licha/example-1.jpeg"

@@ -2,6 +2,8 @@
 pubDate: 2024-01-14
 title: "Мор, ученик Смерти"
 author: "Терри Пратчетт"
+year: 1987
+genre: "Фэнтези"
 coverImage: "../../assets/books/mor-uchenik-smerti/cover.png"
 exampleImages:
   - "../../assets/books/mor-uchenik-smerti/example-1.jpeg"

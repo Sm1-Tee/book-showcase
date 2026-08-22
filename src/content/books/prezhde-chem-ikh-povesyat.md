@@ -2,6 +2,8 @@
 pubDate: 2024-01-19
 title: "Прежде чем их повесят"
 author: "Джо Аберкромби"
+year: 2007
+genre: "Фэнтези"
 coverImage: "../../assets/books/prezhde-chem-ikh-povesyat/cover.png"
 exampleImages:
   - "../../assets/books/prezhde-chem-ikh-povesyat/example-1.png"

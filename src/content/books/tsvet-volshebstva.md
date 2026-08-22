@@ -2,6 +2,8 @@
 pubDate: 2024-01-23
 title: "Цвет волшебства"
 author: "Терри Пратчетт"
+year: 1983
+genre: "Фэнтези"
 coverImage: "../../assets/books/tsvet-volshebstva/cover.png"
 exampleImages:
   - "../../assets/books/tsvet-volshebstva/example-1.png"

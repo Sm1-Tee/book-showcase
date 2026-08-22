@@ -2,6 +2,8 @@
 pubDate: 2026-06-17
 title: "Две крепости"
 author: "Джон Роналд Руэл Толкин"
+year: 1954
+genre: "Фэнтези"
 coverImage: "../../assets/books/dve-kreposti/cover.png"
 exampleImages:
   - "../../assets/books/dve-kreposti/example-1.png"

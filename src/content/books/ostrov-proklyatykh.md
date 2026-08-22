@@ -2,6 +2,8 @@
 pubDate: 2026-07-27
 title: "Остров проклятых"
 author: "Деннис Лихэйн"
+year: 2003
+genre: "Триллер"
 coverImage: "../../assets/books/ostrov-proklyatykh/cover.jpeg"
 exampleImages:
   - "../../assets/books/ostrov-proklyatykh/example-1.jpeg"

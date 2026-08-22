@@ -2,6 +2,8 @@
 pubDate: 2026-05-25
 title: "Страхи мудреца. Том 2"
 author: "Патрик Ротфусс"
+year: 2011
+genre: "Фэнтези"
 coverImage: "../../assets/books/strakhi-mudretsa-tom-2/cover.png"
 exampleImages:
   - "../../assets/books/strakhi-mudretsa-tom-2/example-1.jpeg"

@@ -2,6 +2,8 @@
 pubDate: 2024-01-15
 title: "Настоящие сказки братьев Гримм"
 author: "Якоб и Вильгельм Гримм"
+year: 1812
+genre: "Классика"
 coverImage: "../../assets/books/nastoyashchie-skazki-bratev-grimm/cover.png"
 exampleImages:
   - "../../assets/books/nastoyashchie-skazki-bratev-grimm/example-1.png"

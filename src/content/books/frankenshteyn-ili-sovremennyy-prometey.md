@@ -2,6 +2,8 @@
 pubDate: 2024-01-08
 title: "Франкенштейн, или Современный Прометей"
 author: "Мэри Уолстонкрафт Шелли"
+year: 1818
+genre: "Готика"
 coverImage: "../../assets/books/frankenshteyn-ili-sovremennyy-prometey/cover.png"
 exampleImages:
   - "../../assets/books/frankenshteyn-ili-sovremennyy-prometey/example-1.jpeg"

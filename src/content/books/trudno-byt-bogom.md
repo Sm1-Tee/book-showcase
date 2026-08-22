@@ -2,6 +2,8 @@
 pubDate: 2026-07-14
 title: "Трудно быть богом"
 author: "Аркадий и Борис  Стругацкие"
+year: 1964
+genre: "Фантастика"
 coverImage: "../../assets/books/trudno-byt-bogom/cover.jpeg"
 exampleImages:
   - "../../assets/books/trudno-byt-bogom/example-1.jpeg"

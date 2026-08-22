@@ -2,6 +2,8 @@
 pubDate: 2026-07-23
 title: "Черный Отряд"
 author: "Глен Кук"
+year: 1984
+genre: "Фэнтези"
 coverImage: "../../assets/books/chernyy-otryad/cover.jpeg"
 exampleImages:
   - "../../assets/books/chernyy-otryad/example-1.jpeg"

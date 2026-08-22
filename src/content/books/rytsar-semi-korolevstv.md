@@ -2,6 +2,8 @@
 pubDate: 2024-01-20
 title: "Рыцарь Семи Королевств"
 author: "Джордж Мартин"
+year: 1998
+genre: "Фэнтези"
 coverImage: "../../assets/books/rytsar-semi-korolevstv/cover.png"
 exampleImages:
   - "../../assets/books/rytsar-semi-korolevstv/example-1.jpeg"

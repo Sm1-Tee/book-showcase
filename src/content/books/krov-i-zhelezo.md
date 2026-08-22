@@ -2,6 +2,8 @@
 pubDate: 2024-01-11
 title: "Кровь и железо"
 author: "Джо Аберкромби"
+year: 2006
+genre: "Фэнтези"
 coverImage: "../../assets/books/krov-i-zhelezo/cover.png"
 exampleImages:
   - "../../assets/books/krov-i-zhelezo/example-1.png"

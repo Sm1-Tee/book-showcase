@@ -2,6 +2,8 @@
 pubDate: 2024-01-10
 title: "Хоббит, или Туда и Обратно"
 author: "Джон Роналд Руэл Толкин"
+year: 1937
+genre: "Фэнтези"
 coverImage: "../../assets/books/khobbit-ili-tuda-i-obratno/cover.png"
 exampleImages:
   - "../../assets/books/khobbit-ili-tuda-i-obratno/example-1.png"

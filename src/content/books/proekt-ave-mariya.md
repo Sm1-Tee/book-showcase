@@ -2,6 +2,8 @@
 pubDate: 2026-08-04
 title: "Проект «Аве Мария»"
 author: "Энди Уир"
+year: 2021
+genre: "Фантастика"
 coverImage: "../../assets/books/proekt-ave-mariya/cover.jpeg"
 exampleImages:
   - "../../assets/books/proekt-ave-mariya/example-1.jpeg"
