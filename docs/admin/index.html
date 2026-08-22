@@ -240,6 +240,170 @@
         background: var(--danger);
       }
 
+      .preview-item .preview-order {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        min-width: 22px;
+        height: 22px;
+        padding: 0 6px;
+        border-radius: 11px;
+        background: rgba(0, 0, 0, 0.72);
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 22px;
+        text-align: center;
+      }
+
+      .preview-item .preview-nav {
+        position: absolute;
+        inset: auto 0 0 0;
+        display: flex;
+        gap: 1px;
+        background: rgba(0, 0, 0, 0.72);
+      }
+
+      .preview-item .preview-move {
+        flex: 1;
+        border: none;
+        background: transparent;
+        color: var(--text);
+        font-size: 1rem;
+        line-height: 1;
+        padding: 5px 0;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.15s, color 0.15s;
+      }
+
+      .preview-item .preview-move:hover:not(:disabled) {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .preview-item .preview-move:disabled {
+        color: var(--border);
+        cursor: not-allowed;
+      }
+
+      .preview-hint {
+        margin-top: 8px;
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+
+      /* ── Массовое изменение жанров ── */
+
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: border-color 0.15s, color 0.15s;
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .list-header-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn-add:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+
+      .genre-section {
+        display: none;
+      }
+
+      .genre-section.active {
+        display: block;
+      }
+
+      .genre-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        padding: 16px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 20px;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .genre-bar-status {
+        font-size: 0.9375rem;
+        color: var(--muted);
+      }
+
+      .genre-bar-status strong {
+        color: var(--accent);
+      }
+
+      .genre-bar-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .genre-rows {
+        display: grid;
+        gap: 10px;
+      }
+
+      .genre-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 260px;
+        align-items: center;
+        gap: 16px;
+        padding: 12px 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+      }
+
+      .genre-row.changed {
+        border-color: var(--accent);
+      }
+
+      .genre-row-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+      }
+
+      .genre-row-author {
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+
+      .genre-row input[type='text'] {
+        padding: 8px 12px;
+      }
+
+      @media (max-width: 700px) {
+        .genre-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+
       .cover-preview {
         margin-top: 10px;
         max-width: 180px;
@@ -834,7 +998,7 @@
         }
         .dl-body { max-height: 65vh; }
       }
-    </style></head> <body> <div class="container"> <h1 id="pageTitle">Книги</h1> <div class="auth-section active" id="authSection"> <div class="field"> <label for="tokenInput">GitHub Personal Access Token</label> <input type="password" id="tokenInput" autocomplete="off" spellcheck="false" placeholder="ghp_..."> </div> <div class="checkbox-row"> <input type="checkbox" id="rememberToken" checked> <label for="rememberToken">Запомнить токен</label> </div> <button class="btn-primary" id="loginBtn" type="button">Войти</button> <div class="error-text" id="authError"></div> </div> <div class="book-list-section" id="bookListSection"> <div class="user-bar"> <span>Вы вошли как <strong id="username"></strong></span> <button class="btn-logout" id="logoutBtn" type="button">Выйти</button> </div> <div class="stats-panel" id="statsPanel" style="display: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; text-align: center;"> <div style="font-size: 0.8125rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Всего скачиваний (GitHub Releases)</div> <div id="totalDownloads" style="font-size: 2rem; font-weight: 700; color: var(--accent);">0</div> </div> <div class="list-header"> <select class="sort-select" id="sortSelect"> <option value="newest">Сначала новые (по дате)</option> <option value="downloads">По скачиваниям (по убыванию)</option> <option value="alpha">По алфавиту (А-Я)</option> </select> <button class="btn-add" id="addBookBtn" type="button">+ Добавить книгу</button> </div> <div class="loading-text" id="booksLoading">Загрузка книг…</div> <div class="books-grid" id="booksGrid"></div> <div class="empty-state" id="emptyState">Книг пока нет</div> </div> <div class="form-section" id="formSection"> <button class="btn-back" id="backBtn" type="button">&larr; Назад к списку</button> <form id="bookForm" novalidate> <div class="field"> <label for="title">Название</label> <input type="text" id="title" required> </div> <div class="field"> <label for="author">Автор</label> <input type="text" id="author" required> </div> <div class="field"> <label>Обложка</label> <div class="drop-zone" id="coverZone"> <span>Перетащите файл или нажмите для выбора</span> <input type="file" accept="image/*" id="coverInput"> </div> <div class="cover-preview" id="coverPreview"> <img id="coverImg" alt=""> <button class="remove-btn" id="coverRemoveBtn" type="button">&times;</button> </div> </div> <div class="field"> <label>Примеры иллюстраций</label> <div class="drop-zone" id="examplesZone"> <span>Перетащите изображения или нажмите для выбора (до 4 штук)</span> <input type="file" accept="image/*" multiple id="examplesInput"> </div> <div class="previews" id="examplesPreviews"></div> </div> <div class="field"> <label for="colorEpubUrl">Ссылка на цветной EPUB (GitHub Releases)</label> <input type="text" id="colorEpubUrl" placeholder="https://github.com/Sm1-Tee/chit-ai/releases/download/..." required> </div> <div class="field"> <label for="bwEpubUrl">Ссылка на ч/б EPUB (GitHub Releases)</label> <input type="text" id="bwEpubUrl" placeholder="https://github.com/Sm1-Tee/chit-ai/releases/download/..." required> </div> <div class="field"> <label for="series">Серия <span class="optional">(необязательно)</span></label> <input type="text" id="series"> </div> <div class="field"> <label for="seriesOrder">Порядок в серии <span class="optional">(необязательно)</span></label> <input type="number" id="seriesOrder" min="1"> </div> <div class="field"> <label for="bodyText">Описание книги</label> <div class="editor-tabs"> <button type="button" class="editor-tab active" id="tabEdit">Редактор</button> <button type="button" class="editor-tab" id="tabPreview">Предпросмотр</button> </div> <textarea id="bodyText" style="border-radius: 0 0 8px 8px;"></textarea> <div class="md-preview" id="mdPreview"></div> </div> <button class="btn-primary" id="publishBtn" type="button" disabled>
+    </style></head> <body> <div class="container"> <h1 id="pageTitle">Книги</h1> <div class="auth-section active" id="authSection"> <div class="field"> <label for="tokenInput">GitHub Personal Access Token</label> <input type="password" id="tokenInput" autocomplete="off" spellcheck="false" placeholder="ghp_..."> </div> <div class="checkbox-row"> <input type="checkbox" id="rememberToken" checked> <label for="rememberToken">Запомнить токен</label> </div> <button class="btn-primary" id="loginBtn" type="button">Войти</button> <div class="error-text" id="authError"></div> </div> <div class="book-list-section" id="bookListSection"> <div class="user-bar"> <span>Вы вошли как <strong id="username"></strong></span> <button class="btn-logout" id="logoutBtn" type="button">Выйти</button> </div> <div class="stats-panel" id="statsPanel" style="display: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; text-align: center;"> <div style="font-size: 0.8125rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Всего скачиваний (GitHub Releases)</div> <div id="totalDownloads" style="font-size: 2rem; font-weight: 700; color: var(--accent);">0</div> </div> <div class="list-header"> <select class="sort-select" id="sortSelect"> <option value="newest">Сначала новые (по дате)</option> <option value="downloads">По скачиваниям (по убыванию)</option> <option value="alpha">По алфавиту (А-Я)</option> </select> <div class="list-header-actions"> <button class="btn-ghost" id="genreBatchBtn" type="button">Жанры разом</button> <button class="btn-add" id="addBookBtn" type="button">+ Добавить книгу</button> </div> </div> <div class="loading-text" id="booksLoading">Загрузка книг…</div> <div class="books-grid" id="booksGrid"></div> <div class="empty-state" id="emptyState">Книг пока нет</div> </div> <div class="genre-section" id="genreSection"> <button class="btn-back" id="genreBackBtn" type="button">&larr; Назад к списку</button> <div class="genre-bar"> <div class="genre-bar-status" id="genreStatus"></div> <div class="genre-bar-actions"> <button class="btn-ghost" id="genreResetBtn" type="button">Отменить правки</button> <button class="btn-add" id="genreSaveBtn" type="button" disabled>Загрузить все изменения</button> </div> </div> <div class="genre-rows" id="genreRows"></div> </div> <div class="form-section" id="formSection"> <button class="btn-back" id="backBtn" type="button">&larr; Назад к списку</button> <form id="bookForm" novalidate> <div class="field"> <label for="title">Название</label> <input type="text" id="title" required> </div> <div class="field"> <label for="author">Автор</label> <input type="text" id="author" required> </div> <div class="field"> <label for="genre">Жанр</label> <input type="text" id="genre" list="genreOptions" placeholder="Например: Фэнтези" autocomplete="off" required> <datalist id="genreOptions"></datalist> </div> <div class="field"> <label>Обложка</label> <div class="drop-zone" id="coverZone"> <span>Перетащите файл или нажмите для выбора</span> <input type="file" accept="image/*" id="coverInput"> </div> <div class="cover-preview" id="coverPreview"> <img id="coverImg" alt=""> <button class="remove-btn" id="coverRemoveBtn" type="button">&times;</button> </div> </div> <div class="field"> <label>Примеры иллюстраций</label> <div class="drop-zone" id="examplesZone"> <span>Перетащите изображения или нажмите для выбора (до 4 штук)</span> <input type="file" accept="image/*" multiple id="examplesInput"> </div> <div class="previews" id="examplesPreviews"></div> <div class="preview-hint">Порядок картинок = порядок на странице книги. Первая — главная. Порядок меняется кнопками ‹ › внизу картинки.</div> </div> <div class="field"> <label for="colorEpubUrl">Ссылка на цветной EPUB (GitHub Releases)</label> <input type="text" id="colorEpubUrl" placeholder="https://github.com/Sm1-Tee/chit-ai/releases/download/..." required> </div> <div class="field"> <label for="bwEpubUrl">Ссылка на ч/б EPUB (GitHub Releases)</label> <input type="text" id="bwEpubUrl" placeholder="https://github.com/Sm1-Tee/chit-ai/releases/download/..." required> </div> <div class="field"> <label for="series">Серия <span class="optional">(необязательно)</span></label> <input type="text" id="series"> </div> <div class="field"> <label for="seriesOrder">Порядок в серии <span class="optional">(необязательно)</span></label> <input type="number" id="seriesOrder" min="1"> </div> <div class="field"> <label for="bodyText">Описание книги</label> <div class="editor-tabs"> <button type="button" class="editor-tab active" id="tabEdit">Редактор</button> <button type="button" class="editor-tab" id="tabPreview">Предпросмотр</button> </div> <textarea id="bodyText" style="border-radius: 0 0 8px 8px;"></textarea> <div class="md-preview" id="mdPreview"></div> </div> <button class="btn-primary" id="publishBtn" type="button" disabled>
 Опубликовать книгу
 </button> </form> </div> </div> <aside class="dl-drawer" id="dlDrawer"> <div class="dl-head"> <div> <div class="dl-head-title">Последние скачивания</div> <div class="dl-when" id="dlUpdated"></div> </div> <div class="dl-actions"> <button class="dl-icon-btn" id="dlRefresh" type="button" title="Обновить">↻</button> </div> </div> <div class="dl-body" id="dlBody"> <div class="dl-empty">Загрузка…</div> </div> </aside> <div class="overlay" id="overlay"> <div class="overlay-content"> <h2 id="overlayTitle">Публикация книги</h2> <div class="progress-bar-track"> <div class="progress-bar-fill" id="progressFill"></div> </div> <div class="progress-status" id="progressStatus"></div> <div class="overlay-actions" id="overlayActions"> <button id="overlayClose" type="button">Закрыть</button> </div> </div> </div> <div class="overlay" id="deleteOverlay"> <div class="overlay-content"> <h2>Удалить книгу?</h2> <p class="delete-book-name" id="deleteBookName"></p> <div class="delete-actions"> <button class="btn-confirm-delete" id="confirmDeleteBtn" type="button">Удалить</button> <button class="btn-cancel" id="cancelDeleteBtn" type="button">Отмена</button> </div> </div> </div> <script>
       var REPO = 'Sm1-Tee/chit-ai';
@@ -897,10 +1061,19 @@
         bwEpubUrl: document.getElementById('bwEpubUrl'),
         title: document.getElementById('title'),
         author: document.getElementById('author'),
+        genre: document.getElementById('genre'),
+        genreOptions: document.getElementById('genreOptions'),
         series: document.getElementById('series'),
         seriesOrder: document.getElementById('seriesOrder'),
         bodyText: document.getElementById('bodyText'),
         bookForm: document.getElementById('bookForm'),
+        genreSection: document.getElementById('genreSection'),
+        genreBatchBtn: document.getElementById('genreBatchBtn'),
+        genreBackBtn: document.getElementById('genreBackBtn'),
+        genreRows: document.getElementById('genreRows'),
+        genreStatus: document.getElementById('genreStatus'),
+        genreSaveBtn: document.getElementById('genreSaveBtn'),
+        genreResetBtn: document.getElementById('genreResetBtn'),
       };
 
       /* ── GitHub API helper ── */
@@ -1041,9 +1214,11 @@
         el.authSection.classList.toggle('active', name === 'auth');
         el.bookListSection.classList.toggle('active', name === 'list');
         el.formSection.classList.toggle('active', name === 'form');
+        el.genreSection.classList.toggle('active', name === 'genres');
 
         if (name === 'auth') el.pageTitle.textContent = 'Администрирование';
         if (name === 'list') el.pageTitle.textContent = 'Книги';
+        if (name === 'genres') el.pageTitle.textContent = 'Жанры книг';
       }
 
       /* ── Auth ── */
@@ -1112,9 +1287,12 @@
                   var fm = parsed.frontmatter;
                   return {
                     slug: f.name.replace('.md', ''),
+                    raw: content,
                     pubDate: fm.pubDate || '',
                     title: fm.title || '',
                     author: fm.author || '',
+                    genre: fm.genre || '',
+                    year: fm.year || '',
                     coverImage: fm.coverImage || '',
                     exampleImages: fm.exampleImages || [],
                     colorEpub: fm.colorEpub || '',
@@ -1130,6 +1308,7 @@
           .then(function (loaded) {
             if (!loaded) return;
             booksCache = loaded.filter(Boolean);
+            populateGenreOptions();
             el.booksLoading.style.display = 'none';
             if (booksCache.length === 0) {
               el.emptyState.style.display = '';
@@ -1263,10 +1442,29 @@
 
       /* ── Form: create vs edit ── */
 
+      function populateGenreOptions() {
+        var seen = {};
+        var genres = [];
+        booksCache.forEach(function (book) {
+          var value = (book.genre || '').trim();
+          if (!value || seen[value]) return;
+          seen[value] = true;
+          genres.push(value);
+        });
+        genres.sort(function (a, b) { return a.localeCompare(b, 'ru'); });
+        el.genreOptions.innerHTML = '';
+        genres.forEach(function (value) {
+          var option = document.createElement('option');
+          option.value = value;
+          el.genreOptions.appendChild(option);
+        });
+      }
+
       function resetFormState() {
         el.bookForm.reset();
         coverFile = null;
         coverExisting = null;
+        revokeExampleUrls();
         exampleItems = [];
         el.colorEpubUrl.value = '';
         el.bwEpubUrl.value = '';
@@ -1301,6 +1499,7 @@
 
         el.title.value = book.title;
         el.author.value = book.author;
+        el.genre.value = book.genre || '';
         el.series.value = book.series || '';
         el.seriesOrder.value = book.seriesOrder || '';
         el.bodyText.value = book.body;
@@ -1382,25 +1581,82 @@
         validateForm();
       });
 
+      function exampleThumbUrl(item) {
+        if (item.type === 'existing') return item.url;
+        if (!item.previewUrl) item.previewUrl = URL.createObjectURL(item.file);
+        return item.previewUrl;
+      }
+
+      function revokeExampleUrls() {
+        exampleItems.forEach(function (item) {
+          if (item.previewUrl) {
+            URL.revokeObjectURL(item.previewUrl);
+            item.previewUrl = null;
+          }
+        });
+      }
+
+      function moveExample(from, to) {
+        if (to < 0 || to >= exampleItems.length) return;
+        var moved = exampleItems.splice(from, 1)[0];
+        exampleItems.splice(to, 0, moved);
+        renderExamplePreviews();
+        validateForm();
+      }
+
       function renderExamplePreviews() {
         el.examplesPreviews.innerHTML = '';
         exampleItems.forEach(function (item, i) {
           var div = document.createElement('div');
           div.className = 'preview-item';
+
           var img = document.createElement('img');
-          img.src = item.type === 'existing' ? item.url : URL.createObjectURL(item.file);
+          img.src = exampleThumbUrl(item);
           img.alt = '';
+          img.draggable = false;
+
+          var order = document.createElement('span');
+          order.className = 'preview-order';
+          order.textContent = String(i + 1);
+
           var btn = document.createElement('button');
           btn.className = 'remove-btn';
           btn.type = 'button';
           btn.textContent = '×';
+          btn.title = 'Убрать картинку';
           btn.addEventListener('click', function () {
-            exampleItems.splice(i, 1);
+            var removed = exampleItems.splice(i, 1)[0];
+            if (removed && removed.previewUrl) URL.revokeObjectURL(removed.previewUrl);
             renderExamplePreviews();
             validateForm();
           });
+
+          var nav = document.createElement('div');
+          nav.className = 'preview-nav';
+
+          var prevBtn = document.createElement('button');
+          prevBtn.className = 'preview-move';
+          prevBtn.type = 'button';
+          prevBtn.textContent = '‹';
+          prevBtn.title = 'Сдвинуть влево';
+          prevBtn.disabled = i === 0;
+          prevBtn.addEventListener('click', function () { moveExample(i, i - 1); });
+
+          var nextBtn = document.createElement('button');
+          nextBtn.className = 'preview-move';
+          nextBtn.type = 'button';
+          nextBtn.textContent = '›';
+          nextBtn.title = 'Сдвинуть вправо';
+          nextBtn.disabled = i === exampleItems.length - 1;
+          nextBtn.addEventListener('click', function () { moveExample(i, i + 1); });
+
+          nav.appendChild(prevBtn);
+          nav.appendChild(nextBtn);
+
           div.appendChild(img);
+          div.appendChild(order);
           div.appendChild(btn);
+          div.appendChild(nav);
           el.examplesPreviews.appendChild(div);
         });
       }
@@ -1414,6 +1670,7 @@
         var ok =
           el.title.value.trim() &&
           el.author.value.trim() &&
+          el.genre.value.trim() &&
           (coverFile || coverExisting) &&
           exampleItems.length > 0 &&
           el.colorEpubUrl.value.trim() &&
@@ -1423,6 +1680,7 @@
 
       el.title.addEventListener('input', validateForm);
       el.author.addEventListener('input', validateForm);
+      el.genre.addEventListener('input', validateForm);
 
       /* ── Progress overlay ── */
 
@@ -1498,7 +1756,7 @@
           });
       }
 
-      function buildMarkdown(title, author, slug, coverExt, exItems, series, seriesOrder, bodyText, colorEpubName, bwEpubName, pubDate) {
+      function buildMarkdown(title, author, genre, year, slug, coverExt, exItems, series, seriesOrder, bodyText, colorEpubName, bwEpubName, pubDate) {
         var fm = '---\n';
         if (pubDate) {
           fm += 'pubDate: ' + pubDate + '\n';
@@ -1508,6 +1766,8 @@
         }
         fm += 'title: "' + title + '"\n';
         fm += 'author: "' + author + '"\n';
+        if (genre) fm += 'genre: "' + genre + '"\n';
+        if (year) fm += 'year: ' + year + '\n';
         fm += 'coverImage: "../../assets/books/' + slug + '/cover.' + coverExt + '"\n';
         fm += 'exampleImages:\n';
         exItems.forEach(function (item, i) {
@@ -1549,7 +1809,7 @@
 
       /* ── Publish (create) ── */
 
-      function publishCreate(title, author, series, seriesOrder, bodyText, slug) {
+      function publishCreate(title, author, genre, series, seriesOrder, bodyText, slug) {
         var fileEntries = [];
         fileEntries.push({ file: coverFile, path: 'src/assets/books/' + slug + '/cover.' + ext(coverFile.name), label: coverFile.name });
         exampleItems.forEach(function (item, i) {
@@ -1559,7 +1819,7 @@
         setProgress(0, 'Подготовка файлов к загрузке...');
         var coverExt = ext(coverFile.name);
         var mdPath = 'src/content/books/' + slug + '.md';
-        var md = buildMarkdown(title, author, slug, coverExt, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim(), null);
+        var md = buildMarkdown(title, author, genre, null, slug, coverExt, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim(), null);
 
         getHeadContext().then(function(ctx) {
            setProgress(30, 'Загрузка изображений...');
@@ -1582,7 +1842,7 @@
 
       /* ── Publish (edit) ── */
 
-      function publishEdit(title, author, series, seriesOrder, bodyText, newSlug) {
+      function publishEdit(title, author, genre, series, seriesOrder, bodyText, newSlug) {
         var oldSlug = editingSlug;
         var treeEntries = [];
         var uploadTasks = [];
@@ -1637,7 +1897,8 @@
               var mdPath = 'src/content/books/' + newSlug + '.md';
               var coverExtToPass = coverFile ? ext(coverFile.name) : coverExisting ? coverExisting.ext : 'jpg';
               var pubDateToPass = editingBookData && editingBookData.pubDate ? editingBookData.pubDate : null;
-              var md = buildMarkdown(title, author, newSlug, coverExtToPass, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim(), pubDateToPass);
+              var yearToPass = editingBookData && editingBookData.year ? editingBookData.year : null;
+              var md = buildMarkdown(title, author, genre, yearToPass, newSlug, coverExtToPass, exampleItems, series, seriesOrder, bodyText, el.colorEpubUrl.value.trim(), el.bwEpubUrl.value.trim(), pubDateToPass);
 
               var allPromises = uploadTasks.map(function(entry) {
                  return readFileAsBase64(entry.file)
@@ -1690,6 +1951,7 @@
       el.publishBtn.addEventListener('click', function () {
         var title = el.title.value.trim();
         var author = el.author.value.trim();
+        var genre = el.genre.value.trim();
         var series = el.series.value.trim();
         var seriesOrder = el.seriesOrder.value.trim();
         var bodyText = el.bodyText.value;
@@ -1699,9 +1961,9 @@
         showOverlay(editMode === 'edit' ? 'Сохранение изменений' : 'Публикация книги');
 
         if (editMode === 'edit') {
-          publishEdit(title, author, series, seriesOrder, bodyText, slug);
+          publishEdit(title, author, genre, series, seriesOrder, bodyText, slug);
         } else {
-          publishCreate(title, author, series, seriesOrder, bodyText, slug);
+          publishCreate(title, author, genre, series, seriesOrder, bodyText, slug);
         }
       });
 
@@ -1767,6 +2029,180 @@
             showOverlayResult('Ошибка удаления', err && err.message ? err.message : String(err), null);
           });
       });
+
+      /* ── Массовое изменение жанров ── */
+
+      var genreDrafts = {};
+
+      function genreOriginal(slug) {
+        for (var i = 0; i < booksCache.length; i++) {
+          if (booksCache[i].slug === slug) return (booksCache[i].genre || '').trim();
+        }
+        return '';
+      }
+
+      function genreChangeList() {
+        var changes = [];
+        booksCache.forEach(function (book) {
+          if (!Object.prototype.hasOwnProperty.call(genreDrafts, book.slug)) return;
+          var next = genreDrafts[book.slug].trim();
+          if (next === (book.genre || '').trim()) return;
+          changes.push({ slug: book.slug, title: book.title, genre: next, book: book });
+        });
+        return changes;
+      }
+
+      function updateGenreStatus() {
+        var changes = genreChangeList();
+        if (changes.length === 0) {
+          el.genreStatus.textContent = 'Изменений нет. Правь жанры сколько нужно — загрузка будет одна.';
+        } else {
+          el.genreStatus.innerHTML = 'К загрузке: <strong>' + changes.length + '</strong> — всё уйдёт одним коммитом.';
+        }
+        el.genreSaveBtn.disabled = changes.length === 0;
+        var rows = el.genreRows.querySelectorAll('.genre-row');
+        for (var i = 0; i < rows.length; i++) {
+          var slug = rows[i].getAttribute('data-slug');
+          var hasDraft = Object.prototype.hasOwnProperty.call(genreDrafts, slug);
+          var changed = hasDraft && genreDrafts[slug].trim() !== genreOriginal(slug);
+          rows[i].classList.toggle('changed', changed);
+        }
+      }
+
+      function renderGenreRows() {
+        el.genreRows.innerHTML = '';
+        booksCache
+          .slice()
+          .sort(function (a, b) {
+            return (a.title || '').localeCompare(b.title || '', 'ru', { sensitivity: 'base' });
+          })
+          .forEach(function (book) {
+            var row = document.createElement('div');
+            row.className = 'genre-row';
+            row.setAttribute('data-slug', book.slug);
+
+            var info = document.createElement('div');
+            var titleEl = document.createElement('div');
+            titleEl.className = 'genre-row-title';
+            titleEl.textContent = book.title;
+            var authorEl = document.createElement('div');
+            authorEl.className = 'genre-row-author';
+            authorEl.textContent = book.author;
+            info.appendChild(titleEl);
+            info.appendChild(authorEl);
+
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.setAttribute('list', 'genreOptions');
+            input.setAttribute('autocomplete', 'off');
+            input.placeholder = 'Жанр';
+            input.value = Object.prototype.hasOwnProperty.call(genreDrafts, book.slug)
+              ? genreDrafts[book.slug]
+              : book.genre || '';
+            input.addEventListener('input', function () {
+              genreDrafts[book.slug] = input.value;
+              updateGenreStatus();
+            });
+
+            row.appendChild(info);
+            row.appendChild(input);
+            el.genreRows.appendChild(row);
+          });
+        updateGenreStatus();
+      }
+
+      function setGenreInRaw(raw, genre) {
+        var lines = raw.split('\n');
+        if (lines[0].trim() !== '---') throw new Error('неожиданный формат файла');
+        var end = -1;
+        for (var i = 1; i < lines.length; i++) {
+          if (lines[i].trim() === '---') { end = i; break; }
+        }
+        if (end === -1) throw new Error('неожиданный формат файла');
+        var genreIdx = -1;
+        var authorIdx = -1;
+        for (var j = 1; j < end; j++) {
+          if (/^genre\s*:/.test(lines[j])) genreIdx = j;
+          if (/^author\s*:/.test(lines[j])) authorIdx = j;
+        }
+        var clean = genre.replace(/"/g, '').trim();
+        if (!clean) {
+          if (genreIdx !== -1) lines.splice(genreIdx, 1);
+        } else if (genreIdx !== -1) {
+          lines[genreIdx] = 'genre: "' + clean + '"';
+        } else {
+          lines.splice((authorIdx !== -1 ? authorIdx : 0) + 1, 0, 'genre: "' + clean + '"');
+        }
+        return lines.join('\n');
+      }
+
+      function uploadGenreBlobs(changes, entries, index) {
+        if (index >= changes.length) return Promise.resolve(entries);
+        var change = changes[index];
+        var content;
+        try {
+          content = setGenreInRaw(change.book.raw, change.genre);
+        } catch (e) {
+          return Promise.reject(new Error('«' + change.title + '»: ' + e.message));
+        }
+        change.content = content;
+        return uploadBlob(btoa(unescape(encodeURIComponent(content)))).then(function (blob) {
+          entries.push({
+            path: 'src/content/books/' + change.slug + '.md',
+            mode: '100644',
+            type: 'blob',
+            sha: blob.sha,
+          });
+          setProgress(10 + Math.round(((index + 1) / changes.length) * 60), 'Подготовлено ' + (index + 1) + ' из ' + changes.length + '…');
+          return uploadGenreBlobs(changes, entries, index + 1);
+        });
+      }
+
+      function saveGenreBatch() {
+        var changes = genreChangeList();
+        if (changes.length === 0) return;
+        showOverlay('Загрузка жанров');
+        setProgress(5, 'Проверка репозитория…');
+        getHeadContext()
+          .then(function (ctx) {
+            return uploadGenreBlobs(changes, [], 0).then(function (entries) {
+              setProgress(80, 'Один коммит на все изменения…');
+              return createCommitAndPush(ctx, entries, 'Update genres: ' + changes.length + ' book(s)');
+            });
+          })
+          .then(function () {
+            changes.forEach(function (change) {
+              change.book.genre = change.genre.replace(/"/g, '').trim();
+              change.book.raw = change.content;
+              delete genreDrafts[change.slug];
+            });
+            populateGenreOptions();
+            renderGenreRows();
+            setProgress(100, '');
+            showOverlayResult('Жанры сохранены', 'Изменено книг: ' + changes.length + '. Деплой запустится один раз.', null);
+          })
+          .catch(function (err) {
+            setProgress(0, '');
+            showOverlayResult('Ошибка сохранения жанров', err && err.message ? err.message : String(err), null);
+          });
+      }
+
+      el.genreBatchBtn.addEventListener('click', function () {
+        renderGenreRows();
+        showView('genres');
+        window.scrollTo(0, 0);
+      });
+
+      el.genreBackBtn.addEventListener('click', function () {
+        showView('list');
+      });
+
+      el.genreResetBtn.addEventListener('click', function () {
+        genreDrafts = {};
+        renderGenreRows();
+      });
+
+      el.genreSaveBtn.addEventListener('click', saveGenreBatch);
 
       /* ── Markdown preview ── */
 
