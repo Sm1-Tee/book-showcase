@@ -27,6 +27,20 @@ const {
 	imageSizes = '(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw',
 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// На телефоне карточка узкая: длинные автор и название разъезжаются на много строк
+// и растягивают всю строку ленты. Размер шрифта подбираем по длине текста при сборке,
+// чтобы в браузере не было ни скриптов, ни пересчёта раскладки.
+const authorSizeMobile =
+	author.length <= 14 ? 'text-[13px]' :
+	author.length <= 22 ? 'text-[12px]' :
+	author.length <= 32 ? 'text-[11px]' : 'text-[10px]';
+
+const titleSizeMobile =
+	title.length <= 16 ? 'text-base' :
+	title.length <= 28 ? 'text-[15px]' :
+	title.length <= 40 ? 'text-[14px]' :
+	title.length <= 55 ? 'text-[13px]' : 'text-[12px]';
 ---
 
 <a href={`${baseUrl}/books/${slug}`} class="group flex h-full flex-col text-ink book-card" data-title={title.toLowerCase()} data-author={author.toLowerCase()} data-series={series?.toLowerCase() || ''}>
@@ -57,8 +71,8 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     )}
   </div>
 
-  <div class="mt-3.5 flex flex-1 flex-col text-center">
-    <p class="type-ui text-[13px] font-black uppercase tracking-[0.14em] text-accent">{author}</p>
-    <h3 class="mt-1.5 text-base font-semibold leading-snug transition-colors group-hover:text-accent">{title}</h3>
+  <div class="mt-3 flex h-24 flex-none flex-col justify-start overflow-hidden text-center sm:mt-3.5 sm:h-auto sm:flex-1">
+    <p class={`type-ui ${authorSizeMobile} font-black uppercase leading-tight tracking-[0.12em] text-accent hyphens-auto sm:text-[13px] sm:leading-normal sm:tracking-[0.14em]`}>{author}</p>
+    <h3 class={`mt-1.5 ${titleSizeMobile} font-semibold leading-snug text-balance hyphens-auto transition-colors group-hover:text-accent sm:text-base`}>{title}</h3>
   </div>
 </a>
