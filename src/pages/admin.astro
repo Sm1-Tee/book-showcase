@@ -1082,8 +1082,8 @@
           </div>
 
           <div class="field">
-            <label for="genre">Жанр</label>
-            <input type="text" id="genre" list="genreOptions" placeholder="Например: Фэнтези" autocomplete="off" required />
+            <label for="genre">Жанр <span class="optional">(несколько — через запятую)</span></label>
+            <input type="text" id="genre" list="genreOptions" placeholder="Например: Фэнтези, Готика" autocomplete="off" required />
             <datalist id="genreOptions"></datalist>
           </div>
 
@@ -1631,10 +1631,13 @@
         var seen = {};
         var genres = [];
         booksCache.forEach(function (book) {
-          var value = (book.genre || '').trim();
-          if (!value || seen[value]) return;
-          seen[value] = true;
-          genres.push(value);
+          // В поле может быть несколько жанров через запятую — в подсказки кладём каждый отдельно.
+          (book.genre || '').split(',').forEach(function (part) {
+            var value = part.trim();
+            if (!value || seen[value]) return;
+            seen[value] = true;
+            genres.push(value);
+          });
         });
         genres.sort(function (a, b) { return a.localeCompare(b, 'ru'); });
         el.genreOptions.innerHTML = '';
@@ -2240,7 +2243,7 @@
       function updateGenreStatus() {
         var changes = genreChangeList();
         if (changes.length === 0) {
-          el.genreStatus.textContent = 'Изменений нет. Правь жанры сколько нужно — загрузка будет одна.';
+          el.genreStatus.textContent = 'Изменений нет. Несколько жанров пиши через запятую, загрузка будет одна.';
         } else {
           el.genreStatus.innerHTML = 'К загрузке: <strong>' + changes.length + '</strong> — всё уйдёт одним коммитом.';
         }
@@ -2280,7 +2283,7 @@
             input.type = 'text';
             input.setAttribute('list', 'genreOptions');
             input.setAttribute('autocomplete', 'off');
-            input.placeholder = 'Жанр';
+            input.placeholder = 'Жанр или несколько через запятую';
             input.value = Object.prototype.hasOwnProperty.call(genreDrafts, book.slug)
               ? genreDrafts[book.slug]
               : book.genre || '';

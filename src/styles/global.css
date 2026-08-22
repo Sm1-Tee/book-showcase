@@ -167,6 +167,16 @@
     grid-template-rows: auto;
   }
 
+  /* Кнопки листания всегда занимают своё место в сетке: скрываем их без сдвига раскладки. */
+  #catalog-rail-controls.is-hidden > * {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  #catalog-rail-status:empty {
+    visibility: hidden;
+  }
+
   @keyframes rail-pulse {
     0%,
     100% {

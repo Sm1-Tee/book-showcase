@@ -17,10 +17,18 @@ allBooks.forEach(book => {
   if (s) seriesCounts.set(s, (seriesCounts.get(s) || 0) + 1);
 });
 
+// У книги может быть несколько жанров: в поле genre они перечислены через запятую.
+const splitGenres = (value?: string) =>
+  (value || '')
+    .split(',')
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+
 const genreCounts = new Map<string, number>();
 allBooks.forEach(book => {
-  const g = book.data.genre;
-  if (g) genreCounts.set(g, (genreCounts.get(g) || 0) + 1);
+  splitGenres(book.data.genre).forEach((genre) => {
+    genreCounts.set(genre, (genreCounts.get(genre) || 0) + 1);
+  });
 });
 const genreChips = [...genreCounts.entries()].sort((a, b) => b[1] - a[1] || collator.compare(a[0], b[0]));
 
@@ -103,7 +111,7 @@ const compareCells = [
 
   {allBooks.length > 0 ? (
     <section id="catalog" aria-label="Полный каталог книг">
-      <div id="catalog-filters" class="hidden mb-6 flex w-full flex-wrap items-center gap-3">
+      <div id="catalog-filters" class="mb-6 flex w-full flex-wrap items-center gap-3">
         <div class="relative">
           <label for="filter-genre" class="sr-only">Жанр</label>
           <select id="filter-genre" class="type-ui h-12 w-full min-w-[11rem] cursor-pointer appearance-none rounded-2xl border border-white/10 bg-paper-alt pl-4 pr-10 text-sm font-bold text-ink transition-colors hover:border-accent/40 focus:border-accent/60 focus:outline-none">
@@ -124,7 +132,7 @@ const compareCells = [
           </select>
           <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-accent" aria-hidden="true">▾</span>
         </div>
-        <div id="catalog-search-panel" class="hidden relative min-w-[14rem] flex-1">
+        <div id="catalog-search-panel" class="relative min-w-[14rem] flex-1">
           <label for="catalog-search" class="sr-only">Поиск по названию, автору или серии</label>
           <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -141,6 +149,7 @@ const compareCells = [
           <p id="catalog-result-count" class="sr-only" aria-live="polite"></p>
         </div>
         <noscript>
+          <style is:inline>#filter-genre, #filter-sort, #catalog-search-panel { display: none; }</style>
           <p class="w-full text-sm text-muted">Поиск и фильтры доступны при включённом JavaScript, каталог ниже остаётся полностью видимым.</p>
         </noscript>
       </div>
@@ -153,10 +162,10 @@ const compareCells = [
         </button>
       </div>
 
-      <div id="catalog-rail-viewport" class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 sm:gap-5">
+      <div id="catalog-rail-viewport" class="grid grid-cols-[4rem_minmax(0,1fr)_4rem] items-center gap-3 sm:gap-5">
         <div id="catalog-rail" class="catalog-rail col-start-2 row-start-1 min-w-0">
         {sortedBooks.map(({ book, addedIndex }) => (
-          <div class="book-card-wrapper h-full" data-title={book.data.title.toLowerCase()} data-author={book.data.author.toLowerCase()} data-series={book.data.series?.toLowerCase() || ''} data-series-order={book.data.seriesOrder ?? ''} data-genre={book.data.genre?.toLowerCase() || ''} data-added={addedIndex}>
+          <div class="book-card-wrapper h-full" data-title={book.data.title.toLowerCase()} data-author={book.data.author.toLowerCase()} data-series={book.data.series?.toLowerCase() || ''} data-series-order={book.data.seriesOrder ?? ''} data-genre={splitGenres(book.data.genre).map((genre) => genre.toLowerCase()).join(',')} data-added={addedIndex}>
             <BookCard
               title={book.data.title}
               author={book.data.author}
@@ -171,7 +180,7 @@ const compareCells = [
           </div>
         ))}
         </div>
-        <div id="catalog-rail-controls" class="contents" style="display: none;">
+        <div id="catalog-rail-controls" class="contents">
           <button type="button" data-rail-prev aria-label="Предыдущие книги" class="rail-pulse col-start-1 row-start-1 grid h-16 w-16 cursor-pointer place-items-center self-center rounded-full border-2 border-white bg-accent text-4xl font-black leading-none text-black transition-colors hover:bg-white focus:outline-none focus:ring-4 focus:ring-accent/50 disabled:cursor-default disabled:border-white/20 disabled:bg-white/10 disabled:text-white/30">‹</button>
           <button type="button" data-rail-next aria-label="Следующие книги" class="rail-pulse col-start-3 row-start-1 grid h-16 w-16 cursor-pointer place-items-center self-center rounded-full border-2 border-white bg-accent text-4xl font-black leading-none text-black transition-colors hover:bg-white focus:outline-none focus:ring-4 focus:ring-accent/50 disabled:cursor-default disabled:border-white/20 disabled:bg-white/10 disabled:text-white/30">›</button>
           <p id="catalog-rail-status" class="type-ui col-span-3 row-start-2 justify-self-center rounded-full border border-white/15 bg-black/85 px-4 py-1 text-xs font-black tracking-[0.12em] text-white" aria-live="polite"></p>
@@ -401,7 +410,6 @@ const compareCells = [
 
     const initializeCatalogSearch = () => {
       const searchInput = document.getElementById('catalog-search') as HTMLInputElement | null;
-      const searchPanel = document.getElementById('catalog-search-panel');
       const resultCountStatus = document.getElementById('catalog-result-count');
       const resetButton = document.getElementById('catalog-search-reset') as HTMLButtonElement | null;
 
@@ -409,10 +417,6 @@ const compareCells = [
 
       searchInput.dataset.searchBound = 'true';
       if (resetButton) resetButton.dataset.searchBound = 'true';
-      searchPanel?.classList.remove('hidden');
-
-      const filterBar = document.getElementById('catalog-filters');
-      filterBar?.classList.remove('hidden');
 
       const genreSelect = document.getElementById('filter-genre') as HTMLSelectElement | null;
       const sortSelect = document.getElementById('filter-sort') as HTMLSelectElement | null;
@@ -426,8 +430,8 @@ const compareCells = [
         const titleB = b.dataset.title || '';
 
         if (activeSort === 'genre') {
-          const genreA = a.dataset.genre || 'яяя';
-          const genreB = b.dataset.genre || 'яяя';
+          const genreA = (a.dataset.genre || '').split(',')[0] || 'яяя';
+          const genreB = (b.dataset.genre || '').split(',')[0] || 'яяя';
           const byGenre = jsCollator.compare(genreA, genreB);
           return byGenre !== 0 ? byGenre : jsCollator.compare(titleA, titleB);
         }
@@ -503,7 +507,7 @@ const compareCells = [
           const genre = card.getAttribute('data-genre') || '';
 
           const matchesQuery = !query || title.includes(query) || author.includes(query) || series.includes(query);
-          const matchesGenre = activeGenre === 'all' || genre === activeGenre;
+          const matchesGenre = activeGenre === 'all' || (genre ? genre.split(',').indexOf(activeGenre) !== -1 : false);
           const isVisible = matchesQuery && matchesGenre;
 
           card.hidden = !isVisible;
@@ -666,8 +670,6 @@ const compareCells = [
       const nextButton = document.querySelector('[data-rail-next]') as HTMLButtonElement | null;
       let syncId = 0;
 
-      if (controls) controls.style.display = '';
-
       const columnStep = () => {
         const offsets = (Array.from(rail.children) as HTMLElement[])
           .filter((child) => !child.hidden)
@@ -701,7 +703,7 @@ const compareCells = [
 
         if (prevButton) prevButton.disabled = false;
         if (nextButton) nextButton.disabled = false;
-        if (controls) controls.style.display = maxScroll > 1 ? '' : 'none';
+        if (controls) controls.classList.toggle('is-hidden', maxScroll <= 1);
         if (status) status.textContent = `${currentPage} / ${totalPages}`;
       };
 
@@ -737,6 +739,10 @@ const compareCells = [
 
     if (!state.isBound) {
       state.isBound = true;
+      // astro:after-swap срабатывает сразу после подмены DOM, до анимации перехода,
+      // поэтому лента сразу получает верную раскладку без промежуточного кадра.
+      document.addEventListener('astro:after-swap', initializeCatalogSearch);
+      document.addEventListener('astro:after-swap', initializeCatalogRail);
       document.addEventListener('astro:page-load', initializeCatalogSearch);
       document.addEventListener('astro:page-load', initializeComparators);
       document.addEventListener('astro:page-load', initializeCatalogRail);
