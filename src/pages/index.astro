@@ -162,8 +162,8 @@ const compareCells = [
         </button>
       </div>
 
-      <div id="catalog-rail-viewport" class="grid grid-cols-[4rem_minmax(0,1fr)_4rem] items-center gap-3 sm:gap-5">
-        <div id="catalog-rail" class="catalog-rail col-start-2 row-start-1 min-w-0">
+      <div id="catalog-rail-viewport" class="grid grid-cols-[minmax(0,1fr)] items-center gap-0 sm:grid-cols-[4rem_minmax(0,1fr)_4rem] sm:gap-5">
+        <div id="catalog-rail" class="catalog-rail col-start-1 row-start-1 min-w-0 sm:col-start-2">
         {sortedBooks.map(({ book, addedIndex }) => (
           <div class="book-card-wrapper h-full" data-title={book.data.title.toLowerCase()} data-author={book.data.author.toLowerCase()} data-series={book.data.series?.toLowerCase() || ''} data-series-order={book.data.seriesOrder ?? ''} data-genre={splitGenres(book.data.genre).map((genre) => genre.toLowerCase()).join(',')} data-added={addedIndex}>
             <BookCard
@@ -180,10 +180,10 @@ const compareCells = [
           </div>
         ))}
         </div>
-        <div id="catalog-rail-controls" class="contents">
-          <button type="button" data-rail-prev aria-label="Предыдущие книги" class="rail-pulse col-start-1 row-start-1 grid h-16 w-16 cursor-pointer place-items-center self-center rounded-full border-2 border-white bg-accent text-4xl font-black leading-none text-black transition-colors hover:bg-white focus:outline-none focus:ring-4 focus:ring-accent/50 disabled:cursor-default disabled:border-white/20 disabled:bg-white/10 disabled:text-white/30">‹</button>
-          <button type="button" data-rail-next aria-label="Следующие книги" class="rail-pulse col-start-3 row-start-1 grid h-16 w-16 cursor-pointer place-items-center self-center rounded-full border-2 border-white bg-accent text-4xl font-black leading-none text-black transition-colors hover:bg-white focus:outline-none focus:ring-4 focus:ring-accent/50 disabled:cursor-default disabled:border-white/20 disabled:bg-white/10 disabled:text-white/30">›</button>
-          <p id="catalog-rail-status" class="type-ui col-span-3 row-start-2 justify-self-center rounded-full border border-white/15 bg-black/85 px-4 py-1 text-xs font-black tracking-[0.12em] text-white" aria-live="polite"></p>
+        <div id="catalog-rail-controls" class="col-start-1 row-start-2 mt-4 flex items-center justify-center gap-4 sm:mt-0 sm:contents">
+          <button type="button" data-rail-prev aria-label="Предыдущие книги" class="rail-pulse order-1 col-start-1 row-start-1 grid h-12 w-12 shrink-0 cursor-pointer place-items-center self-center rounded-full border-2 border-white bg-accent text-3xl font-black leading-none text-black transition-colors hover:bg-white focus:outline-none focus:ring-4 focus:ring-accent/50 disabled:cursor-default disabled:border-white/20 disabled:bg-white/10 disabled:text-white/30 sm:h-16 sm:w-16 sm:text-4xl">‹</button>
+          <button type="button" data-rail-next aria-label="Следующие книги" class="rail-pulse order-3 col-start-3 row-start-1 grid h-12 w-12 shrink-0 cursor-pointer place-items-center self-center rounded-full border-2 border-white bg-accent text-3xl font-black leading-none text-black transition-colors hover:bg-white focus:outline-none focus:ring-4 focus:ring-accent/50 disabled:cursor-default disabled:border-white/20 disabled:bg-white/10 disabled:text-white/30 sm:h-16 sm:w-16 sm:text-4xl">›</button>
+          <p id="catalog-rail-status" class="type-ui order-2 col-span-3 row-start-2 justify-self-center rounded-full border border-white/15 bg-black/85 px-4 py-1 text-xs font-black tracking-[0.12em] text-white" aria-live="polite"></p>
         </div>
       </div>
     </section>
@@ -196,9 +196,9 @@ const compareCells = [
   {compareSources.length > 0 && (
     <section id="color-vs-bw" class="mt-16 border-t border-white/5 pt-10" aria-label="Сравнение цветной и чёрно-белой версии">
       <h2 class="mb-6 text-2xl font-black tracking-tight text-white sm:text-3xl">Цветная и чёрно-белая версия</h2>
-      <div class="grid grid-cols-2 items-stretch gap-4 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)_minmax(0,1fr)]">
+      <div class="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)_minmax(0,1fr)]">
         {compareCells.map((cell) => cell.type === 'note' ? (
-          <div class="order-3 col-span-2 flex flex-col justify-center rounded-xl border border-accent/25 bg-accent/[0.06] p-6 sm:p-8 lg:order-none lg:col-span-1 lg:p-10">
+          <div class="order-3 col-span-1 flex flex-col justify-center rounded-xl border border-accent/25 bg-accent/[0.06] p-6 sm:col-span-2 sm:p-8 lg:order-none lg:col-span-1 lg:p-10">
             <h3 class="type-ui text-lg font-black uppercase tracking-[0.14em] text-brass sm:text-xl">Зачем две версии</h3>
             <p class="mt-6 text-base leading-relaxed text-white text-justify hyphens-auto sm:text-lg">Это не «полная» и «урезанная» книга, а две равноценные подачи одних и тех же иллюстраций. Выбор зависит от вашего устройства и от того, какое настроение вы хотите от чтения.</p>
             <p class="mt-5 text-base leading-relaxed text-white text-justify hyphens-auto sm:text-lg"><b class="text-accent">Цветная версия</b> — иллюстрации такими, какими они были нарисованы: все оттенки, полутона и цветовые акценты. Она раскрывается на любом светящемся экране — телефон, планшет, компьютер или цветная читалка.</p>
@@ -222,7 +222,7 @@ const compareCells = [
               src={cell.image}
               alt={`Иллюстрация из издания «${cell.title}» в цвете`}
               width={700}
-              sizes="(min-width: 1024px) 22vw, 45vw"
+              sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
               class="absolute inset-0 block h-full w-full object-cover"
               format="webp"
               loading="lazy"
@@ -234,7 +234,7 @@ const compareCells = [
                 src={cell.image}
                 alt=""
                 width={700}
-                sizes="(min-width: 1024px) 22vw, 45vw"
+                sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
                 class="cmp-bw absolute inset-0 block h-full w-full object-cover"
                 format="webp"
                 loading="lazy"

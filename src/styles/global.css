@@ -168,9 +168,8 @@
   }
 
   /* Кнопки листания всегда занимают своё место в сетке: скрываем их без сдвига раскладки. */
-  #catalog-rail-controls.is-hidden > * {
-    visibility: hidden;
-    pointer-events: none;
+  #catalog-rail-controls.is-hidden {
+    display: none;
   }
 
   #catalog-rail-status:empty {
