@@ -167,6 +167,19 @@
     grid-template-rows: auto;
   }
 
+  /* На телефоне полоса прокрутки ленты не нужна: листается пальцем и кнопками. */
+  @media (max-width: 639.98px) {
+    .catalog-rail {
+      padding-bottom: 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .catalog-rail::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   /* Кнопки листания всегда занимают своё место в сетке: скрываем их без сдвига раскладки. */
   #catalog-rail-controls.is-hidden {
     display: none;
