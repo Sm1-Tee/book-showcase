@@ -1,6 +1,24 @@
 {
 	"events": [
 		{
+			"at": "2026-08-24T13:50:46.729Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 10
+		},
+		{
+			"at": "2026-08-24T13:50:46.729Z",
+			"release": "Пикник на обочине",
+			"tag": "Piknik_na_obochine",
+			"asset": "Piknik_na_obochine-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 3
+		},
+		{
 			"at": "2026-08-22T14:17:30.096Z",
 			"release": "Миргород",
 			"tag": "Миргород",
@@ -1171,20 +1189,20 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-24T12:42:14.972Z",
-	"total": 214,
+	"updatedAt": "2026-08-24T13:50:46.729Z",
+	"total": 216,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
-		{
-			"tag": "imya-vetra",
-			"release": "imya-vetra",
-			"publishedAt": "2026-05-10T12:58:58Z",
-			"total": 15
-		},
 		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
+			"total": 16
+		},
+		{
+			"tag": "imya-vetra",
+			"release": "imya-vetra",
+			"publishedAt": "2026-05-10T12:58:58Z",
 			"total": 15
 		},
 		{
@@ -1320,6 +1338,12 @@
 			"total": 4
 		},
 		{
+			"tag": "Piknik_na_obochine",
+			"release": "Пикник на обочине",
+			"publishedAt": "2026-05-10T14:46:02Z",
+			"total": 4
+		},
+		{
 			"tag": "Esli_vse_koshki_v_mire_ischeznut",
 			"release": "Esli_vse_koshki_v_mire_ischeznut",
 			"publishedAt": "2026-05-10T14:44:06Z",
@@ -1329,12 +1353,6 @@
 			"tag": "черный_отряд",
 			"release": "Черный отряд",
 			"publishedAt": "2026-07-23T13:21:12Z",
-			"total": 3
-		},
-		{
-			"tag": "Piknik_na_obochine",
-			"release": "Пикник на обочине",
-			"publishedAt": "2026-05-10T14:46:02Z",
 			"total": 3
 		},
 		{
