@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-27T20:46:00.372Z",
+			"release": "Последний довод королей",
+			"tag": "Posledniy_dovod_koroley",
+			"asset": "Posledniy_dovod_koroley-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 2
+		},
+		{
 			"at": "2026-08-24T13:50:46.729Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -1189,8 +1198,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-27T10:05:44.782Z",
-	"total": 216,
+	"updatedAt": "2026-08-27T20:46:00.372Z",
+	"total": 217,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1356,6 +1365,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Posledniy_dovod_koroley",
+			"release": "Последний довод королей",
+			"publishedAt": "2026-05-10T13:36:38Z",
+			"total": 3
+		},
+		{
 			"tag": "Mor_uchenik_Smerti",
 			"release": "Мор, ученик Смерти",
 			"publishedAt": "2026-05-10T14:45:04Z",
@@ -1383,12 +1398,6 @@
 			"tag": "Rytsar_Semi_Korolevstv",
 			"release": "Рыцарь Семи Королевств",
 			"publishedAt": "2026-05-10T13:41:44Z",
-			"total": 2
-		},
-		{
-			"tag": "Posledniy_dovod_koroley",
-			"release": "Последний довод королей",
-			"publishedAt": "2026-05-10T13:36:38Z",
 			"total": 2
 		},
 		{
