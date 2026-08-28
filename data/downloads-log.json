@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-28T05:04:18.886Z",
+			"release": "Хоббит, или Туда и обратно",
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"asset": "Khobbit_ili_Tuda_i_obratno-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 5
+		},
+		{
 			"at": "2026-08-27T20:46:00.372Z",
 			"release": "Последний довод королей",
 			"tag": "Posledniy_dovod_koroley",
@@ -1198,8 +1207,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-27T20:46:00.372Z",
-	"total": 217,
+	"updatedAt": "2026-08-28T05:04:18.886Z",
+	"total": 218,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1275,6 +1284,12 @@
 			"total": 7
 		},
 		{
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"release": "Хоббит, или Туда и обратно",
+			"publishedAt": "2026-05-10T13:31:42Z",
+			"total": 7
+		},
+		{
 			"tag": "Книга",
 			"release": "Проект «Аве Мария»",
 			"publishedAt": "2026-08-04T20:51:56Z",
@@ -1290,12 +1305,6 @@
 			"tag": "1984",
 			"release": "1984",
 			"publishedAt": "2026-05-10T14:50:17Z",
-			"total": 6
-		},
-		{
-			"tag": "Khobbit_ili_Tuda_i_obratno",
-			"release": "Хоббит, или Туда и обратно",
-			"publishedAt": "2026-05-10T13:31:42Z",
 			"total": 6
 		},
 		{
