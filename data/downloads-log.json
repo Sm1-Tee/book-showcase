@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-08-29T08:03:50.544Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 11
+		},
+		{
 			"at": "2026-08-28T05:04:18.886Z",
 			"release": "Хоббит, или Туда и обратно",
 			"tag": "Khobbit_ili_Tuda_i_obratno",
@@ -1207,15 +1216,15 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-08-29T01:25:04.069Z",
-	"total": 218,
+	"updatedAt": "2026-08-29T08:03:50.544Z",
+	"total": 219,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
-			"total": 16
+			"total": 17
 		},
 		{
 			"tag": "imya-vetra",
