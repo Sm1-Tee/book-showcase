@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-01T15:02:37.255Z",
+			"release": "Проект «Аве Мария»",
+			"tag": "Книга",
+			"asset": "Proekt-Ave-Mariya-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 7
+		},
+		{
 			"at": "2026-08-29T08:03:50.544Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -1216,8 +1225,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-01T10:19:56.843Z",
-	"total": 219,
+	"updatedAt": "2026-09-01T15:02:37.255Z",
+	"total": 220,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1275,6 +1284,12 @@
 			"total": 8
 		},
 		{
+			"tag": "Книга",
+			"release": "Проект «Аве Мария»",
+			"publishedAt": "2026-08-04T20:51:56Z",
+			"total": 7
+		},
+		{
 			"tag": "Strakhi_mudretsa_Tom_1",
 			"release": "Страхи мудреца. Том 1",
 			"publishedAt": "2026-05-10T13:40:37Z",
@@ -1297,12 +1312,6 @@
 			"release": "Хоббит, или Туда и обратно",
 			"publishedAt": "2026-05-10T13:31:42Z",
 			"total": 7
-		},
-		{
-			"tag": "Книга",
-			"release": "Проект «Аве Мария»",
-			"publishedAt": "2026-08-04T20:51:56Z",
-			"total": 6
 		},
 		{
 			"tag": "Остров_проклятых",
