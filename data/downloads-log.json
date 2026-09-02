@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-02T19:37:09.496Z",
+			"release": "Братство кольца",
+			"tag": "bratstvo_kolca",
+			"asset": "bratstvo_kolca_bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 5
+		},
+		{
 			"at": "2026-09-01T15:02:37.255Z",
 			"release": "Проект «Аве Мария»",
 			"tag": "Книга",
@@ -1225,8 +1234,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-02T16:49:00.655Z",
-	"total": 220,
+	"updatedAt": "2026-09-02T19:37:09.496Z",
+	"total": 221,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1242,15 +1251,15 @@
 			"total": 15
 		},
 		{
-			"tag": "Миргород",
-			"release": "Миргород",
-			"publishedAt": "2026-07-07T12:28:03Z",
-			"total": 13
-		},
-		{
 			"tag": "bratstvo_kolca",
 			"release": "Братство кольца",
 			"publishedAt": "2026-06-06T19:17:42Z",
+			"total": 14
+		},
+		{
+			"tag": "Миргород",
+			"release": "Миргород",
+			"publishedAt": "2026-07-07T12:28:03Z",
 			"total": 13
 		},
 		{
