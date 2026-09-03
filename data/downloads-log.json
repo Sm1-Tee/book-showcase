@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-03T09:25:13.737Z",
+			"release": "Хоббит, или Туда и обратно",
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"asset": "Khobbit_ili_Tuda_i_obratno-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 3
+		},
+		{
 			"at": "2026-09-02T19:37:09.496Z",
 			"release": "Братство кольца",
 			"tag": "bratstvo_kolca",
@@ -1234,8 +1243,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-03T04:53:57.924Z",
-	"total": 221,
+	"updatedAt": "2026-09-03T09:25:13.737Z",
+	"total": 222,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1293,6 +1302,12 @@
 			"total": 8
 		},
 		{
+			"tag": "Khobbit_ili_Tuda_i_obratno",
+			"release": "Хоббит, или Туда и обратно",
+			"publishedAt": "2026-05-10T13:31:42Z",
+			"total": 8
+		},
+		{
 			"tag": "Книга",
 			"release": "Проект «Аве Мария»",
 			"publishedAt": "2026-08-04T20:51:56Z",
@@ -1314,12 +1329,6 @@
 			"tag": "Nastoyashchie_skazki_bratyev_Grimm",
 			"release": "Настоящие сказки братьев Гримм.",
 			"publishedAt": "2026-05-10T14:54:17Z",
-			"total": 7
-		},
-		{
-			"tag": "Khobbit_ili_Tuda_i_obratno",
-			"release": "Хоббит, или Туда и обратно",
-			"publishedAt": "2026-05-10T13:31:42Z",
 			"total": 7
 		},
 		{
