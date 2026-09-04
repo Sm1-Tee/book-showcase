@@ -1,6 +1,24 @@
 {
 	"events": [
 		{
+			"at": "2026-09-04T05:25:36.611Z",
+			"release": "Две крепости",
+			"tag": "dve-kreposti",
+			"asset": "dve-kreposti-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 4
+		},
+		{
+			"at": "2026-09-04T05:25:36.611Z",
+			"release": "Ученик убийцы ",
+			"tag": "Uchenik_ubiytsy",
+			"asset": "Uchenik_ubiytsy-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 2
+		},
+		{
 			"at": "2026-09-03T22:42:30.742Z",
 			"release": "Две крепости",
 			"tag": "dve-kreposti",
@@ -1252,8 +1270,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-04T00:42:02.750Z",
-	"total": 223,
+	"updatedAt": "2026-09-04T05:25:36.611Z",
+	"total": 225,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1290,7 +1308,7 @@
 			"tag": "dve-kreposti",
 			"release": "Две крепости",
 			"publishedAt": "2026-06-18T00:17:50Z",
-			"total": 10
+			"total": 11
 		},
 		{
 			"tag": "1984_2",
@@ -1365,6 +1383,12 @@
 			"total": 5
 		},
 		{
+			"tag": "Uchenik_ubiytsy",
+			"release": "Ученик убийцы ",
+			"publishedAt": "2026-05-10T14:57:15Z",
+			"total": 5
+		},
+		{
 			"tag": "Master_i_Margarita",
 			"release": "Мастер и Маргарита",
 			"publishedAt": "2026-05-10T14:49:21Z",
@@ -1392,12 +1416,6 @@
 			"tag": "Дракула",
 			"release": "ДРАКУЛА",
 			"publishedAt": "2026-07-02T16:22:13Z",
-			"total": 4
-		},
-		{
-			"tag": "Uchenik_ubiytsy",
-			"release": "Ученик убийцы ",
-			"publishedAt": "2026-05-10T14:57:15Z",
 			"total": 4
 		},
 		{
