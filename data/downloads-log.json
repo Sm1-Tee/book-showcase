@@ -1,6 +1,24 @@
 {
 	"events": [
 		{
+			"at": "2026-09-04T09:50:19.303Z",
+			"release": "Братство кольца",
+			"tag": "bratstvo_kolca",
+			"asset": "bratstvo_kolca_color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 10
+		},
+		{
+			"at": "2026-09-04T09:50:19.303Z",
+			"release": "Ученик убийцы ",
+			"tag": "Uchenik_ubiytsy",
+			"asset": "Uchenik_ubiytsy-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 4
+		},
+		{
 			"at": "2026-09-04T05:25:36.611Z",
 			"release": "Две крепости",
 			"tag": "dve-kreposti",
@@ -1270,8 +1288,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-04T05:25:36.611Z",
-	"total": 225,
+	"updatedAt": "2026-09-04T09:50:19.303Z",
+	"total": 227,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1281,16 +1299,16 @@
 			"total": 17
 		},
 		{
+			"tag": "bratstvo_kolca",
+			"release": "Братство кольца",
+			"publishedAt": "2026-06-06T19:17:42Z",
+			"total": 15
+		},
+		{
 			"tag": "imya-vetra",
 			"release": "imya-vetra",
 			"publishedAt": "2026-05-10T12:58:58Z",
 			"total": 15
-		},
-		{
-			"tag": "bratstvo_kolca",
-			"release": "Братство кольца",
-			"publishedAt": "2026-06-06T19:17:42Z",
-			"total": 14
 		},
 		{
 			"tag": "Миргород",
@@ -1371,6 +1389,12 @@
 			"total": 6
 		},
 		{
+			"tag": "Uchenik_ubiytsy",
+			"release": "Ученик убийцы ",
+			"publishedAt": "2026-05-10T14:57:15Z",
+			"total": 6
+		},
+		{
 			"tag": "Побег_из_Шоушенка",
 			"release": "Побег из Шоушенка",
 			"publishedAt": "2026-07-25T16:49:08Z",
@@ -1380,12 +1404,6 @@
 			"tag": "Korolevskiy_ubiytsa",
 			"release": "Королевский убийца",
 			"publishedAt": "2026-06-03T22:54:17Z",
-			"total": 5
-		},
-		{
-			"tag": "Uchenik_ubiytsy",
-			"release": "Ученик убийцы ",
-			"publishedAt": "2026-05-10T14:57:15Z",
 			"total": 5
 		},
 		{
