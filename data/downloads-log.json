@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-04T13:57:55.376Z",
+			"release": "Страхи мудреца. Том 1",
+			"tag": "Strakhi_mudretsa_Tom_1",
+			"asset": "Strakhi_mudretsa_Tom_1-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 6
+		},
+		{
 			"at": "2026-09-04T09:50:19.303Z",
 			"release": "Братство кольца",
 			"tag": "bratstvo_kolca",
@@ -1288,8 +1297,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-04T09:50:19.303Z",
-	"total": 227,
+	"updatedAt": "2026-09-04T13:57:55.376Z",
+	"total": 228,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1347,6 +1356,12 @@
 			"total": 8
 		},
 		{
+			"tag": "Strakhi_mudretsa_Tom_1",
+			"release": "Страхи мудреца. Том 1",
+			"publishedAt": "2026-05-10T13:40:37Z",
+			"total": 8
+		},
+		{
 			"tag": "Khobbit_ili_Tuda_i_obratno",
 			"release": "Хоббит, или Туда и обратно",
 			"publishedAt": "2026-05-10T13:31:42Z",
@@ -1356,12 +1371,6 @@
 			"tag": "Книга",
 			"release": "Проект «Аве Мария»",
 			"publishedAt": "2026-08-04T20:51:56Z",
-			"total": 7
-		},
-		{
-			"tag": "Strakhi_mudretsa_Tom_1",
-			"release": "Страхи мудреца. Том 1",
-			"publishedAt": "2026-05-10T13:40:37Z",
 			"total": 7
 		},
 		{
