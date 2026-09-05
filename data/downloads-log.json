@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-05T23:09:47.263Z",
+			"release": "Королевский убийца",
+			"tag": "Korolevskiy_ubiytsa",
+			"asset": "Korolevskiy_ubiytsa-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 4
+		},
+		{
 			"at": "2026-09-05T19:16:47.199Z",
 			"release": "Страхи мудреца. Том 2",
 			"tag": "Strakhi_mudretsa_Tom_2",
@@ -1333,8 +1342,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-05T21:27:56.494Z",
-	"total": 233,
+	"updatedAt": "2026-09-05T23:09:47.263Z",
+	"total": 234,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1428,6 +1437,12 @@
 			"total": 6
 		},
 		{
+			"tag": "Korolevskiy_ubiytsa",
+			"release": "Королевский убийца",
+			"publishedAt": "2026-06-03T22:54:17Z",
+			"total": 6
+		},
+		{
 			"tag": "1984",
 			"release": "1984",
 			"publishedAt": "2026-05-10T14:50:17Z",
@@ -1443,12 +1458,6 @@
 			"tag": "Побег_из_Шоушенка",
 			"release": "Побег из Шоушенка",
 			"publishedAt": "2026-07-25T16:49:08Z",
-			"total": 5
-		},
-		{
-			"tag": "Korolevskiy_ubiytsa",
-			"release": "Королевский убийца",
-			"publishedAt": "2026-06-03T22:54:17Z",
 			"total": 5
 		},
 		{
