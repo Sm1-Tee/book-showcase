@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-05T00:15:23.727Z",
+			"release": "Проект «Аве Мария»",
+			"tag": "Книга",
+			"asset": "Proekt-Ave-Mariya-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 8
+		},
+		{
 			"at": "2026-09-04T19:47:53.441Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -1306,8 +1315,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-04T22:03:43.251Z",
-	"total": 230,
+	"updatedAt": "2026-09-05T00:15:23.727Z",
+	"total": 231,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1353,6 +1362,12 @@
 			"total": 9
 		},
 		{
+			"tag": "Книга",
+			"release": "Проект «Аве Мария»",
+			"publishedAt": "2026-08-04T20:51:56Z",
+			"total": 8
+		},
+		{
 			"tag": "Трудно_быть_богом",
 			"release": "Трудно быть богом",
 			"publishedAt": "2026-07-14T14:20:43Z",
@@ -1375,12 +1390,6 @@
 			"release": "Хоббит, или Туда и обратно",
 			"publishedAt": "2026-05-10T13:31:42Z",
 			"total": 8
-		},
-		{
-			"tag": "Книга",
-			"release": "Проект «Аве Мария»",
-			"publishedAt": "2026-08-04T20:51:56Z",
-			"total": 7
 		},
 		{
 			"tag": "Prezhde_chem_ih_povesyat",
