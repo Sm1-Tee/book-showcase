@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-05T04:46:42.532Z",
+			"release": "Страхи мудреца. Том 2",
+			"tag": "Strakhi_mudretsa_Tom_2",
+			"asset": "Strakhi_mudretsa_Tom_2-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 4
+		},
+		{
 			"at": "2026-09-05T00:15:23.727Z",
 			"release": "Проект «Аве Мария»",
 			"tag": "Книга",
@@ -1315,8 +1324,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-05T00:15:23.727Z",
-	"total": 231,
+	"updatedAt": "2026-09-05T04:46:42.532Z",
+	"total": 232,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1347,7 +1356,7 @@
 			"tag": "Strakhi_mudretsa_Tom_2",
 			"release": "Страхи мудреца. Том 2",
 			"publishedAt": "2026-05-20T15:34:19Z",
-			"total": 12
+			"total": 13
 		},
 		{
 			"tag": "dve-kreposti",
