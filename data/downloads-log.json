@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-06T14:18:26.512Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 14
+		},
+		{
 			"at": "2026-09-05T23:09:47.263Z",
 			"release": "Королевский убийца",
 			"tag": "Korolevskiy_ubiytsa",
@@ -1342,15 +1351,15 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-06T11:11:52.688Z",
-	"total": 234,
+	"updatedAt": "2026-09-06T14:18:26.512Z",
+	"total": 235,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
-			"total": 19
+			"total": 20
 		},
 		{
 			"tag": "bratstvo_kolca",
