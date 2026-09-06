@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-06T17:13:16.775Z",
+			"release": "Тени сгущаются",
+			"tag": "Тени_сгущаются",
+			"asset": "Teni-sgushchayutsya-COLOR.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 1
+		},
+		{
 			"at": "2026-09-06T14:18:26.512Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -1351,8 +1360,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-06T14:18:26.512Z",
-	"total": 235,
+	"updatedAt": "2026-09-06T17:13:16.775Z",
+	"total": 236,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1558,6 +1567,12 @@
 			"release": "Артас. Восхождение Короля-лича",
 			"publishedAt": "2026-05-10T13:37:59Z",
 			"total": 2
+		},
+		{
+			"tag": "Тени_сгущаются",
+			"release": "Тени сгущаются",
+			"publishedAt": "2026-09-06T14:54:11Z",
+			"total": 1
 		},
 		{
 			"tag": "Portret_Doriana_Greya",
