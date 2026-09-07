@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-07T01:12:25.661Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 15
+		},
+		{
 			"at": "2026-09-06T17:13:16.775Z",
 			"release": "Тени сгущаются",
 			"tag": "Тени_сгущаются",
@@ -1360,15 +1369,15 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-06T23:26:54.789Z",
-	"total": 236,
+	"updatedAt": "2026-09-07T01:12:25.661Z",
+	"total": 237,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
-			"total": 20
+			"total": 21
 		},
 		{
 			"tag": "bratstvo_kolca",
