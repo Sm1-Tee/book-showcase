@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-07T21:40:49.047Z",
+			"release": "imya-vetra",
+			"tag": "imya-vetra",
+			"asset": "imya-vetra-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 13
+		},
+		{
 			"at": "2026-09-07T18:04:09.911Z",
 			"release": "Королевский убийца",
 			"tag": "Korolevskiy_ubiytsa",
@@ -1387,8 +1396,8 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-07T18:04:09.911Z",
-	"total": 240,
+	"updatedAt": "2026-09-07T21:40:49.047Z",
+	"total": 241,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
@@ -1398,15 +1407,15 @@
 			"total": 22
 		},
 		{
-			"tag": "bratstvo_kolca",
-			"release": "Братство кольца",
-			"publishedAt": "2026-06-06T19:17:42Z",
-			"total": 15
-		},
-		{
 			"tag": "imya-vetra",
 			"release": "imya-vetra",
 			"publishedAt": "2026-05-10T12:58:58Z",
+			"total": 16
+		},
+		{
+			"tag": "bratstvo_kolca",
+			"release": "Братство кольца",
+			"publishedAt": "2026-06-06T19:17:42Z",
 			"total": 15
 		},
 		{
