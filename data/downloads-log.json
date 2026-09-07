@@ -1,6 +1,15 @@
 {
 	"events": [
 		{
+			"at": "2026-09-07T12:53:24.190Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-color.epub",
+			"variant": "color",
+			"delta": 1,
+			"total": 16
+		},
+		{
 			"at": "2026-09-07T01:12:25.661Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -1369,15 +1378,15 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-07T06:24:09.127Z",
-	"total": 237,
+	"updatedAt": "2026-09-07T12:53:24.190Z",
+	"total": 238,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
-			"total": 21
+			"total": 22
 		},
 		{
 			"tag": "bratstvo_kolca",
