@@ -1,6 +1,24 @@
 {
 	"events": [
 		{
+			"at": "2026-09-09T19:02:08.192Z",
+			"release": "Ukrytie",
+			"tag": "Ukrytie",
+			"asset": "Ukrytie-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 7
+		},
+		{
+			"at": "2026-09-09T19:02:08.192Z",
+			"release": "Рыцарь Семи Королевств",
+			"tag": "Rytsar_Semi_Korolevstv",
+			"asset": "Rytsar_Semi_Korolevstv-bw.epub",
+			"variant": "bw",
+			"delta": 1,
+			"total": 1
+		},
+		{
 			"at": "2026-09-09T06:19:02.160Z",
 			"release": "Ukrytie",
 			"tag": "Ukrytie",
@@ -1405,15 +1423,15 @@
 			"total": 2
 		}
 	],
-	"updatedAt": "2026-09-09T15:50:38.792Z",
-	"total": 242,
+	"updatedAt": "2026-09-09T19:02:08.192Z",
+	"total": 244,
 	"startedAt": "2026-07-29T17:47:00.295Z",
 	"totalsByRelease": [
 		{
 			"tag": "Ukrytie",
 			"release": "Ukrytie",
 			"publishedAt": "2026-05-10T14:56:12Z",
-			"total": 23
+			"total": 24
 		},
 		{
 			"tag": "imya-vetra",
@@ -1572,6 +1590,12 @@
 			"total": 3
 		},
 		{
+			"tag": "Rytsar_Semi_Korolevstv",
+			"release": "Рыцарь Семи Королевств",
+			"publishedAt": "2026-05-10T13:41:44Z",
+			"total": 3
+		},
+		{
 			"tag": "Posledniy_dovod_koroley",
 			"release": "Последний довод королей",
 			"publishedAt": "2026-05-10T13:36:38Z",
@@ -1600,12 +1624,6 @@
 			"release": "Черный человек ",
 			"publishedAt": "2026-05-10T14:47:55Z",
 			"total": 3
-		},
-		{
-			"tag": "Rytsar_Semi_Korolevstv",
-			"release": "Рыцарь Семи Королевств",
-			"publishedAt": "2026-05-10T13:41:44Z",
-			"total": 2
 		},
 		{
 			"tag": "Artas_Voskhozhdenie_Korolya-licha",
